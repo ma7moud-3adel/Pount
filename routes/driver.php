@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('driver')->name('driver.')->group(function () {
     Route::middleware('isDriver')->group(function () {
-        Route::view('/index', 'dashboard');
+        Route::view('/index', 'driver.dashboard')->name('index');
     });
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

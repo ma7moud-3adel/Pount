@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\DriverAuth\AuthenticatedSessionController;
+use App\Http\Controllers\DriverAuth\ConfirmablePasswordController;
+use App\Http\Controllers\DriverAuth\EmailVerificationNotificationController;
+use App\Http\Controllers\DriverAuth\EmailVerificationPromptController;
+use App\Http\Controllers\DriverAuth\NewPasswordController;
+use App\Http\Controllers\DriverAuth\PasswordController;
+use App\Http\Controllers\DriverAuth\PasswordResetLinkController;
+use App\Http\Controllers\DriverAuth\RegisteredUserController;
+use App\Http\Controllers\DriverAuth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:driver')->group(function () {

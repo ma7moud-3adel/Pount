@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/driver/dashboard', 'driver.dashboard')->name('driver.index');
 Route::view('/driver/login', 'driver.login')->name('driver.login');
 Route::view('/driver/register', 'driver.register')->name('driver.register');
 
