@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DriverAuth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ Route::get('/', function () {
 Route::view('/driver/index', 'driver.index')->name('driver.index');
 Route::view('/driver/login', 'driver.login')->name('driver.login');
 Route::view('/driver/register', 'driver.register')->name('driver.register');
+
+Route::post('deiver/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('driver.logout');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

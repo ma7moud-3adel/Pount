@@ -19,7 +19,5 @@ Route::prefix('driver')->name('driver.')->group(function () {
     Route::middleware('isDriver')->group(function () {
         Route::view('/index', 'driver.index')->name('index');
     });
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     require __DIR__ . '/driver_auth.php';
 });
