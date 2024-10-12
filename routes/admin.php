@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminAuth\AdminSessionController;
+use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Driver Routes
+| Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -14,10 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::prefix('driver')->name('driver.')->group(function () {
-    Route::middleware('isDriver')->group(function () {
-        Route::view('/index', 'driver.index')->name('index');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware('isAdmin')->group(function () {
+        Route::view('index', 'admin.index')->name('index');
     });
-    require __DIR__ . '/driver_auth.php';
 });

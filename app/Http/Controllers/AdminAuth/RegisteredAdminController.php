@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\DriverAuth;
+namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Driver;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -14,14 +15,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class RegisteredAdminController extends Controller
 {
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('driver.register');
+        return view('admin.register');
     }
 
     /**
@@ -38,7 +39,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = Driver::create([
+        $user = Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -48,6 +49,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('driver.index');
+        return redirect()->route('admin.index');
     }
 }

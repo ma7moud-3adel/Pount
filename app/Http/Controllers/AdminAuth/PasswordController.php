@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\DriverAuth;
+namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;

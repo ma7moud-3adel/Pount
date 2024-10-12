@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\DriverAuth\AuthenticatedSessionController;
+use App\Http\Controllers\AdminAuth\AdminSessionController;
+use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +20,43 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/driver/index', 'driver.index')->name('driver.index');
-Route::view('/driver/login', 'driver.login')->name('driver.login');
-Route::view('/driver/register', 'driver.register')->name('driver.register');
+// Route::prefix('admin')->name('admin.')->group(function () {
+//     Route::middleware('isAdmin')->group(function () {
+//         Route::view('/index', 'admin.index')->name('index');
+//     });
+//     // Route::middleware(['auth:admin'])->group(function () {
+//     //     Route::view('index', 'admin.index')->name('index');
+//     //     Route::view('login', 'admin.login')->name('login');
+//     //     Route::view('register', 'admin.register')->name('register');
 
-Route::post('deiver/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('driver.logout');
+
+//     //     Route::post('register', [RegisteredAdminController::class, 'store'])
+//     //         ->name('register');
+//     //     Route::post('login', [AdminSessionController::class, 'store'])
+//     //         ->name('login');
+
+//     //     Route::post('logout', [AdminSessionController::class, 'destroy'])
+//     //         ->name('logout');
+//     // });
+// });
+
+
+
+// Route::middleware(['auth:admin'])->group(function () {
+Route::view('/admin/index', 'admin.index')->name('admin.index');
+Route::view('/admin/login', 'admin.login')->name('admin.login');
+Route::view('/admin/register', 'admin.register')->name('admin.register');
+
+
+Route::post('admin/register', [RegisteredAdminController::class, 'store'])
+    ->name('admin.register');
+Route::post('admin/login', [AdminSessionController::class, 'store'])
+    ->name('admin.login');
+
+Route::post('admin/logout', [AdminSessionController::class, 'destroy'])
+    ->name('admin.logout');
+// });
+
 
 
 Route::get('/dashboard', function () {
@@ -38,4 +70,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/driver.php';
+require __DIR__ . '/admin.php';
