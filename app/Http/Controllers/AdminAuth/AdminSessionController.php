@@ -29,7 +29,7 @@ class AdminSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.home');
     }
 
     /**

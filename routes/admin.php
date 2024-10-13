@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('isAdmin')->group(function () {
-        Route::view('index', 'admin.index')->name('index');
+        Route::view('home', 'admin.home')->name('home');
     });
 });

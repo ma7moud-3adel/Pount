@@ -22,17 +22,17 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::get('/', function () {
-        return view('admin.layouts.app');
-    });
-
     Route::get('/home', function () {
         return view('admin.home');
     });
 
-    Route::get('/users', function () {
-        return view('admin.users');
-    });
+    // Route::get('/users', function () {
+    //     return view('admin.users');
+    // });
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
 // Route::prefix('admin')->name('admin.')->group(function () {
@@ -58,7 +58,7 @@ Route::group([
 
 
 // Route::middleware(['auth:admin'])->group(function () {
-Route::view('/admin/index', 'admin.index')->name('admin.index');
+Route::view('/admin/home', 'admin.home')->name('admin.home');
 Route::view('/admin/login', 'admin.login')->name('admin.login');
 Route::view('/admin/register', 'admin.register')->name('admin.register');
 
