@@ -38,7 +38,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('category') }}"
-                        class="nav-link {{ Request::route()->getName() == 'category' ? 'active' : '' }} ">
+                        class="nav-link {{ Request::route()->getName() == 'category' || 'category.create' ? 'active' : '' }} ">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             {{ trans('main.Category') }}

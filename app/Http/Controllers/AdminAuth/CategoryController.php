@@ -24,7 +24,7 @@ class CategoryController extends Controller
     public function create()
     {
         $data = Category::all();
-        return view('admin.category.index')->with('data', $data);
+        return view('admin.category.create')->with('data', $data);
     }
 
     /**
