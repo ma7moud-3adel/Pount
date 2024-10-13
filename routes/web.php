@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layouts.app');
-});
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    Route::get('/', function () {
+        return view('admin.layouts.app');
+    });
 
-Route::get('/home', function () {
-    return view('admin.home');
-});
+    Route::get('/home', function () {
+        return view('admin.home');
+    });
 
-Route::get('/users', function () {
-    return view('admin.users');
+    Route::get('/users', function () {
+        return view('admin.users');
+    });
 });
 
 // Route::prefix('admin')->name('admin.')->group(function () {
