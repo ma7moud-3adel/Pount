@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAuth\AdminSessionController;
+use App\Http\Controllers\AdminAuth\CategoryController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -19,16 +20,15 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath',]
 ], function () {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::get('/home', function () {
-        return view('admin.home');
+    Route::middleware('isAdmin')->group(function () {
+        Route::view('admin/home', 'admin.home')->name('admin.home');
+        Route::get('categories', [CategoryController::class, 'index'])->name('category');
+        Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::post('categories/', [CategoryController::class, 'store'])->name('category.store');
     });
-
-    // Route::get('/users', function () {
-    //     return view('admin.users');
-    // });
 });
 
 Route::get('/', function () {
@@ -58,7 +58,6 @@ Route::get('/', function () {
 
 
 // Route::middleware(['auth:admin'])->group(function () {
-Route::view('/admin/home', 'admin.home')->name('admin.home');
 Route::view('/admin/login', 'admin.login')->name('admin.login');
 Route::view('/admin/register', 'admin.register')->name('admin.register');
 

@@ -19,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('isAdmin')->group(function () {
         Route::view('home', 'admin.home')->name('home');
+        Route::view('categories', 'admin.category.index')->name('category');
     });
 });

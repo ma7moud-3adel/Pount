@@ -4,6 +4,7 @@ return [
 
     'Dashboard' => 'لوحة التحكم',
     'Dashboard_home' => 'لوحة التحكم',
-    'Home' => 'الرئيسية'
+    'Home' => 'الرئيسية',
+    'Category' => 'التصنيفات',
 
 ];
