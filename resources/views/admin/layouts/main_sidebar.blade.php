@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
         <img src="{{ asset('assets/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">M-Store</span>
     </a>
 
     <!-- Sidebar -->
@@ -38,7 +38,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('category') }}"
-                        class="nav-link {{ Request::route()->getName() == 'category' || 'category.create' ? 'active' : '' }} ">
+                        class="nav-link {{ Request::route()->getName() == 'category' || Request::route()->getName() == 'category.create' ? 'active' : '' }} ">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             {{ trans('main.Category') }}
@@ -248,13 +248,13 @@
                 </li>
             </ul>
         </nav>
-        <form method="POST" action="{{ route('admin.logout') }}" class="d-flex align-center justify-content-center">
-            @csrf
-            <a class="btn btn-danger" href="{{ route('admin.logout') }}" role="button"
-                onclick="event.preventDefault();
-                this.closest('form').submit();">
-                Log Out</a>
-        </form>
+        <div class="d-flex align-center justify-content-center mt-5">
+            <form method="POST" action="{{ route('admin.logout') }}">
+                @csrf
+                <a class="btn btn-danger" href="{{ route('admin.logout') }}" role="button"
+                    onclick="event.preventDefault();this.closest('form').submit();">Log Out</a>
+            </form>
+        </div>
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

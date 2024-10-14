@@ -2,43 +2,95 @@
 @section('title')
     {{ trans('main.Category') }}
 @endsection
-@section('content')
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Add New Category</h3>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <form method="POST" action="{{ route('category.store') }}"enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                    <label class="form-label">name</label>
-                    <input name="name" type="text" class="form-control" value="{{ old('name') }}">
-                    <label class="form-label">slug</label>
-                    <input name="slug" type="text" class="form-control" value="{{ old('slug') }}">
-                    <label class="form-label">description</label>
-                    <input name="description" type="text" class="form-control" value="{{ old('description') }}">
-                    <label for="body">Image</label>
-                    <input type="file" name="image" id="body" value="" class="form-control"
-                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+@section('css')
+    <style>
+        .form-label {
+            color: #777;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+        }
 
-                    <label class="form-label">Status</label>
-                    <input name="is_showin" type="checkbox"> <br>
-                    <label class="form-label">Popular</label>
-                    <input name="is_showin" type="checkbox"> <br>
-                    <label class="form-label">Meta Title</label>
-                    <input name="meta_title" type="text" class="form-control" value="{{ old('meta_title') }}">
-                    <label class="form-label">Meta Description</label>
-                    <input name="meta_description" type="text" class="form-control"
-                        value="{{ old('meta_description') }}">
-                    <label class="form-label">Meta Keywords</label>
-                    <input name="meta_keywords" type="text" class="form-control" value="{{ old('meta_keywords') }}">
+        .check {
+            border-radius: 15px;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .c {
+            margin-bottom: 10px
+        }
+    </style>
+@endsection
+@section('content')
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add New Category</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3">
+                                <div class="row mb-4">
+                                    <div class = "col"><label class="form-label">name</label> <br>
+                                        <input class="form-control" name="name" type="text"
+                                            value="{{ old('name') }}">
+                                    </div>
+                                    <div class = "col"><label class="form-label">slug</label> <br>
+                                        <input class="form-control" name="slug" type="text"
+                                            value="{{ old('slug') }}">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class = "col"><label class="form-label">description</label> <br>
+                                        <input class="form-control c" name="description" type="text"
+                                            value="{{ old('description') }}">
+                                    </div>
+                                    <div class = "col check"><label class="form-label">Status</label> <br>
+                                        <input class="form-control" name="is_showin" type="checkbox">
+                                    </div>
+                                    <div class = "col check"><label class="form-label">Popular</label> <br>
+                                        <input class="form-control" name="is_showin" type="checkbox">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class = "col"><label class="form-label">Meta Title</label> <br>
+                                        <input class="form-control" name="meta_title" type="text"
+                                            value="{{ old('meta_title') }}">
+                                    </div>
+                                    <div class = "col"><label class="form-label">Meta Description</label> <br>
+                                        <input class="form-control" name="meta_description" type="text"
+                                            value="{{ old('meta_description') }}">
+                                    </div>
+                                    <div class = "col"><label class="form-label">Meta Keywords</label> <br>
+                                        <input class="form-control" name="meta_keywords" type="text"
+                                            value="{{ old('meta_keywords') }}">
+                                    </div>
+                                </div>
+
+                                <div><label class="form-label" for="file">Image</label> <br>
+                                    <input type="file" name="image" id="file">
+                                </div>
+
+                            </div>
+                            <button class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-                <button class="btn btn-success">Submit</button>
-            </form>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.card-body -->
-    </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
 @endsection
 
 @section('title_page')

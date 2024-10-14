@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::all();
-        return view('admin.category.index')->with('data', $data);
+        return view('admin.category.index', compact('data'));
     }
 
     /**
@@ -32,20 +32,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // $imagePath = null;
+        $imagePath = null;
         $request->validate([
             'name' => 'required|string|max:255',
             'slug' => 'required|unique:categories,slug',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'meta_title' => 'required|string',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
         ]);
-        if ($request->hasFile('image')) {
-            $imageName = $request->image->getClientOriginalName();
-            $request->image->move(public_path('image'), $imageName);
-            $imagePath = 'image/' . $imageName;
+        // if ($request->hasFile('image')) {
+        //     $imageName = $request->image->getClientOriginalName();
+        //     $request->image->move(public_path('image'), $imageName);
+        //     $imagePath = 'image/' . $imageName;
+        // }
+        if ($request->file('image')) {
+            $imageName = $request->file('image')->getClientOriginalName();
+            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+
+            return back()
+                ->with('success', 'تم رفع الملف بنجاح!')
+                ->with('file', $imagePath);
         }
         // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`)
         $name = request()->name;

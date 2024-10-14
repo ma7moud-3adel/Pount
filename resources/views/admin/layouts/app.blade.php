@@ -36,5 +36,3 @@
         </div>
         <!-- /.content-wrapper -->
         @include('admin.layouts.footer')
-
-        @yield('js')

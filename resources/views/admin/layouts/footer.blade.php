@@ -50,6 +50,7 @@
 <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/js/demo.js') }}"></script>
+@yield('js')
 </body>
 
 </html>

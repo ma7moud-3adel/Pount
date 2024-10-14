@@ -31,4 +31,5 @@
         <!-- Custom style for RTL -->
         <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     @endif
+    @yield('css')
 </head>
