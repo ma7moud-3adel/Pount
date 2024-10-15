@@ -93,9 +93,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $data = Category::findOrFail($id);
+        return view('admin.category.show', ['data' => $data]);
     }
 
     /**

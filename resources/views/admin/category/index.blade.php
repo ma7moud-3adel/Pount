@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">DataTable with Categories</h3>
                         </div>
                         <div>
                             <a class="btn btn-outline-success" href="{{ route('category.create') }}" role="button">Create</a>
@@ -78,8 +78,8 @@
                                             <a class="btn btn-primary" href="{{ route('category.edit', $datas->id) }}"
                                                 role="button">Edit</a>
 
-                                            <a class="btn btn-info" href="{{ $datas->id }}" target="_blank"
-                                                role="button">View</a>
+                                            <a class="btn btn-info" href="{{ route('category.show', $datas->id) }}"
+                                                target="_blank" role="button">View</a>
 
                                             <form action="" method="POST" style="display: inline;">
                                                 @csrf()
