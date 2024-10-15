@@ -26,11 +26,12 @@ Route::group([
     Route::middleware('isAdmin')->group(function () {
         Route::view('admin/home', 'admin.home')->name('admin.home');
         Route::get('categories', [CategoryController::class, 'index'])->name('category');
-        Route::get('categories/{id}', [CategoryController::class, 'show'])->name('category.show');
         Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
         Route::post('categories/', [CategoryController::class, 'store'])->name('category.store');
         Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('categories/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::get('categories/{id}', [CategoryController::class, 'show'])->name('category.show');
+        Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
 });
 

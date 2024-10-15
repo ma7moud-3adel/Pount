@@ -38,7 +38,12 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('category') }}"
-                        class="nav-link {{ Request::route()->getName() == 'category' || Request::route()->getName() == 'category.create' || Request::route()->getName() == 'category.edit' || Request::route()->getName() == 'category.show' ? 'active' : '' }} ">
+                        class="nav-link {{ Request::route()->getName() == 'category' ||
+                        Request::route()->getName() == 'category.create' ||
+                        Request::route()->getName() == 'category.edit' ||
+                        Request::route()->getName() == 'category.show'
+                            ? 'active'
+                            : '' }} ">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             {{ trans('main.Category') }}

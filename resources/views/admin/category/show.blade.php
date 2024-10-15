@@ -80,7 +80,8 @@
                                         <a class="btn btn-primary" href="{{ route('category.edit', $data->id) }}"
                                             role="button">Edit</a>
 
-                                        <form action="" method="POST" style="display: inline;">
+                                        <form action="{{ route('category.destroy', $data->id) }}" method="POST"
+                                            style="display: inline;">
                                             @csrf()
                                             @method('DELETE')
                                             <button class="btn btn-danger" type="submit"

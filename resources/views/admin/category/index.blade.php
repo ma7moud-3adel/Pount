@@ -81,7 +81,8 @@
                                             <a class="btn btn-info" href="{{ route('category.show', $datas->id) }}"
                                                 target="_blank" role="button">View</a>
 
-                                            <form action="" method="POST" style="display: inline;">
+                                            <form action="{{ route('category.destroy', $datas->id) }}" method="POST"
+                                                style="display: inline;">
                                                 @csrf()
                                                 @method('DELETE')
                                                 <button class="btn btn-danger" type="submit"
