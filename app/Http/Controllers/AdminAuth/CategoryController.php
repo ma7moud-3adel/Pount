@@ -101,17 +101,48 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $data = Category::findOrFail($id);
+        return view('admin.category.edit', ['data' => $data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $imagePath = null;
+        if ($request->file('image')) {
+            $imageName = $request->file('image')->getClientOriginalName();
+            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        }
+
+        $name = request()->name;
+        $slug = request()->slug;
+        $description = request()->description;
+        $is_showin = request()->is_showin;
+        $is_popular = request()->is_popular;
+        $meta_title = request()->meta_title;
+        $meta_description = request()->meta_description;
+        $meta_keywords = request()->meta_keywords;
+
+        $is_showin = request()->has('is_showin') ? 1 : 0;
+        $is_popular = request()->has('is_popular') ? 1 : 0;
+
+        $singleCatFromDB = Category::findOrFail($id);
+        $singleCatFromDB->update([
+            'name' => $name,
+            'slug' => $slug,
+            'description' => $description,
+            'image' => $imagePath,
+            'is_showin' => $is_showin,
+            'is_popular' => $is_popular,
+            'meta_title' => $meta_title,
+            'meta_description' => $meta_description,
+            'meta_keywords' => $meta_keywords,
+        ]);
+        return to_route('category')->with('success', 'Category Is Updated Successfully');
     }
 
     /**

@@ -29,49 +29,53 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Add New Category</h3>
+                        <h3 class="card-title">Update Category Info</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action=" {{ route('category.update', $data->id) }} "
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="mb-3">
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">name</label> <br>
                                         <input class="form-control" name="name" type="text"
-                                            value="{{ old('name') }}">
+                                            value="{{ $data->name }}">
                                     </div>
                                     <div class = "col"><label class="form-label">slug</label> <br>
                                         <input class="form-control" name="slug" type="text"
-                                            value="{{ old('slug') }}">
+                                            value="{{ $data->slug }}">
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
                                         <input class="form-control c" name="description" type="text"
-                                            value="{{ old('description') }}">
+                                            value="{{ $data->description }}">
                                     </div>
                                     <div class = "col check"><label class="form-label">Status</label> <br>
-                                        <input class="form-control" name="is_showin" type="checkbox">
+                                        <input class="form-control" name="is_showin" type="checkbox"
+                                            @if ($data->is_showin) checked @endif>
                                     </div>
                                     <div class = "col check"><label class="form-label">Popular</label> <br>
-                                        <input class="form-control" name="is_popular" type="checkbox">
+                                        <input class="form-control" name="is_popular" type="checkbox"
+                                            @if ($data->is_popular) checked @endif>
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">Meta Title</label> <br>
                                         <input class="form-control" name="meta_title" type="text"
-                                            value="{{ old('meta_title') }}">
+                                            value="{{ $data->meta_title }}">
                                     </div>
                                     <div class = "col"><label class="form-label">Meta Description</label> <br>
                                         <input class="form-control" name="meta_description" type="text"
-                                            value="{{ old('meta_description') }}">
+                                            value="{{ $data->meta_description }}">
                                     </div>
                                     <div class = "col"><label class="form-label">Meta Keywords</label> <br>
                                         <input class="form-control" name="meta_keywords" type="text"
-                                            value="{{ old('meta_keywords') }}">
+                                            value="{{ $data->meta_keywords }}">
                                     </div>
                                 </div>
 

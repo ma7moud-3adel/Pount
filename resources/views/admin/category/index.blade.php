@@ -22,10 +22,11 @@
                             <a class="btn btn-outline-success" href="{{ route('category.create') }}" role="button">Create</a>
                         </div>
                     </div>
-
                     <!-- /.card-header -->
+
+                    <!-- /.card-body -->
                     <div class="card-body">
-                        <table class="table table-striped table-bordered table-hover">
+                        <table class="table table-striped table-bordered table-hover text-center">
                             <thead class="thead-light">
                                 <tr>
                                     {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
@@ -44,24 +45,41 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i = 1;
+                                @endphp
                                 @foreach ($data as $datas)
                                     <tr>
-                                        <th scope="row">{{ $datas->id }}</th>
+                                        <th scope="row">{{ $i++ }}</th>
                                         <td>{{ $datas->name }}</td>
                                         <td>{{ $datas->slug }}</td>
                                         <td>{{ $datas->description }}</td>
                                         {{-- <td>{{ $datas->image }}</td> --}}
                                         <td><img src="{{ asset('assets/image' . session('image')) }}"></td>
                                         {{-- <td><img src="{{ asset($datas->image) }}"></td> --}}
-                                        <td>{{ $datas->is_showin }}</td>
-                                        <td>{{ $datas->is_popular }}</td>
+                                        <td>
+                                            @if ($datas->is_showin)
+                                                <span class="badge badge-success">Showing</span>
+                                            @else
+                                                <span class="badge badge-danger">Hidden</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($datas->is_popular)
+                                                <span class="badge badge-warning">Yes</span>
+                                            @else
+                                                <span class="badge badge-danger">No</span>
+                                            @endif
+                                        </td>
                                         {{-- <td>{{ $datas->meta_title }}</td>
                                         <td>{{ $datas->meta_description }}</td>
                                         <td>{{ $datas->meta_keywords }}</td> --}}
                                         <td>
-                                            <a class="btn btn-primary" href="" role="button">Edit</a>
+                                            <a class="btn btn-primary" href="{{ route('category.edit', $datas->id) }}"
+                                                role="button">Edit</a>
 
-                                            <a class="btn btn-info" href="" target="_blank" role="button">View</a>
+                                            <a class="btn btn-info" href="{{ $datas->id }}" target="_blank"
+                                                role="button">View</a>
 
                                             <form action="" method="POST" style="display: inline;">
                                                 @csrf()
