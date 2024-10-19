@@ -6,5 +6,6 @@ return [
     'Dashboard_home' => 'Dashboard',
     'Home' => 'Home',
     'Category' => 'Categories',
+    'Product' => 'Products',
 
 ];

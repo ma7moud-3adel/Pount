@@ -5,17 +5,18 @@ namespace App\Http\Controllers\AdminAuth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeCategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Category::all();
-        return view('admin.category.index', compact('data'));
+        $data = Product::all();
+        return view('admin.product.index', compact('data'));
     }
 
     /**
@@ -23,8 +24,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data = Category::all();
-        return view('admin.category.create')->with('data', $data);
+        $data = Product::all();
+        return view('admin.product.create')->with('data', $data);
     }
 
     /**
@@ -35,11 +36,9 @@ class CategoryController extends Controller
         $imagePath = null;
         $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|unique:categories,slug',
             'description' => 'nullable|string',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
-            'meta_title' => 'required|string',
-            'meta_description' => 'nullable|string',
+            'count' => 'numeric',
             'meta_keywords' => 'nullable|string',
         ]);
         // if ($request->hasFile('image')) {
@@ -57,37 +56,26 @@ class CategoryController extends Controller
         }
         // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`)
         $name = request()->name;
-        $slug = request()->slug;
         $description = request()->description;
-        $is_showin = request()->is_showin;
-        $is_popular = request()->is_popular;
-        $meta_title = request()->meta_title;
-        $meta_description = request()->meta_description;
+        $count = request()->count;
         $meta_keywords = request()->meta_keywords;
 
-        $is_showin = request()->has('is_showin') ? 1 : 0;
-        $is_popular = request()->has('is_popular') ? 1 : 0;
-
-        $cat = Category::create([
+        $product = Product::create([
             'name' => $name,
-            'slug' => $slug,
             'description' => $description,
             'image' => $imagePath,
-            'is_showin' => $is_showin,
-            'is_popular' => $is_popular,
-            'meta_title' => $meta_title,
-            'meta_description' => $meta_description,
+            'count' => $count,
             'meta_keywords' => $meta_keywords,
         ]);
 
-        if ($cat instanceof Category) {
-            toastr()->success('Data has been saved successfully!');
-            return redirect()->route('category');
+        if ($product instanceof Category) {
+            toastr()->success('Product has been Added successfully!');
+            return redirect()->route('product');
         }
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return to_route('category');
+        return to_route('product');
     }
 
     /**
@@ -95,8 +83,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $data = Category::findOrFail($id);
-        return view('admin.category.show', ['data' => $data]);
+        $data = Product::findOrFail($id);
+        return view('admin.product.show', ['data' => $data]);
     }
 
     /**
@@ -105,7 +93,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $data = Category::findOrFail($id);
-        return view('admin.category.edit', ['data' => $data]);
+        return view('admin.product.edit', ['data' => $data]);
     }
 
     /**
@@ -120,30 +108,19 @@ class CategoryController extends Controller
         }
 
         $name = request()->name;
-        $slug = request()->slug;
         $description = request()->description;
-        $is_showin = request()->is_showin;
-        $is_popular = request()->is_popular;
-        $meta_title = request()->meta_title;
-        $meta_description = request()->meta_description;
+        $count = request()->count;
         $meta_keywords = request()->meta_keywords;
 
-        $is_showin = request()->has('is_showin') ? 1 : 0;
-        $is_popular = request()->has('is_popular') ? 1 : 0;
-
-        $singleCatFromDB = Category::findOrFail($id);
+        $singleCatFromDB = Product::findOrFail($id);
         $singleCatFromDB->update([
             'name' => $name,
-            'slug' => $slug,
             'description' => $description,
             'image' => $imagePath,
-            'is_showin' => $is_showin,
-            'is_popular' => $is_popular,
-            'meta_title' => $meta_title,
-            'meta_description' => $meta_description,
+            'count' => $count,
             'meta_keywords' => $meta_keywords,
         ]);
-        return to_route('category')->with('success', 'Category Is Updated Successfully');
+        return to_route('product')->with('success', 'Product Is Updated Successfully');
     }
 
     /**
@@ -151,9 +128,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $deletedCat = Category::findOrFail($id);
+        $deletedCat = Product::findOrFail($id);
         $deletedCat->delete();
 
-        return to_route('category')->with('danger', 'Category is Deleted Successfully');
+        return to_route('product')->with('danger', 'Product is Deleted Successfully');
     }
 }

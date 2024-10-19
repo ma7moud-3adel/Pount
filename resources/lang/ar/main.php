@@ -6,5 +6,6 @@ return [
     'Dashboard_home' => 'لوحة التحكم',
     'Home' => 'الرئيسية',
     'Category' => 'التصنيفات',
+    'Product' => 'المنتجات',
 
 ];

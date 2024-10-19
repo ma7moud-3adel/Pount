@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\CategoryController;
+use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -25,22 +27,29 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::middleware('isAdmin')->group(function () {
         Route::view('admin/home', 'admin.home')->name('admin.home');
+        Route::get('product', [ProductController::class, 'index'])->name('product');
         Route::get('categories', [CategoryController::class, 'index'])->name('category');
         Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::get('products/create', [ProductController::class, 'create'])->name('product.create');
         Route::post('categories/', [CategoryController::class, 'store'])->name('category.store');
+        Route::post('products/', [ProductController::class, 'store'])->name('product.store');
         Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::get('products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
         Route::put('categories/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::put('products/{id}', [ProductController::class, 'update'])->name('product.update');
         Route::get('categories/{id}', [CategoryController::class, 'show'])->name('category.show');
+        Route::get('products/{id}', [ProductController::class, 'show'])->name('product.show');
         Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-        Route::get('/', function () {
-            return view('index');
-        });
+        Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+        // Route::get('/', function () {
+        //     return view('index');
+        // });
     });
 });
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::prefix('admin')->name('admin.')->group(function () {
 //     Route::middleware('isAdmin')->group(function () {

@@ -9,6 +9,10 @@ use Spatie\Translatable\HasTranslations;
 class Category extends Model
 {
     use HasFactory;
+    public function product()
+    {
+        return $this->belongsToMany(Product::class);
+    }
     use HasTranslations;
 
     protected $fillable = [
