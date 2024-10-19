@@ -32,12 +32,15 @@ Route::group([
         Route::put('categories/{id}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('categories/{id}', [CategoryController::class, 'show'])->name('category.show');
         Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+        Route::get('/', function () {
+            return view('index');
+        });
     });
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 // Route::prefix('admin')->name('admin.')->group(function () {
 //     Route::middleware('isAdmin')->group(function () {
