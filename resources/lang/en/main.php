@@ -7,5 +7,6 @@ return [
     'Home' => 'Home',
     'Category' => 'Categories',
     'Product' => 'Products',
+    'Message' => 'Messages'
 
 ];

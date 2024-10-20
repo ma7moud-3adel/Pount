@@ -10,24 +10,6 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $data = Message::all();
-        return view('index', compact('data'));
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $data = Message::findOrFail($id);
-        return view('product', ['data' => $data]);
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function create()
@@ -68,13 +50,5 @@ class MessageController extends Controller
         toastr()->error('An error has occurred please try again later!.');
 
         return to_route('home');
-    }
-
-    public function destroy($id)
-    {
-        $deletedCat = Message::findOrFail($id);
-        $deletedCat->delete();
-
-        return to_route('product')->with('danger', 'Product is Deleted Successfully');
     }
 }

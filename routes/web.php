@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\CategoryController;
+use App\Http\Controllers\AdminAuth\MessageController as AdminAuthMessageController;
 use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\AdminAuth\UserProductController;
@@ -30,7 +31,7 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::middleware('isAdmin')->group(function () {
         Route::view('admin/home', 'admin.home')->name('admin.home');
-        Route::get('product', [ProductController::class, 'index'])->name('product');
+        Route::get('products', [ProductController::class, 'index'])->name('product');
         Route::get('categories', [CategoryController::class, 'index'])->name('category');
         Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
         Route::get('products/create', [ProductController::class, 'create'])->name('product.create');
@@ -44,6 +45,9 @@ Route::group([
         Route::get('products/{id}', [ProductController::class, 'show'])->name('product.show');
         Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
         Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+        Route::get('messages/', [AdminAuthMessageController::class, 'index'])->name('message');
+        Route::delete('messages/{id}', [AdminAuthMessageController::class, 'destroy'])->name('message.destroy');
+
         // Route::get('/', function () {
         //     return view('index');
         // });
@@ -54,9 +58,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', [AuthUserProductController::class, 'index'])->name('home');
-Route::get('products/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
-Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+Route::middleware('auth')->group(function () {
+    Route::get('home', [AuthUserProductController::class, 'index'])->name('home');
+    Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
+    Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+});
 
 // Route::prefix('admin')->name('admin.')->group(function () {
 //     Route::middleware('isAdmin')->group(function () {
