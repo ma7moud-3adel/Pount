@@ -58,7 +58,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{ count(App\Models\Message::all()) }}</h3>
 
                             <p>Messages</p>
                         </div>

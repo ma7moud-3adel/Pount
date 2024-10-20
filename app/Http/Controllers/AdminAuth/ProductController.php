@@ -68,7 +68,7 @@ class ProductController extends Controller
             'meta_keywords' => $meta_keywords,
         ]);
 
-        if ($product instanceof Category) {
+        if ($product instanceof Product) {
             toastr()->success('Product has been Added successfully!');
             return redirect()->route('product');
         }
@@ -92,7 +92,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data = Category::findOrFail($id);
+        $data = Product::findOrFail($id);
         return view('admin.product.edit', ['data' => $data]);
     }
 

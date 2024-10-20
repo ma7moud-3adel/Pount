@@ -4,6 +4,9 @@ use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\CategoryController;
 use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
+use App\Http\Controllers\AdminAuth\UserProductController;
+use App\Http\Controllers\Auth\MessageController;
+use App\Http\Controllers\Auth\UserProductController as AuthUserProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +53,10 @@ Route::group([
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('home', [AuthUserProductController::class, 'index'])->name('home');
+Route::get('products/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
+Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
 
 // Route::prefix('admin')->name('admin.')->group(function () {
 //     Route::middleware('isAdmin')->group(function () {
