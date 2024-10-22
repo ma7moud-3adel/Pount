@@ -7,17 +7,18 @@ use App\Http\Requests\storeCategoryRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Project;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Project::all();
-        return view('admin.project.index', compact('data'));
+        $data = Slider::all();
+        return view('admin.slider.index', compact('data'));
     }
 
     /**
@@ -25,8 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $data = Project::all();
-        return view('admin.project.create')->with('data', $data);
+        $data = Slider::all();
+        return view('admin.slider.create')->with('data', $data);
     }
 
     /**
@@ -37,32 +38,31 @@ class ProjectController extends Controller
         $imagePath = null;
         $request->validate([
             'title' => 'required',
-            'description' => 'nullable|string',
+            'text' => 'nullable|string',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
-            'comments' => 'nullable|string',
         ]);
         if ($request->file('image')) {
             $imageName = $request->file('image')->getClientOriginalName();
             $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
         }
         $title = request()->title;
-        $description = request()->description;
+        $text = request()->text;
 
 
-        $project = Project::create([
+        $project = Slider::create([
             'title' => $title,
-            'description' => $description,
+            'text' => $text,
             'image' => $imagePath,
         ]);
 
-        if ($project instanceof Project) {
-            toastr()->success('Projects has been Added successfully!');
-            return redirect()->route('project.admin');
+        if ($project instanceof Slider) {
+            toastr()->success('Slider has been Added successfully!');
+            return redirect()->route('slider');
         }
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return to_route('project.admin');
+        return to_route('slidr');
     }
 
     /**
@@ -70,8 +70,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $data = Project::findOrFail($id);
-        return view('admin.project.show', ['data' => $data]);
+        $data = Slider::findOrFail($id);
+        return view('admin.slider.show', ['data' => $data]);
     }
 
     /**
@@ -79,8 +79,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        $data = Project::findOrFail($id);
-        return view('admin.project.edit', ['data' => $data]);
+        $data = Slider::findOrFail($id);
+        return view('admin.slider.edit', ['data' => $data]);
     }
 
     /**
@@ -95,15 +95,15 @@ class ProjectController extends Controller
         }
 
         $title = request()->title;
-        $description = request()->description;
+        $text = request()->text;
 
-        $singleProjectFromDB = Project::findOrFail($id);
+        $singleProjectFromDB = Slider::findOrFail($id);
         $singleProjectFromDB->update([
             'title' => $title,
-            'description' => $description,
+            'text' => $text,
             'image' => $imagePath,
         ]);
-        return to_route('project.admin')->with('success', 'Project Is Updated Successfully');
+        return to_route('slider')->with('success', 'Slider Dara Is Updated Successfully');
     }
 
     /**
@@ -111,9 +111,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $deletedCat = Project::findOrFail($id);
+        $deletedCat = Slider::findOrFail($id);
         $deletedCat->delete();
 
-        return to_route('project.admin')->with('danger', 'Product is Deleted Successfully');
+        return to_route('slider')->with('danger', 'Slider Data is Deleted Successfully');
     }
 }

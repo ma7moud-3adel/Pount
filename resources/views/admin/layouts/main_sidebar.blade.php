@@ -72,9 +72,24 @@
                         Request::route()->getName() == 'project.admin.show'
                             ? 'active'
                             : '' }}  ">
-                        <i class="nav-icon ion ion-bag"></i>
+                        <i class="nav-icon ion ion-stats-bars"></i>
                         <p>
                             {{ trans('main.Project') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="{{ route('slider') }}"
+                        class="nav-link {{ Request::route()->getName() == 'slider' ||
+                        Request::route()->getName() == 'slider.create' ||
+                        Request::route()->getName() == 'slider.edit' ||
+                        Request::route()->getName() == 'slider.show'
+                            ? 'active'
+                            : '' }}  ">
+                        <i class="nnav-icon fas fa-image mr-2"></i>
+                        {{-- <i class="nav-icon ion ion-bag"></i> --}}
+                        <p>
+                            {{ trans('main.Slider') }}
                         </p>
                     </a>
                 </li>

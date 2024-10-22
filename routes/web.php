@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminAuth\MessageController as AdminAuthMessageControll
 use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\ProjectController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
+use App\Http\Controllers\AdminAuth\SliderController;
 use App\Http\Controllers\AdminAuth\UserProductController;
 use App\Http\Controllers\Auth\MessageController;
 use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
@@ -59,6 +60,14 @@ Route::group([
         Route::put('projects/{id}', [ProjectController::class, 'update'])->name('project.admin.update');
         Route::get('projects/{id}', [ProjectController::class, 'show'])->name('project.admin.show');
         Route::delete('projects/{id}', [ProjectController::class, 'destroy'])->name('project.admin.destroy');
+
+        Route::get('sliders', [SliderController::class, 'index'])->name('slider');
+        Route::get('sliders/create', [SliderController::class, 'create'])->name('slider.create');
+        Route::post('sliders', [SliderController::class, 'store'])->name('slider.store');
+        Route::get('sliders/{id}/edit', [SliderController::class, 'edit'])->name('slider.edit');
+        Route::put('sliders/{id}', [SliderController::class, 'update'])->name('slider.update');
+        Route::get('sliders/{id}', [SliderController::class, 'show'])->name('slider.show');
+        Route::delete('sliders/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
 
         // Route::get('/', function () {
         //     return view('index');

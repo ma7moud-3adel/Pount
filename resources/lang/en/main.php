@@ -8,6 +8,7 @@ return [
     'Category' => 'Categories',
     'Product' => 'Products',
     'Message' => 'Messages',
-    'Project' => 'Projects'
+    'Project' => 'Projects',
+    'Slider' => 'Sliders'
 
 ];
