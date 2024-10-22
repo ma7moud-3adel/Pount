@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ trans('main.Product') }}
+    {{ trans('main.Project') }}
 @endsection
 @section('css')
     <style>
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="card-title">Category Details Info</h3>
+                            <h3 class="card-title">Project Details Info</h3>
                         </div>
                         <div>
                             @php
@@ -24,8 +24,10 @@
                                 $prevId = $id - 1;
                                 $nextId = $id + 1;
                             @endphp
-                            <a class="btn btn-secondary" href="{{ route('product.show', $prevId) }}" role="button">Prev</a>
-                            <a class="btn btn-success" href="{{ route('product.show', $nextId) }}" role="button">Next</a>
+                            <a class="btn btn-secondary" href="{{ route('project.admin.show', $prevId) }}"
+                                role="button">Prev</a>
+                            <a class="btn btn-success" href="{{ route('project.admin.show', $nextId) }}"
+                                role="button">Next</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -37,10 +39,9 @@
                                 <tr>
                                     {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Title</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Count</th>
                                     <th scope="col">Actions</th>
 
                                 </tr>
@@ -48,17 +49,14 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">{{ $data->id }}</th>
-                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->title }}</td>
                                     <td>{{ $data->description }}</td>
-                                    {{-- <td>{{ $datas->image }}</td> --}}
-                                    {{-- <td><img src="{{ asset('assets/image' . session('image')) }}"></td> --}}
                                     <td><img width="35" src="{{ asset($data->image) }}"></td>
-                                    <td>{{ $data->count }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{ route('product.edit', $data->id) }}"
+                                        <a class="btn btn-primary" href="{{ route('project.admin.edit', $data->id) }}"
                                             role="button">Edit</a>
 
-                                        <form action="{{ route('product.destroy', $data->id) }}" method="POST"
+                                        <form action="{{ route('project.admin.destroy', $data->id) }}" method="POST"
                                             style="display: inline;">
                                             @csrf()
                                             @method('DELETE')
@@ -151,7 +149,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Category') }}
+    {{ trans('main.Project') }}
 @endsection
 
 @section('js')

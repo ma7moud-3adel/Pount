@@ -2,11 +2,12 @@
 
 return [
 
-    'Dashboard' => 'Dashboard en',
+    'Dashboard' => 'Dashboard',
     'Dashboard_home' => 'Dashboard',
     'Home' => 'Home',
     'Category' => 'Categories',
     'Product' => 'Products',
-    'Message' => 'Messages'
+    'Message' => 'Messages',
+    'Project' => 'Projects'
 
 ];

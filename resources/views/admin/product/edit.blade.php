@@ -42,25 +42,39 @@
                                         <input class="form-control" name="name" type="text"
                                             value="{{ $data->name }}">
                                     </div>
-                                    <div class = "col"><label class="form-label">Meta Keywords</label> <br>
-                                        <input class="form-control" name="meta_keywords" type="text"
-                                            value="{{ $data->meta_keywords }}">
+                                    <div class = "col"><label class="form-label">Price</label> <br>
+                                        <input class="form-control" name="price" type="number"
+                                            value="{{ $data->price }}">
                                     </div>
-                                    <div class = "col"><label class="form-label">Count</label> <br>
-                                        <input class="form-control" name="count" type="number"
-                                            value="{{ $data->count }}">
+                                    <div class = "col">
+                                        {{-- <label class="form-label">Size</label> <br>
+                                        <input class="form-control" name="size" type="text"
+                                            value="{{ old('size') }}"> --}}
+
+                                        <label for="selectSize">Size</label>
+                                        <select class="form-control" id="selectSize" name="size">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
+                                        {{-- <textarea class="form-control c" name="description" id="editor" value="{{ $data->description }}" rows="3"></textarea> --}}
                                         <input class="form-control c" name="description" type="text"
                                             value="{{ $data->description }}">
                                     </div>
                                 </div>
 
-                                <div><label class="form-label" for="file">Image</label> <br>
+                                <div class="border rounded-lg p-2"><label class="form-label" for="file">Image</label>
+                                    <br>
                                     <input type="file" name="image" id="file" required>
+                                    <img src="{{ asset($data->image) }}" alt="" width="75">
+
                                 </div>
 
                             </div>
@@ -78,7 +92,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Category') }}
+    {{ trans('main.Product') }}
 @endsection
 
 @section('js')

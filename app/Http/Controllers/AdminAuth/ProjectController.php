@@ -6,17 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\storeCategoryRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Product::all();
-        return view('admin.product.index', compact('data'));
+        $data = project::all();
+        return view('admin.project.index', compact('data'));
     }
 
     /**
@@ -24,8 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data = Product::all();
-        return view('admin.product.create')->with('data', $data);
+        $data = Project::all();
+        return view('admin.project.create')->with('data', $data);
     }
 
     /**
@@ -35,47 +36,33 @@ class ProductController extends Controller
     {
         $imagePath = null;
         $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required',
             'description' => 'nullable|string',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
-            'price' => 'numeric',
-            'size' => 'nullable|numeric',
+            'description' => 'nullable|string',
         ]);
-        // if ($request->hasFile('image')) {
-        //     $imageName = $request->image->getClientOriginalName();
-        //     $request->image->move(public_path('image'), $imageName);
-        //     $imagePath = 'image/' . $imageName;
-        // }
         if ($request->file('image')) {
             $imageName = $request->file('image')->getClientOriginalName();
             $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
-
-            // return back()
-            //     ->with('success', 'تم رفع الملف بنجاح!')
-            //     ->with('file', $imagePath);
         }
-        // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`)
-        $name = request()->name;
+        $title = request()->title;
         $description = request()->description;
-        $price = request()->price;
-        $size = request()->size;
 
-        $product = Product::create([
-            'name' => $name,
+
+        $project = Project::create([
+            'title' => $title,
             'description' => $description,
             'image' => $imagePath,
-            'price' => $price,
-            'size' => $size,
         ]);
 
-        if ($product instanceof Product) {
-            toastr()->success('Product has been Added successfully!');
-            return redirect()->route('product');
+        if ($project instanceof Project) {
+            toastr()->success('Projects has been Added successfully!');
+            return redirect()->route('project.admin.store');
         }
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return to_route('product');
+        return to_route('project.admin.store');
     }
 
     /**
@@ -83,8 +70,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $data = Product::findOrFail($id);
-        return view('admin.product.show', ['data' => $data]);
+        $data = Project::findOrFail($id);
+        return view('admin.project.show', ['data' => $data]);
     }
 
     /**
@@ -92,8 +79,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data = Product::findOrFail($id);
-        return view('admin.product.edit', ['data' => $data]);
+        $data = Project::findOrFail($id);
+        return view('admin.project.edit', ['data' => $data]);
     }
 
     /**
@@ -107,20 +94,16 @@ class ProductController extends Controller
             $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
         }
 
-        $name = request()->name;
+        $title = request()->title;
         $description = request()->description;
-        $price = request()->price;
-        $size = request()->size;
 
-        $singleCatFromDB = Product::findOrFail($id);
-        $singleCatFromDB->update([
-            'name' => $name,
+        $singleProjectFromDB = Project::findOrFail($id);
+        $singleProjectFromDB->update([
+            'title' => $title,
             'description' => $description,
             'image' => $imagePath,
-            'price' => $price,
-            'size' => $size,
         ]);
-        return to_route('product')->with('success', 'Product Is Updated Successfully');
+        return to_route('project.admin.store')->with('success', 'Project Is Updated Successfully');
     }
 
     /**
@@ -128,7 +111,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $deletedCat = Product::findOrFail($id);
+        $deletedCat = Project::findOrFail($id);
         $deletedCat->delete();
 
         return to_route('product')->with('danger', 'Product is Deleted Successfully');

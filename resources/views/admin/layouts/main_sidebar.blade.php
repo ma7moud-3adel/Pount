@@ -4,7 +4,7 @@
     <a href="{{ route('admin.home') }}" class="brand-link ml-2">
         {{-- <img src="{{ asset('assets/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-light">KM-Store</span>
+        <span class="brand-text font-italic text-uppercase" style="letter-spacing: 3.5px;">Point</span>
     </a>
 
     <!-- Sidebar -->
@@ -61,6 +61,20 @@
                         <i class="nav-icon ion ion-bag"></i>
                         <p>
                             {{ trans('main.Product') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="{{ route('project.admin') }}"
+                        class="nav-link {{ Request::route()->getName() == 'project.admin' ||
+                        Request::route()->getName() == 'project.admin.create' ||
+                        Request::route()->getName() == 'project.admin.edit' ||
+                        Request::route()->getName() == 'project.admin.show'
+                            ? 'active'
+                            : '' }}  ">
+                        <i class="nav-icon ion ion-bag"></i>
+                        <p>
+                            {{ trans('main.Project') }}
                         </p>
                     </a>
                 </li>

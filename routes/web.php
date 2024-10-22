@@ -4,10 +4,13 @@ use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\CategoryController;
 use App\Http\Controllers\AdminAuth\MessageController as AdminAuthMessageController;
 use App\Http\Controllers\AdminAuth\ProductController;
+use App\Http\Controllers\AdminAuth\ProjectController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\AdminAuth\UserProductController;
 use App\Http\Controllers\Auth\MessageController;
+use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
 use App\Http\Controllers\Auth\UserProductController as AuthUserProductController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -45,8 +48,17 @@ Route::group([
         Route::get('products/{id}', [ProductController::class, 'show'])->name('product.show');
         Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
         Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
         Route::get('messages/', [AdminAuthMessageController::class, 'index'])->name('message');
         Route::delete('messages/{id}', [AdminAuthMessageController::class, 'destroy'])->name('message.destroy');
+
+        Route::get('projects', [ProjectController::class, 'index'])->name('project.admin');
+        Route::get('projects/create', [ProjectController::class, 'create'])->name('project.admin.create');
+        Route::post('projects', [ProjectController::class, 'store'])->name('project.admin.store');
+        Route::get('projects/{id}/edit', [ProjectController::class, 'edit'])->name('project.admin.edit');
+        Route::put('projects/{id}', [ProjectController::class, 'update'])->name('project.admin.update');
+        Route::get('projects/{id}', [ProjectController::class, 'show'])->name('project.admin.show');
+        Route::delete('projects/{id}', [ProjectController::class, 'destroy'])->name('project.admin.destroy');
 
         // Route::get('/', function () {
         //     return view('index');
@@ -62,6 +74,8 @@ Route::middleware('auth')->group(function () {
     Route::get('home', [AuthUserProductController::class, 'index'])->name('home');
     Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
     Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+    // Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
+    // Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
 });
 
 // Route::prefix('admin')->name('admin.')->group(function () {

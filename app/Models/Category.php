@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class Category extends Model
 {
     use HasFactory;
-    public function product()
+    public function products()
     {
         return $this->belongsToMany(Product::class);
     }

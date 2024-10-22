@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ trans('main.Message') }}
+    {{ trans('main.Project') }}
 @endsection
 @section('css')
     <style>
@@ -15,7 +15,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h3 class="card-title">All Messages</h3>
+                        <div>
+                            <h3 class="card-title">DataTable with Products</h3>
+                        </div>
+                        <div>
+                            <a class="btn btn-outline-success" href="{{ route('project.admin.create') }}"
+                                role="button">Add</a>
+                        </div>
                     </div>
                     <!-- /.card-header -->
 
@@ -26,10 +32,9 @@
                                 <tr>
                                     {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">E-mail</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Content</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Image</th>
                                     <th scope="col">Actions</th>
 
                                 </tr>
@@ -41,15 +46,17 @@
                                 @foreach ($data as $datas)
                                     <tr>
                                         <th scope="row">{{ $i++ }}</th>
-                                        <td>{{ $datas->name }}</td>
-                                        <td>{{ $datas->email }}</td>
-                                        <td>{{ $datas->phone }}</td>
-                                        <td>{{ $datas->message }}</td>
+                                        <td>{{ $datas->title }}</td>
+                                        <td>{{ $datas->description }}</td>
+                                        <td><img width="40" src="{{ asset($datas->image) }}"></td>
                                         <td>
-                                            <a class="btn btn-info" href="mailto:{{ $datas->email }}"
-                                                role="button">Reply</a>
+                                            <a class="btn btn-primary" href="{{ route('project.admin.edit', $datas->id) }}"
+                                                role="button">Edit</a>
 
-                                            <form action="{{ route('message.destroy', $datas->id) }}" method="POST"
+                                            <a class="btn btn-info" href="{{ route('project.admin.show', $datas->id) }}"
+                                                target="_blank" role="button">View</a>
+
+                                            <form action="{{ route('project.admin.destroy', $datas->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf()
                                                 @method('DELETE')
@@ -74,7 +81,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Message') }}
+    {{ trans('main.Project') }}
 @endsection
 
 @section('js')

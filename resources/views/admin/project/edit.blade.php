@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ trans('main.Product') }}
+    {{ trans('main.Project') }}
 @endsection
 @section('css')
     <style>
@@ -19,7 +19,8 @@
         }
 
         .c {
-            margin-bottom: 10px
+            margin-bottom: 10px;
+            margin-top: 10px
         }
     </style>
 @endsection
@@ -29,47 +30,39 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Add New Product</h3>
+                        <h3 class="card-title">Update Project Card</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('project.admin.update', $data->id) }}"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="mb-3">
-                                <div class="row mb-4">
-                                    <div class = "col"><label class="form-label">name</label> <br>
-                                        <input class="form-control" name="name" type="text"
-                                            value="{{ old('name') }}">
+                                <div class="row mb-4 d-flex align-items-center justify-content-center">
+                                    <div class = "col"><label class="form-label">title</label> <br>
+                                        <input class="form-control" name="title" type="text"
+                                            value="{{ $data->title }}">
                                     </div>
-                                    <div class = "col"><label class="form-label">Price</label> <br>
-                                        <input class="form-control" name="price" type="number"
-                                            value="{{ old('price') }}">
-                                    </div>
-                                    <div class = "col">
-                                        {{-- <label class="form-label">Size</label> <br>
-                                        <input class="form-control" name="size" type="text"
-                                            value="{{ old('size') }}"> --}}
+                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image :
+                                        </label>
+                                        <input type="file" name="image" id="file" required>
+                                        <img src="{{ asset($data->image) }}" alt="" width="75">
 
-                                        <label for="selectSize">Size</label>
-                                        <select class="form-control" id="selectSize" name="size">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
-                                        <textarea class="form-control c" name="description" id="editor" value="{{ old('description') }}" rows="3"></textarea>
+                                        {{-- <textarea class="form-control c" name="description" id="editor" value="{{ $data->description }}" rows="3"></textarea> --}}
+                                        <input class="form-control c" name="description" type="text"
+                                            value="{{ $data->description }}">
                                     </div>
                                 </div>
 
-                                <div><label class="form-label" for="file">Image</label> <br>
-                                    <input type="file" name="image" id="file" required>
-                                </div>
+                                {{-- <div class="col" id="editor">
+                                        <p></p>
+                                    </div> --}}
 
                             </div>
                             <button class="btn btn-success">Submit</button>
@@ -86,7 +79,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Product') }}
+    {{ trans('main.Project') }}
 @endsection
 
 @section('js')

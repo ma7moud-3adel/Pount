@@ -34,7 +34,8 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Count</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Size</th>
                                     <th scope="col">Actions</th>
 
                                 </tr>
@@ -49,13 +50,14 @@
                                         <td>{{ $datas->name }}</td>
                                         <td>{{ $datas->description }}</td>
                                         <td><img width="40" src="{{ asset($datas->image) }}"></td>
-                                        <td>{{ $datas->count }}</td>
+                                        <td>{{ $datas->price }}</td>
+                                        <td>{{ $datas->size }}</td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('product.edit', $datas->id) }}"
                                                 role="button">Edit</a>
 
-                                            <a class="btn btn-info" href="{{ route('product.show', $datas->id) }}"
-                                                target="_blank" role="button">View</a>
+                                            {{-- <a class="btn btn-info" href="{{ route('product.show', $datas->id) }}"
+                                                target="_blank" role="button">View</a> --}}
 
                                             <form action="{{ route('product.destroy', $datas->id) }}" method="POST"
                                                 style="display: inline;">
@@ -82,7 +84,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Category') }}
+    {{ trans('main.Product') }}
 @endsection
 
 @section('js')

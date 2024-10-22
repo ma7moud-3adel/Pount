@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ trans('main.Product') }}
+    {{ trans('main.Project') }}
 @endsection
 @section('css')
     <style>
@@ -21,6 +21,10 @@
         .c {
             margin-bottom: 10px
         }
+
+        #editor p {
+            margin-right: 50px;
+        }
     </style>
 @endsection
 @section('content')
@@ -33,31 +37,16 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('project.admin.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <div class="row mb-4">
-                                    <div class = "col"><label class="form-label">name</label> <br>
-                                        <input class="form-control" name="name" type="text"
-                                            value="{{ old('name') }}">
+                                    <div class = "col"><label class="form-label">title</label> <br>
+                                        <input class="form-control" name="title" type="text"
+                                            value="{{ old('title') }}">
                                     </div>
-                                    <div class = "col"><label class="form-label">Price</label> <br>
-                                        <input class="form-control" name="price" type="number"
-                                            value="{{ old('price') }}">
-                                    </div>
-                                    <div class = "col">
-                                        {{-- <label class="form-label">Size</label> <br>
-                                        <input class="form-control" name="size" type="text"
-                                            value="{{ old('size') }}"> --}}
-
-                                        <label for="selectSize">Size</label>
-                                        <select class="form-control" id="selectSize" name="size">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                    <div class="col"><label class="form-label" for="file">Image</label> <br>
+                                        <input type="file" name="image" id="file" required>
                                     </div>
                                 </div>
 
@@ -65,10 +54,6 @@
                                     <div class = "col"><label class="form-label">description</label> <br>
                                         <textarea class="form-control c" name="description" id="editor" value="{{ old('description') }}" rows="3"></textarea>
                                     </div>
-                                </div>
-
-                                <div><label class="form-label" for="file">Image</label> <br>
-                                    <input type="file" name="image" id="file" required>
                                 </div>
 
                             </div>
@@ -86,7 +71,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Product') }}
+    {{ trans('main.Project') }}
 @endsection
 
 @section('js')

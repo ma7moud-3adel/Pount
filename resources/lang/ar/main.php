@@ -7,6 +7,7 @@ return [
     'Home' => 'الرئيسية',
     'Category' => 'التصنيفات',
     'Product' => 'المنتجات',
-    'Message' => 'الرسائل'
+    'Message' => 'الرسائل',
+    'Project' => 'المشاريع'
 
 ];
