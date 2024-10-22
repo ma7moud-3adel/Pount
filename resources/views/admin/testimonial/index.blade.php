@@ -64,7 +64,7 @@
                                             @endfor
                                         </td>
                                         <td>
-                                            <form action="{{ route('order.destroy', $datas->id) }}" method="POST"
+                                            <form action="{{ route('testimonial.destroy', $datas->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf()
                                                 @method('DELETE')
