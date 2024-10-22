@@ -11,6 +11,7 @@ return [
     'Project' => 'المشاريع',
     'Slider' => 'الصور المتغيرة',
     'Order' => 'الطلبات',
-    'Testimonial' => 'آراء العملاء'
+    'Testimonial' => 'آراء العملاء',
+    'Comment' => 'الكومنتات'
 
 ];

@@ -48,11 +48,11 @@
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
                 <span
-                    class="badge badge-warning navbar-badge">{{ App\Models\Message::count() + App\Models\Order::count() + App\Models\Testimonial::count() }}</span>
+                    class="badge badge-warning navbar-badge">{{ App\Models\Message::count() + App\Models\Order::count() + App\Models\Testimonial::count() + App\Models\Comment::count() }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span
-                    class="dropdown-item dropdown-header">{{ App\Models\Message::count() + App\Models\Order::count() + App\Models\Testimonial::count() }}
+                    class="dropdown-item dropdown-header">{{ App\Models\Message::count() + App\Models\Order::count() + App\Models\Testimonial::count() + App\Models\Comment::count() }}
                     Notifications</span>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('message') }}" class="dropdown-item">
@@ -68,6 +68,11 @@
                 <a href="{{ route('testimonial') }}" class="dropdown-item">
                     <i class="fas fa-star mr-2"></i> {{ count(App\Models\Testimonial::all()) }} Testimonials Rate
                     <span class="float-right text-muted text-sm">2 days</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ route('comment') }}" class="dropdown-item">
+                    <i class="fas fa-comments mr-2"></i> {{ count(App\Models\Comment::all()) }} Comments
+                    <span class="float-right text-muted text-sm">few seconds</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>

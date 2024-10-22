@@ -11,6 +11,7 @@ return [
     'Project' => 'Projects',
     'Slider' => 'Sliders',
     'Order' => 'Orders',
-    'Testimonial' => 'Testimonials'
+    'Testimonial' => 'Testimonials',
+    'Comment' => 'Comments'
 
 ];

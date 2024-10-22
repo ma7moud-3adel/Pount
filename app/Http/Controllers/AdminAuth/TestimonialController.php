@@ -20,15 +20,6 @@ class TestimonialController extends Controller
         return view('admin.testimonial.index', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $data = Testimonial::findOrFail($id);
-        return view('order', ['data' => $data]);
-    }
-
     public function create()
     {
         $data = Testimonial::all();

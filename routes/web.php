@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\CategoryController;
+use App\Http\Controllers\AdminAuth\CommentController;
 use App\Http\Controllers\AdminAuth\MessageController as AdminAuthMessageController;
 use App\Http\Controllers\AdminAuth\OrderController;
 use App\Http\Controllers\AdminAuth\ProductController;
@@ -80,6 +81,10 @@ Route::group([
         Route::get('testimonials/create', [TestimonialController::class, 'create'])->name('testimonial.create');
         Route::post('testimonials/', [TestimonialController::class, 'store'])->name('testimonial.store');
         Route::delete('testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonial.destroy');
+
+        Route::get('comments/', [CommentController::class, 'index'])->name('comment');
+        Route::delete('comments/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+
 
         // Route::get('/', function () {
         //     return view('index');
