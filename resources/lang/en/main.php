@@ -10,6 +10,7 @@ return [
     'Message' => 'Messages',
     'Project' => 'Projects',
     'Slider' => 'Sliders',
-    'Order' => 'Orders'
+    'Order' => 'Orders',
+    'Testimonial' => 'Testimonials'
 
 ];

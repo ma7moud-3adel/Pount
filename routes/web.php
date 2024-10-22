@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\ProjectController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\AdminAuth\SliderController;
+use App\Http\Controllers\AdminAuth\TestimonialController;
 use App\Http\Controllers\AdminAuth\UserProductController;
 use App\Http\Controllers\Auth\MessageController;
 use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
@@ -74,6 +75,11 @@ Route::group([
         Route::get('orders/create', [OrderController::class, 'create'])->name('order.create');
         Route::post('orders/', [OrderController::class, 'store'])->name('order.store');
         Route::delete('orders/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+        Route::get('testimonials/', [TestimonialController::class, 'index'])->name('testimonial');
+        Route::get('testimonials/create', [TestimonialController::class, 'create'])->name('testimonial.create');
+        Route::post('testimonials/', [TestimonialController::class, 'store'])->name('testimonial.store');
+        Route::delete('testimonials/{id}', [TestimonialController::class, 'destroy'])->name('testimonial.destroy');
 
         // Route::get('/', function () {
         //     return view('index');

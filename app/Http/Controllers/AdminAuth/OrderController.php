@@ -62,7 +62,7 @@ class OrderController extends Controller
         ]);
 
         if ($product instanceof Order) {
-            toastr()->success('Prder has been Sent successfully!');
+            toastr()->success('Order has been Sent successfully!');
             return redirect()->route('order');
         }
 

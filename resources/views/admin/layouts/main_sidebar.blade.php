@@ -104,10 +104,19 @@
                 </li>
                 <li class="nav-item mb-3">
                     <a href="{{ route('order') }}"
-                        class="nav-link {{ Request::route()->getName() == 'order' ? 'active' : '' }} ">
+                        class="nav-link {{ Request::route()->getName() == 'order' || Request::route()->getName() == 'order.create' ? 'active' : '' }} ">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             {{ trans('main.Order') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="{{ route('testimonial') }}"
+                        class="nav-link {{ Request::route()->getName() == 'testimonial' || Request::route()->getName() == 'testimonial.create' ? 'active' : '' }} ">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            {{ trans('main.Testimonial') }}
                         </p>
                     </a>
                 </li>

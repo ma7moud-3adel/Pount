@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="" class="nav-link">Home</a>
         </li>
     </ul>
 
@@ -48,11 +48,11 @@
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
                 <span
-                    class="badge badge-warning navbar-badge">{{ App\Models\Message::count() + App\Models\Order::count() }}</span>
+                    class="badge badge-warning navbar-badge">{{ App\Models\Message::count() + App\Models\Order::count() + App\Models\Testimonial::count() }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span
-                    class="dropdown-item dropdown-header">{{ App\Models\Message::count() + App\Models\Order::count() }}
+                    class="dropdown-item dropdown-header">{{ App\Models\Message::count() + App\Models\Order::count() + App\Models\Testimonial::count() }}
                     Notifications</span>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('message') }}" class="dropdown-item">
@@ -63,6 +63,11 @@
                 <a href="{{ route('order') }}" class="dropdown-item">
                     <i class="fas fa-users mr-2"></i> {{ count(App\Models\Order::all()) }} order requests
                     <span class="float-right text-muted text-sm">12 hours</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ route('testimonial') }}" class="dropdown-item">
+                    <i class="fas fa-star mr-2"></i> {{ count(App\Models\Testimonial::all()) }} Testimonials Rate
+                    <span class="float-right text-muted text-sm">2 days</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
