@@ -102,6 +102,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item mb-3">
+                    <a href="{{ route('order') }}"
+                        class="nav-link {{ Request::route()->getName() == 'order' ? 'active' : '' }} ">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            {{ trans('main.Order') }}
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="d-flex align-center justify-content-center mt-5">

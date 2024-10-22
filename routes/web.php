@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAuth\AdminSessionController;
 use App\Http\Controllers\AdminAuth\CategoryController;
 use App\Http\Controllers\AdminAuth\MessageController as AdminAuthMessageController;
+use App\Http\Controllers\AdminAuth\OrderController;
 use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\ProjectController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
@@ -68,6 +69,11 @@ Route::group([
         Route::put('sliders/{id}', [SliderController::class, 'update'])->name('slider.update');
         Route::get('sliders/{id}', [SliderController::class, 'show'])->name('slider.show');
         Route::delete('sliders/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
+
+        Route::get('orders/', [OrderController::class, 'index'])->name('order');
+        Route::get('orders/create', [OrderController::class, 'create'])->name('order.create');
+        Route::post('orders/', [OrderController::class, 'store'])->name('order.store');
+        Route::delete('orders/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
 
         // Route::get('/', function () {
         //     return view('index');

@@ -9,6 +9,7 @@ return [
     'Product' => 'Products',
     'Message' => 'Messages',
     'Project' => 'Projects',
-    'Slider' => 'Sliders'
+    'Slider' => 'Sliders',
+    'Order' => 'Orders'
 
 ];

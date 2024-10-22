@@ -32,6 +32,6 @@ class MessageController extends Controller
         $deletedCat = Message::findOrFail($id);
         $deletedCat->delete();
 
-        return to_route('message')->with('danger', 'Product is Deleted Successfully');
+        return to_route('message')->with('info', 'Message is Readed');
     }
 }
