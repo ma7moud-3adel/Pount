@@ -2,11 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.home') }}" class="brand-link ml-2">
-        {{-- <img src="{{ asset('assets/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-italic text-uppercase" style="letter-spacing: 3.5px;">Point</span>
+        <span class="brand-text font-italic text-uppercase" style="letter-spacing: 3.5px;">Pount</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->

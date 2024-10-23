@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class UserProductController extends Controller
@@ -22,8 +24,10 @@ class UserProductController extends Controller
      */
     public function show($id)
     {
-        $data = Product::findOrFail($id);
-        return view('product', ['data' => $data]);
+        // $data = Product::findOrFail($id);
+        // $comment = Comment::all();
+        $data = Product::with('comments')->findOrFail($id);
+        return view('product', compact('data'));
     }
 
     /**

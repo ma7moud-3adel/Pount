@@ -42,6 +42,42 @@
                         <p class="lead text-gray-800mb-1">{{ $data->name }}</p>
                         <p class="text-gray-500 mb-3">{{ $data->description }}</p>
                         <a href="{{ route('home') }}">&larr; Back to home</a>
+
+                        <div class="border rounded-lg p-3">
+                            @foreach ($data->comments as $comment)
+                                <form action="">
+                                    <label for="comment">{{ $comment->user_name ?? 'Anonymous' }}</label>
+                                    <input type="text" class="form-control" id="comment"
+                                        value="{{ $comment->content }}" disabled>
+                                </form>
+                            @endforeach
+
+                            @if ($data->comments->isEmpty())
+                                <p>لا توجد تعليقات متاحة.</p>
+                            @endif
+                        </div>
+                    </div>
+                    <div>
+                        {{-- @foreach ($comment as $c)
+                            <form action="">
+                                <label>{{ $c->user_name ?? 'Anonymous' }}</label>
+                                <input type="text" class="form-control"
+                                    value="{{ $c->content }}"@disabled(true)>
+                            </form>
+                        @endforeach --}}
+
+                        <form method="POST" action="{{ route('comment.store') }}" class="d-flex">
+                            @csrf
+
+                            <input type="hidden" name="product_id" value="{{ $data->id }}">
+                            <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
+
+                            <input type="text" name="content" class="form-control" placeholder="Enter Your comment">
+
+                            <button class="btn btn-success">Submit</button>
+
+                        </form>
+
                     </div>
 
                 </div>

@@ -15,8 +15,4 @@ class Project extends Model
         'image',
         'comments',
     ];
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Comment::class);
-    }
 }

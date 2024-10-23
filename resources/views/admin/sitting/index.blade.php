@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ trans('main.Comment') }}
+    {{ trans('main.Sitting') }}
 @endsection
 @section('css')
     <style>
@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h3 class="card-title">All Comments</h3>
+                        <h3 class="card-title">All Sittings</h3>
                     </div>
                     <!-- /.card-header -->
 
@@ -26,9 +26,10 @@
                                 <tr>
                                     {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
                                     <th scope="col">#</th>
-                                    <th>Product Name</th>
-                                    <th>User Name</th>
-                                    <th>Content</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">About</th>
                                     <th scope="col">Actions</th>
 
                                 </tr>
@@ -40,14 +41,15 @@
                                 @foreach ($data as $datas)
                                     <tr>
                                         <th scope="row">{{ $i++ }}</th>
-                                        <td>{{ $datas->product->name ?? 'No Project' }}</td>
-                                        <td>{{ Auth::user()->name ?? 'Anonymous' }}</td>
-                                        <td>{{ $datas->content }}</td>
+                                        <td>{{ $datas->name }}</td>
+                                        <td>{{ $datas->email }}</td>
+                                        <td>{{ $datas->phone_number }}</td>
+                                        <td>{{ $datas->about }}</td>
                                         <td>
-                                            {{-- <a class="btn btn-info" href="mailto:{{ $datas->email }}"
-                                                role="button">Reply</a> --}}
+                                            <a class="btn btn-primary" href="{{ route('sitting.edit', $datas->id) }}"
+                                                role="button">Edit</a>
 
-                                            <form action="{{ route('comment.destroy', $datas->id) }}" method="POST"
+                                            <form action="{{ route('sitting.destroy', $datas->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf()
                                                 @method('DELETE')
@@ -72,7 +74,7 @@
 @endsection
 
 @section('title_page')
-    {{ trans('main.Comment') }}
+    {{ trans('main.Sitting') }}
 @endsection
 
 @section('js')

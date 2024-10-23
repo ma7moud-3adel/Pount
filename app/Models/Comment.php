@@ -11,17 +11,12 @@ class Comment extends Model
 
     protected $fillable = [
         'content',
-        'user_id',
-        'project_id',
+        'user_name',
+        'product_id',
     ];
 
-    public function project()
+    public function product()
     {
-        return $this->belongsTo(Project::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Product::class);
     }
 }

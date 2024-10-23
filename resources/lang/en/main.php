@@ -12,6 +12,7 @@ return [
     'Slider' => 'Sliders',
     'Order' => 'Orders',
     'Testimonial' => 'Testimonials',
-    'Comment' => 'Comments'
+    'Comment' => 'Comments',
+    'Sitting' => 'Sittings'
 
 ];

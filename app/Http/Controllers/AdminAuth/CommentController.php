@@ -17,7 +17,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $data = Comment::with(['project', 'user'])->get();
+        $data = Comment::with('product')->get();
         return view('admin.comment.index', compact('data'));
     }
 

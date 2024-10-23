@@ -8,9 +8,12 @@ use App\Http\Controllers\AdminAuth\OrderController;
 use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\ProjectController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
+use App\Http\Controllers\AdminAuth\SittingController;
 use App\Http\Controllers\AdminAuth\SliderController;
 use App\Http\Controllers\AdminAuth\TestimonialController;
 use App\Http\Controllers\AdminAuth\UserProductController;
+use App\Http\Controllers\Auth\AuthCommentController as AuthAuthCommentController;
+use App\Http\Controllers\Auth\CommentController as AuthCommentController;
 use App\Http\Controllers\Auth\MessageController;
 use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
 use App\Http\Controllers\Auth\UserProductController as AuthUserProductController;
@@ -85,6 +88,11 @@ Route::group([
         Route::get('comments/', [CommentController::class, 'index'])->name('comment');
         Route::delete('comments/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 
+        Route::get('sittings/', [SittingController::class, 'index'])->name('sitting');
+        Route::get('sittings/{id}/edit', [SittingController::class, 'edit'])->name('sitting.edit');
+        Route::put('sittings/{id}', [SittingController::class, 'update'])->name('sitting.update');
+        Route::delete('sittings/{id}', [SittingController::class, 'destroy'])->name('sitting.destroy');
+
 
         // Route::get('/', function () {
         //     return view('index');
@@ -100,6 +108,8 @@ Route::middleware('auth')->group(function () {
     Route::get('home', [AuthUserProductController::class, 'index'])->name('home');
     Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
     Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+    Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
+    Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
     // Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
     // Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
 });
