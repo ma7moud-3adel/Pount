@@ -48,7 +48,7 @@
                                     <tr>
                                         <th scope="row">{{ $i++ }}</th>
                                         <td>{{ $datas->name }}</td>
-                                        <td>{{ $datas->description }}</td>
+                                        <td>{!! $datas->description !!}</td>
                                         <td><img width="40" src="{{ asset($datas->image) }}"></td>
                                         <td>{{ $datas->price }}</td>
                                         <td>{{ $datas->size }}</td>

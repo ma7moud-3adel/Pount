@@ -16,9 +16,11 @@ class SittingSeeder extends Seeder
     {
 
         DB::table('sittings')->insert([
-            'name' => 'Mahmoud',
-            'email' => 'mahmoud@gmail.com',
-            'phone_number' => '01023456789',
+            'name' => 'Pount',
+            'email' => 'https://pountpaints.com/',
+            'phone_number' => '01001018277',
+            'address' => '1865',
+            'company_message' => 'hi',
             'about' => 'about',
         ]);
     }

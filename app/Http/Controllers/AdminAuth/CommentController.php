@@ -4,10 +4,6 @@ namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\Message;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller

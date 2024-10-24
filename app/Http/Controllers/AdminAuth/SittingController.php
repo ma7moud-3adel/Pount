@@ -3,12 +3,7 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
-use App\Models\Message;
-use App\Models\Order;
-use App\Models\Product;
 use App\Models\Sitting;
-use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class SittingController extends Controller
@@ -37,6 +32,8 @@ class SittingController extends Controller
         $name = request()->name;
         $email = request()->email;
         $phone_number = request()->phone_number;
+        $address = request()->address;
+        $company_message = request()->company_message;
         $about = request()->about;
 
         $singleProjectFromDB = Sitting::findOrFail($id);
@@ -44,6 +41,8 @@ class SittingController extends Controller
             'name' => $name,
             'email' => $email,
             'phone_number' => $phone_number,
+            'address' => $address,
+            'company_message' => $company_message,
             'about' => $about,
         ]);
         return to_route('sitting')->with('success', 'Sittings Data Is Updated Successfully');

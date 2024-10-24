@@ -46,7 +46,7 @@
                                     <tr>
                                         <th scope="row">{{ $i++ }}</th>
                                         <td>{{ $datas->title }}</td>
-                                        <td>{{ $datas->text }}</td>
+                                        <td>{!! $datas->text !!}</td>
                                         <td><img width="40" src="{{ asset($datas->image) }}"></td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('slider.edit', $datas->id) }}"

@@ -7,14 +7,24 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('assets/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex align-center justify-content-between">
+            <div class="d-flex align-center justify-content-center">
+                <div class="image">
+                    <img src="{{ asset('assets/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="" class="d-block">
+                        {{ Auth::guard('admin')->user()->name }}
+                    </a>
+                </div>
             </div>
-            <div class="info">
-                <a href="" class="d-block">
-                    {{ Auth::guard('admin')->user()->name }}
-                </a>
+            <div class="d-flex align-center justify-content-center">
+                <form method="POST" action="{{ route('admin.logout') }}">
+                    @csrf
+                    <a class="btn btn-danger btn-xs text-sm" href="{{ route('admin.logout') }}" role="button"
+                        onclick="event.preventDefault();this.closest('form').submit();">Log Out</a>
+                </form>
             </div>
         </div>
 
@@ -24,14 +34,33 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-                <li class="nav-item mb-3">
-                    <a href="{{ route('admin.home') }}"
-                        class="nav-link {{ Request::route()->getName() == 'admin.home' ? 'active' : '' }} ">
+                <li class="nav-item has-treeview menu-open mb-3">
+                    <a href="#"
+                        class="nav-link {{ Request::route()->getName() == 'admin.home' || Request::route()->getName() == 'sitting' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             {{ trans('main.Dashboard') }}
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview ">
+                        <li class="nav-item mx-3">
+                            <a href="{{ route('admin.home') }}"
+                                class="nav-link {{ Request::route()->getName() == 'admin.home' ? 'active' : '' }} ">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    {{ trans('main.Home') }}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a href="{{ route('sitting') }}"
+                                class="nav-link {{ Request::route()->getName() == 'sitting' ? 'active' : '' }}">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <p>{{ trans('main.Sitting') }}</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item mb-3">
                     <a href="{{ route('category') }}"
@@ -83,21 +112,46 @@
                         Request::route()->getName() == 'slider.show'
                             ? 'active'
                             : '' }}  ">
-                        <i class="nnav-icon fas fa-image mr-2"></i>
-                        {{-- <i class="nav-icon ion ion-bag"></i> --}}
+                        <i class="nav-icon fas fa-image mr-2"></i>
                         <p>
                             {{ trans('main.Slider') }}
                         </p>
                     </a>
                 </li>
-                <li class="nav-item mb-3">
-                    <a href="{{ route('message') }}"
-                        class="nav-link {{ Request::route()->getName() == 'message' ? 'active' : '' }} ">
-                        <i class="nav-icon fas fa-comments"></i>
+                <li class="nav-item has-treeview mb-3">
+                    <a href="#"
+                        class="nav-link {{ Request::route()->getName() == 'message' || Request::route()->getName() == 'comment' ? 'active' : '' }}">
+                        <i class="nav-icon far fa-envelope"></i>
                         <p>
-                            {{ trans('main.Message') }}
+                            Mailbox
+                            <i class="fas fa-angle-left right"></i>
+                            <span
+                                class="badge badge-info right">{{ App\Models\Message::count() + App\Models\Comment::count() }}</span>
                         </p>
                     </a>
+                    <!-- ----  -->
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item mx-3">
+                            <a href="{{ route('message') }}"
+                                class="nav-link {{ Request::route()->getName() == 'message' ? 'active' : '' }} ">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p>
+                                    {{ trans('main.Message') }}
+                                    <span class="badge badge-info right">{{ App\Models\Message::count() }}</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a href="{{ route('comment') }}"
+                                class="nav-link {{ Request::route()->getName() == 'comment' ? 'active' : '' }} ">
+                                <i class="nav-icon fas fa-comments"></i>
+                                <p>
+                                    {{ trans('main.Comment') }}
+                                    <span class="badge badge-info right">{{ App\Models\Comment::count() }}</span>
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item mb-3">
                     <a href="{{ route('order') }}"
@@ -119,13 +173,6 @@
                 </li>
             </ul>
         </nav>
-        <div class="d-flex align-center justify-content-center mt-5">
-            <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                <a class="btn btn-danger" href="{{ route('admin.logout') }}" role="button"
-                    onclick="event.preventDefault();this.closest('form').submit();">Log Out</a>
-            </form>
-        </div>
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

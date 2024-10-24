@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="card-title">Project Details Info</h3>
+                            <h3 class="card-title">Slider Details Info</h3>
                         </div>
                         <div>
                             @php

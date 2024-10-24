@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="card-title">DataTable with Products</h3>
+                            <h3 class="card-title">DataTable with Projects</h3>
                         </div>
                         <div>
                             <a class="btn btn-outline-success" href="{{ route('project.admin.create') }}"
@@ -47,7 +47,7 @@
                                     <tr>
                                         <th scope="row">{{ $i++ }}</th>
                                         <td>{{ $datas->title }}</td>
-                                        <td>{{ $datas->description }}</td>
+                                        <td>{!! $datas->description !!}</td>
                                         <td><img width="40" src="{{ asset($datas->image) }}"></td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('project.admin.edit', $datas->id) }}"

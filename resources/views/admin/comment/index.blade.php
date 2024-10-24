@@ -41,7 +41,7 @@
                                     <tr>
                                         <th scope="row">{{ $i++ }}</th>
                                         <td>{{ $datas->product->name ?? 'No Project' }}</td>
-                                        <td>{{ Auth::user()->name ?? 'Anonymous' }}</td>
+                                        <td>{{ $datas->user_name ?? 'Anonymous' }}</td>
                                         <td>{{ $datas->content }}</td>
                                         <td>
                                             {{-- <a class="btn btn-info" href="mailto:{{ $datas->email }}"

@@ -54,9 +54,7 @@
                                         <td>{{ $datas->name }}</td>
                                         <td>{{ $datas->slug }}</td>
                                         <td>{{ $datas->description }}</td>
-                                        {{-- <td>{{ $datas->image }}</td> --}}
-                                        <td><img src="{{ asset('assets/image' . session('image')) }}"></td>
-                                        {{-- <td><img src="{{ asset($datas->image) }}"></td> --}}
+                                        <td><img width="40" src="{{ asset($datas->image) }}"></td>
                                         <td>
                                             @if ($datas->is_showin)
                                                 <span class="badge badge-success">Showing</span>

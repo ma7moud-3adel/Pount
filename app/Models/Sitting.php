@@ -12,6 +12,8 @@ class Sitting extends Model
         'name',
         'email',
         'phone_number',
+        'address',
+        'company_message',
         'about',
     ];
 }

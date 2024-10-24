@@ -22,45 +22,51 @@
                     <!-- /.card-body -->
                     <div class="card-body">
                         <table class="table table-striped table-bordered table-hover text-center">
-                            <thead class="thead-light">
-                                <tr>
-                                    {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">About</th>
-                                    <th scope="col">Actions</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($data as $datas)
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($data as $datas)
+                                <thead class="thead-light">
                                     <tr>
-                                        <th scope="row">{{ $i++ }}</th>
-                                        <td>{{ $datas->name }}</td>
-                                        <td>{{ $datas->email }}</td>
-                                        <td>{{ $datas->phone_number }}</td>
-                                        <td>{{ $datas->about }}</td>
-                                        <td>
-                                            <a class="btn btn-primary" href="{{ route('sitting.edit', $datas->id) }}"
-                                                role="button">Edit</a>
-
-                                            <form action="{{ route('sitting.destroy', $datas->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf()
-                                                @method('DELETE')
-                                                <button class="btn btn-danger" type="submit"
-                                                    onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Delete</button>
-                                            </form>
-
-                                        </td>
+                                        <th scope="col">#</th>
+                                        <th scope="col">{{ $i++ }}</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <td scope="col">{{ $datas->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Email</th>
+                                        <td scope="col">{{ $datas->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Phone</th>
+                                        <td scope="col">{{ $datas->phone_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Address</th>
+                                        <td scope="col">{{ $datas->address }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Message</th>
+                                        <td scope="col">{{ $datas->company_message }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">About</th>
+                                        <td scope="col">{{ $datas->about }}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2">
+                                            <a class="btn w-25 btn-primary" href="{{ route('sitting.edit', $datas->id) }}"
+                                                role="button">Edit</a>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            @endforeach
                         </table>
                     </div>
                     <!-- /.card-body -->

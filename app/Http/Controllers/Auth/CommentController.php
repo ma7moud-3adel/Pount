@@ -46,7 +46,7 @@ class CommentController extends Controller
             'user_name' => $user_name, // Use the correct variable
         ]);
 
-        return to_route('home')->with('success', 'done');
+        return redirect()->back()->with('success', 'Your Comment is been sent');
     }
 
     public function destroy($id)
