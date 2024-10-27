@@ -15,8 +15,8 @@ class UserProductController extends Controller
      */
     public function index()
     {
-        $data = Product::all();
-        return view('index', compact('data'));
+        $data = Product::paginate(3);
+        return view('shop', compact('data'));
     }
 
     /**
@@ -24,20 +24,9 @@ class UserProductController extends Controller
      */
     public function show($id)
     {
-        // $data = Product::findOrFail($id);
-        // $comment = Comment::all();
-        $data = Product::with('comments')->findOrFail($id);
+        $data = Product::findOrFail($id);
+        // $data = Product::with('comments')->findOrFail($id);
         return view('product', compact('data'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        $deletedCat = Product::findOrFail($id);
-        $deletedCat->delete();
-
-        return to_route('product')->with('danger', 'Product is Deleted Successfully');
-    }
 }

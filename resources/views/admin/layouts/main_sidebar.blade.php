@@ -1,8 +1,10 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.home') }}" class="brand-link ml-2">
-        <span class="brand-text font-italic text-uppercase" style="letter-spacing: 3.5px;">Pount</span>
+    <a href="{{ route('admin.home') }}" class="brand-link text-center">
+        <span class="brand-text font-italic text-uppercase" style="letter-spacing: 15px;">
+            <h3>Pount</h3>
+        </span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">

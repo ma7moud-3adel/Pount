@@ -67,8 +67,16 @@
                                     </div>
                                 </div>
 
-                                <div><label class="form-label" for="file">Image</label> <br>
-                                    <input type="file" name="image" id="file" required>
+                                <div class="row">
+                                    <div class="col"><label class="form-label" for="file">Image_01</label> <br>
+                                        <input type="file" name="image" id="file" required>
+                                    </div>
+                                    <div class="col"><label class="form-label" for="file">Image_02</label> <br>
+                                        <input type="file" name="image_0" id="file" required>
+                                    </div>
+                                    <div class="col"><label class="form-label" for="file">Image_03</label> <br>
+                                        <input type="file" name="image_1" id="file" required>
+                                    </div>
                                 </div>
 
                             </div>

@@ -33,7 +33,9 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
-                                    <th scope="col">Image</th>
+                                    <th scope="col">Image_01</th>
+                                    <th scope="col">Image_02</th>
+                                    <th scope="col">Image_03</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Actions</th>
@@ -50,6 +52,8 @@
                                         <td>{{ $datas->name }}</td>
                                         <td>{!! $datas->description !!}</td>
                                         <td><img width="40" src="{{ asset($datas->image) }}"></td>
+                                        <td><img width="40" src="{{ asset($datas->image_0) }}"></td>
+                                        <td><img width="40" src="{{ asset($datas->image_1) }}"></td>
                                         <td>{{ $datas->price }}</td>
                                         <td>{{ $datas->size }}</td>
                                         <td>

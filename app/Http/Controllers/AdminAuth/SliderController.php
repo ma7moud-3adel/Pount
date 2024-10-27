@@ -3,10 +3,6 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeCategoryRequest;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Project;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -39,11 +35,12 @@ class SliderController extends Controller
         $request->validate([
             'title' => 'required',
             'text' => 'nullable|string',
-            'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
         ]);
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'image/' . $imageName;
         }
         $title = request()->title;
         $text = request()->text;
@@ -62,7 +59,7 @@ class SliderController extends Controller
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return to_route('slidr');
+        return to_route('slider');
     }
 
     /**
@@ -89,9 +86,10 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $imagePath = null;
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'image/' . $imageName;
         }
 
         $title = request()->title;

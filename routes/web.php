@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminAuth\TestimonialController;
 use App\Http\Controllers\Auth\CommentController as AuthCommentController;
 use App\Http\Controllers\Auth\MessageController;
 use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
+use App\Http\Controllers\Auth\SliderController as AuthSliderController;
 use App\Http\Controllers\Auth\UserProductController as AuthUserProductController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
@@ -104,12 +105,14 @@ Route::group([
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('product');
 });
 
 Route::middleware('auth')->group(function () {
     // user 
-    Route::get('home', [AuthUserProductController::class, 'index'])->name('home');
+    Route::get('home', [AuthSliderController::class, 'index'])->name('home');
+    Route::get('about', [AuthSliderController::class, 'show'])->name('about');
+    Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
     Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
     Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
     Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
+            $table->string('image_0');
+            $table->string('image_1');
             $table->Integer('price')->default(0);
             $table->Integer('size')->default(1);
             $table->timestamps();

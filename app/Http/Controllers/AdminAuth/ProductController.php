@@ -33,28 +33,34 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $imagePath = null;
+        $imagePath_01 = null;
+        $imagePath_02 = null;
+        $imagePath_03 = null;
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
+            'image_0' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
+            'image_1' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'price' => 'numeric',
             'size' => 'nullable|numeric',
         ]);
-        // if ($request->hasFile('image')) {
-        //     $imageName = $request->image->getClientOriginalName();
-        //     $request->image->move(public_path('image'), $imageName);
-        //     $imagePath = 'image/' . $imageName;
-        // }
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
-
-            // return back()
-            //     ->with('success', 'تم رفع الملف بنجاح!')
-            //     ->with('file', $imagePath);
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath_01 = 'image/' . $imageName;
         }
-        // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`)
+        if ($request->hasFile('image_0')) {
+            $imageName = $request->image_0->getClientOriginalName();
+            $request->image_0->move(public_path('image'), $imageName);
+            $imagePath_02 = 'image/' . $imageName;
+        }
+        if ($request->hasFile('image_1')) {
+            $imageName = $request->image_1->getClientOriginalName();
+            $request->image_1->move(public_path('image'), $imageName);
+            $imagePath_03 = 'image/' . $imageName;
+        }
+        
         $name = request()->name;
         $description = request()->description;
         $price = request()->price;
@@ -63,7 +69,9 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $name,
             'description' => $description,
-            'image' => $imagePath,
+            'image' => $imagePath_01,
+            'image_0' => $imagePath_02,
+            'image_1' => $imagePath_03,
             'price' => $price,
             'size' => $size,
         ]);
@@ -101,10 +109,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $imagePath = null;
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        $imagePath_01 = null;
+        $imagePath_02 = null;
+        $imagePath_03 = null;
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath_01 = 'image/' . $imageName;
+        }
+        if ($request->hasFile('image_0')) {
+            $imageName = $request->image_0->getClientOriginalName();
+            $request->image_0->move(public_path('image'), $imageName);
+            $imagePath_02 = 'image/' . $imageName;
+        }
+        if ($request->hasFile('image_1')) {
+            $imageName = $request->image_1->getClientOriginalName();
+            $request->image_1->move(public_path('image'), $imageName);
+            $imagePath_03 = 'image/' . $imageName;
         }
 
         $name = request()->name;
@@ -116,7 +137,9 @@ class ProductController extends Controller
         $singleCatFromDB->update([
             'name' => $name,
             'description' => $description,
-            'image' => $imagePath,
+            'image' => $imagePath_01,
+            'image_0' => $imagePath_02,
+            'image_1' => $imagePath_03,
             'price' => $price,
             'size' => $size,
         ]);

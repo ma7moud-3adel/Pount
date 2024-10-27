@@ -70,11 +70,22 @@
                                     </div>
                                 </div>
 
-                                <div class="border rounded-lg p-2"><label class="form-label" for="file">Image</label>
-                                    <br>
-                                    <input type="file" name="image" id="file" required>
-                                    <img src="{{ asset($data->image) }}" alt="" width="75">
-
+                                <div class="row">
+                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image_01</label>
+                                        <br>
+                                        <input type="file" name="image" id="file" required>
+                                        <img src="{{ asset($data->image) }}" alt="" width="75">
+                                    </div>
+                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image_02</label>
+                                        <br>
+                                        <input type="file" name="image_0" id="file" required>
+                                        <img src="{{ asset($data->image_0) }}" alt="" width="75">
+                                    </div>
+                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image_03</label>
+                                        <br>
+                                        <input type="file" name="image_1" id="file" required>
+                                        <img src="{{ asset($data->image_1) }}" alt="" width="75">
+                                    </div>
                                 </div>
 
                             </div>

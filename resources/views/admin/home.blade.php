@@ -72,6 +72,12 @@
                 <!-- ./col -->
             </div>
             <!-- /.row -->
+            {{-- <div class="row">
+                <div class="col">
+                    <div class="contact-page-map-outer">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27628.454402089425!2d31.414972584439898!3d30.049570392392578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583d7e9d54ed9f%3A0x93996d766a7ce17d!2z2KLYrtixINmD2YjYqNix2Yog2KfZhNiq2KzZhdi5INin2YTYo9mI2YQoINmF2K3ZiNixINmF2LXYt9mB2Ykg2YPYp9mF2YQgKSDYqNi52K8g2KPZg9in2K_ZitmF2YrYqSDYp9mE2LTYsdi32KkgKCDYqNin2LPZhSAp!5e0!3m2!1sen!2seg!4v1729691604202!5m2!1sen!2seg" width="100%" height="666px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        </div>
+                </div>
+            </div> --}}
         </div>
     </section>
 @endsection
