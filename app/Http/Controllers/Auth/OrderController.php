@@ -46,11 +46,11 @@ class OrderController extends Controller
 
         if ($order instanceof Order) {
             toastr()->success('Order has been Sent successfully!');
-            return redirect()->route('home.order.create');
+            return redirect()->route('home');
         }
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return redirect()->route('home.order.create');
+        return redirect()->route('home');
     }
 }

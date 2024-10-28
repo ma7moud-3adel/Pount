@@ -35,8 +35,6 @@
     </section>
     <!-- End Main Slider -->
 
-    {{-- ...........  --}}
-
     <!--Start Service Style1 Area-->
     <section id="servises" class="service-style1-area">
         <div class="pattern-bg" style="background-image: url(assets/img/pattern/thm-pattern-2.png);"></div>
@@ -483,7 +481,7 @@
     <!--End Working process area -->
 
     <!--Start Faq Style1 Area-->
-    <section class="faq-style1-area">
+    <section class="faq-style1-area" id="ask">
         <div class="faq-style1-bg" style="background-image: url(assets/img/tt.jpg);"></div>
         <div class="container">
             <div class="row">
@@ -600,7 +598,7 @@
     <!--End Faq Style1 Area-->
 
     <!--Start Testimonials Style1 area -->
-    <section class="testimonials-style1-area">
+    <section class="testimonials-style1-area" id="testimonials">
         <div class="container">
             <div class="sec-title center text-center">
                 <div class="sub-title">
@@ -666,7 +664,7 @@
     <!--End Testimonials Style1 area -->
 
     <!--Start Contact Info Style1 Area-->
-    <section class="contact-info-style1-area">
+    <section class="contact-info-style1-area" id="contact">
         <div class="contact-info-area__bg" style="background-image: url(assets/img/tisti.jpg);"></div>
         <div class="container">
             <div class="row">
@@ -678,13 +676,21 @@
                                 <h6><span class="border-left"></span> تواصل <span class="border-right"></span></h6>
                             </div>
                         </div>
-                        <h2><a href="tel:123456789">01001018277</a></h2>
-                        <p></p>
-                        <div class="btn-box wow slideInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                            <a class="btn-one" href="#">
-                                <span class="txt">أتصل بنا</span>
-                            </a>
-                        </div>
+                        @php
+                            use App\Models\Sitting;
+                            $data = Sitting::all();
+                        @endphp
+                        @foreach ($data as $data)
+                            <h2><a href="tel:{{ $data->phone_number }}">{{ $data->phone_number }}</a></h2>
+
+                            <p></p>
+                            <div class="btn-box wow slideInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+                                <a class="btn-one" href="tel:{{ $data->phone_number }}">
+                                    <span class="txt">أتصل بنا</span>
+                                </a>
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -840,7 +846,6 @@
     <section class="main-contact-form-area">
         <div class="container">
             <div class="row">
-
                 <div class="col-xl-6">
                     <div class="contact-style1_form">
                         <div class="top-title">
@@ -848,70 +853,48 @@
                             <p>من فضلك ارسل لنا ما تحتاجه, سنكون سعدعاء بالرد عليك في اقرب وقت</p>
                         </div>
                         <div class="contact-form">
-                            <form id="contact-form" name="contact_form" class="default-form2"
-                                action="assets/inc/sendmail.php" method="post">
+                            <form id="contact-form"class="default-form1" method="POST"
+                                action="{{ route('home.order.store') }}">
+                                @csrf
                                 <div class="row">
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="input-box">
-                                            <input type="text" name="form_name" value="" placeholder="الاسم"
-                                                required="">
-                                        </div>
+                                    <div class="input-box col">
+                                        <input type="text" name="name" placeholder="الاسم" required>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="input-box">
-                                            <input type="email" name="form_email" value=""
-                                                placeholder="البريد الالكتروني" required="">
-                                        </div>
+                                    <div class="input-box col">
+                                        <input type="email" name="email" placeholder="البريد الالكتروني" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="input-box">
-                                            <input type="text" name="form_phone" value=""
-                                                placeholder="رقم الهاتف">
-                                        </div>
+                                    <div class="input-box col">
+                                        <input type="text" name="phone" placeholder="رقم الهاتف" required>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6">
-                                        <div class="input-box">
-                                            <input type="text" name="form_subject" value=""
-                                                placeholder="العنوان">
-                                        </div>
+                                    <div class="input-box col">
+                                        <input type="text" name="address" placeholder="العنوان" required>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xl-12 text-center">
-                                        <div class="input-box">
-                                            <div class="select-box">
-                                                <select class="wide">
-                                                    <option data-display="الخدمة التي تحتاجها">الخدمة التي تحتاجها</option>
-                                                    <option value="1">استفسار عن السعر</option>
-                                                    <option value="2">استشارة</option>
-                                                    <option value="3">طلب منتج</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                <div class="input-box">
+                                    <div class="select-box">
+                                        <select class="wide" name="service">
+                                            <option data-display="الخدمة التي تحتاجها" disabled>الخدمة التي تحتاجها
+                                            </option>
+                                            <option value="استفسار عن السعر">استفسار عن السعر</option>
+                                            <option value="استشارة">استشارة</option>
+                                            <option value="طلب منتج">طلب منتج</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xl-12 text-center">
-                                        <div class="input-box two">
-                                            <textarea name="form_message" placeholder="...ادخل رسالتك" required=""></textarea>
-                                        </div>
-                                        <div class="button-box">
-                                            <input id="form_botcheck" name="form_botcheck" class="form-control"
-                                                type="hidden" value="">
-                                            <button class="btn-one" type="submit" data-loading-text="انتظر من فضلك...">
-                                                <span class="txt">ارسال</span>
-                                            </button>
-                                        </div>
-                                    </div>
+                                <div class="input-box">
+                                    <textarea name="message" placeholder="...تفاصيل" required></textarea>
                                 </div>
-
+                                <div class="button-box">
+                                    <button class="btn-one" type="submit" data-loading-text="Done...">
+                                        <span class="txt">ارسال</span>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-6">
                     <div class="contact-page-map-outer">
                         <iframe
@@ -920,7 +903,6 @@
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
