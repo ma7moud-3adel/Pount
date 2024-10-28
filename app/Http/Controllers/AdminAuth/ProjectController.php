@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeCategoryRequest;
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -41,9 +38,10 @@ class ProjectController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'comments' => 'nullable|string',
         ]);
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'image/' . $imageName;
         }
         $title = request()->title;
         $description = request()->description;
@@ -89,9 +87,10 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $imagePath = null;
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'image/' . $imageName;
         }
 
         $title = request()->title;

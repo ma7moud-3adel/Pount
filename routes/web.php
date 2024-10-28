@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminAuth\SittingController;
 use App\Http\Controllers\AdminAuth\SliderController;
 use App\Http\Controllers\AdminAuth\TestimonialController;
 use App\Http\Controllers\Auth\CommentController as AuthCommentController;
+use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\Auth\MessageController;
 use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
 use App\Http\Controllers\Auth\SliderController as AuthSliderController;
@@ -107,16 +108,17 @@ Route::group([
 Route::get('/', function () {
     return view('product');
 });
+Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
     // user 
-    Route::get('home', [AuthSliderController::class, 'index'])->name('home');
     Route::get('about', [AuthSliderController::class, 'show'])->name('about');
     Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
-    Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
-    Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
-    Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
-    Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
+    Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
+    // Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
+    // Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+    // Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
+    // Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
     // Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
     // Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
 });

@@ -15,8 +15,8 @@ class UserProductController extends Controller
      */
     public function index()
     {
-        $data = Product::paginate(3);
-        return view('shop', compact('data'));
+        $products = Product::paginate(3);
+        return view('shop', compact('products'));
     }
 
     /**
@@ -28,5 +28,4 @@ class UserProductController extends Controller
         // $data = Product::with('comments')->findOrFail($id);
         return view('product', compact('data'));
     }
-
 }

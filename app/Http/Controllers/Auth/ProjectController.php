@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\project;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -13,9 +13,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $data = project::all();
-        dd($data);
-        return view('index', compact('data'));
+        $projects = Project::all();
+        return view('all_projects', compact('projects'));
     }
 
     /**
