@@ -1,103 +1,388 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('user.layouts.app')
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Product</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column m-3">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- 404 Error Text -->
-                    <div class="text-center mt-5 mb-5">
-                        <div class="mb-5"><img width="250" src="{{ asset($data->image) }}" alt=""></div>
-                        <p class="lead text-gray-800mb-1">{{ $data->name }}</p>
-                        <p class="text-gray-500 mb-3">{{ $data->description }}</p>
-                        <a href="{{ route('home') }}">&larr; Back to home</a>
-
-                        <div class="my-3">
-                            {{-- @foreach ($comment as $c)
-                                <form action="">
-                                    <label>{{ $c->user_name ?? 'Anonymous' }}</label>
-                                    <input type="text" class="form-control"
-                                        value="{{ $c->content }}"@disabled(true)>
-                                </form>
-                            @endforeach --}}
-
-                            <form method="POST" action="{{ route('comment.store') }}" class="d-flex">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $data->id }}">
-                                <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
-                                <input type="text" name="content" class="form-control"
-                                    placeholder="Enter Your comment">
-                                <button class="btn btn-success">Submit</button>
-                            </form>
+@section('content')
+    <!--Start breadcrumb area paroller-->
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-area-bg" style="background-image: url(assets/images/breadcrumb/breadcrumb-1.jpg);">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="inner-content">
+                        <div class="title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                            <h2>صفحة المنتج</h2>
                         </div>
-
-                        <div class="border rounded-lg p-3">
-                            @foreach ($data->comments as $comment)
-                                <form action="">
-                                    <label for="comment">{{ $comment->user_name ?? 'Anonymous' }}</label>
-                                    <input type="text" class="form-control" id="comment"
-                                        value="{{ $comment->content }}" disabled>
-                                </form>
-                            @endforeach
-
-                            @if ($data->comments->isEmpty())
-                                <p>لا توجد تعليقات متاحة.</p>
-                            @endif
+                        <div class="breadcrumb-menu" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                            <ul>
+                                <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
+                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                <li class="active">صفحة المنتج</li>
+                            </ul>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
         </div>
-        <!-- End of Content Wrapper -->
+    </section>
+    <!--End breadcrumb area-->
 
-    </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!--Start Product Details Area-->
+    <section class="product-details-area">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6 col-sm-12">
+                    <div class="product-details-image-box">
+                        <div class="product-details-main-image">
+                            <ul class="bxslider">
+                                <li>
+                                    <div class="single-box clearfix">
+                                        <div class="img-holder">
+                                            <img src="{{ asset($product->image) }}" alt="Awesome Image">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-box clearfix">
+                                        <div class="img-holder">
+                                            <img src="{{ asset($product->image_0) }}" alt="Awesome Image">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-box clearfix">
+                                        <div class="img-holder">
+                                            <img src="{{ asset($product->image_1) }}" alt="Awesome Image">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('assets/jquery-easing/jquery.easing.min.js') }}"></script>
+                        <div class="slider-pager">
+                            <ul class="thumb-box">
+                                <li>
+                                    <a class="active" data-slide-index="0" href="#">
+                                        <div class="thumb-image">
+                                            <img width="100" src="{{ asset($product->image) }}"
+                                                alt="Awesome Thumb Image">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-slide-index="1" href="#">
+                                        <div class="thumb-image">
+                                            <img width="100" src="{{ asset($product->image_0) }}"
+                                                alt="Awesome Thumb Image">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-slide-index="2" href="#">
+                                        <div class="thumb-image">
+                                            <img width="100" src="{{ asset($product->image_1) }}"
+                                                alt="Awesome Thumb Image">
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+                <div class="col col-md-6 col-sm-12">
+                    <div class="product-details-content-box">
+                        <div class="top">
+                            <div class="product-title">
+                                <h2>{{ $product->name }}</h2>
+                            </div>
+                            <div class="rate-box">
+                                <h3>${{ $product->price }}</h3>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            <p>{!! $product->description !!}</p>
+                        </div>
 
-</body>
+                        <div class="product-quantity-box-outer d-flex justify-content-end">
+                            <div class="product-quantity-box">
+                                <div class="right">
+                                    <div class="cart-box">
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn-one"
+                                            type="submit">
+                                            <span class="txt">Make order</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-</html>
+                        <!-- popup####################333 -->
+
+                        <div class="modal fade" id="myModal" role="dialog" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div style="text-align: center;" class="contact-style1_form">
+                                        <div class="top-title">
+                                            <h2>طلب منتج</h2>
+                                        </div>
+                                        <div class="contact-form">
+                                            <form id="contact-form" name="contact_form" class="default-form2"
+                                                action="assets/inc/sendmail.php" method="post">
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6">
+                                                        <div class="input-box">
+                                                            <input type="text" name="form_name" value=""
+                                                                placeholder="الاسم" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6">
+                                                        <div class="input-box">
+                                                            <input type="email" name="form_email" value=""
+                                                                placeholder="اسم المنتج" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6">
+                                                        <div class="input-box">
+                                                            <input type="text" name="form_phone" value=""
+                                                                placeholder="رقم الهاتف">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6">
+                                                        <div class="input-box">
+                                                            <input type="text" name="form_subject" value=""
+                                                                placeholder="العنوان">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div style="display: none;" class="col-xl-12 text-center">
+                                                        <div class="input-box">
+                                                            <div class="select-box">
+                                                                <select class="wide">
+                                                                    <option selected value="3">طلب منتج
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-12 text-center">
+                                                        <div class="input-box two">
+                                                            <textarea name="form_message" placeholder="ملاحظات" required=""></textarea>
+                                                        </div>
+                                                        <div class="button-box">
+                                                            <input id="form_botcheck" name="form_botcheck"
+                                                                class="form-control" type="hidden" value="">
+                                                            <button class="btn-one" type="submit"
+                                                                data-loading-text="انتظر من فضلك...">
+                                                                <span class="txt">ارسال</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+
+                    </div>
+                </div>
+            </div>
+
+            <!--Start product tab box-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-tab-box tabs-box">
+                        <ul class="tab-btns tab-buttons clearfix text-center">
+                            <li data-tab="#desc" class="tab-btn"><span>Description</span></li>
+                            <li data-tab="#review" class="tab-btn active-btn">
+                                <span>Reviews ({{ App\Models\Comment::count() }})</span>
+                            </li>
+                        </ul>
+                        <div class="tabs-content">
+                            <div class="tab" id="desc">
+                                <div class="product-details-tab-content">
+                                    <div class="product-description-content">
+                                        <div class="text">
+                                            <p>Nor again is there anyone who loves or pursues or desires to pain of
+                                                itself, because it is pain, but because occasionally circumstances
+                                                occur in which toil and paincan procure him some great pleasure. To
+                                                take a trivial example, which of us ever undertakes laborious except
+                                                to obtain some advantage from it? But who has any right to find
+                                                fault with a man who chooses.</p>
+                                            <p>Must explain to you how all this mistaken idea of denouncing pleasure
+                                                and praising pain was born and I will give you a completed great of
+                                                the great explorer of the truth, the master-builder of human
+                                                happiness except to obtain some advantage.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab active-tab" id="review">
+                                <div class="product-details-tab-content">
+                                    <!--Start Review Box Outer-->
+                                    <div class="review-box-outer">
+                                        <div class="row d-flex justify-content-center">
+                                            <!--Start Single Review Box Outer-->
+                                            @foreach ($product->comments as $comment)
+                                                <div class="col">
+                                                    <div class="single-review-box-outer">
+                                                        <div class="single-review-box">
+                                                            <div class="img-box">
+                                                                <img src="assets/images/shop/review-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="text-box">
+                                                                <div class="review-box">
+                                                                    <ul>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <h2>{{ $comment->user_name ?? 'Anonymous' }}
+                                                                    <span>{{ $comment->created_at }}</span>
+                                                                </h2>
+                                                                <p>{{ $comment->content }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            <!--End Single Review Box Outer-->
+                                            @if ($product->comments->isEmpty())
+                                                <p>لا توجد تعليقات متاحة.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!--End Review Box Outer-->
+
+                                    <!--Start Review Form-->
+                                    <div class="review-form text-right-rtl">
+                                        <div class="title-box">
+                                            <h2>Add Your Comments</h2>
+                                        </div>
+                                        <form id="review-form" method="POST" action="{{ route('comment.store') }}">
+                                            @csrf
+                                            <div class="row">
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
+                                                <div class="input-box col">
+                                                    <div class="field-label">Comments</div>
+                                                    <textarea name="content" placeholder="Enter Your comment..." required></textarea>
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="row">
+                                                <div class="col-xl-12">
+                                                    <div class="add-rating-box">
+                                                        <div class="add-rating-title">
+                                                            <p>Your Rating</p>
+                                                        </div>
+                                                        <div class="review-box">
+                                                            <ul>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <div class="button-box">
+                                                        <div class="left">
+                                                            <button class="btn-one" type="submit">
+                                                                <span class="round"></span>
+                                                                <span class="txt">Submit</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <!--End Review Form-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End product tab box-->
+
+            <div class="related-product-box">
+                <div class="shop-page-title">
+                    <h2>Related Products</h2>
+                </div>
+                <div class="row">
+                    @php
+                        use App\Models\Product;
+                        $data = Product::all();
+                    @endphp
+                    @foreach ($data as $data)
+                        <!--Start Single Shop Item-->
+                        <div class="col">
+                            <div class="single-shop-item">
+                                <div class="single-shop-item_inner">
+                                    <div class="img-holder">
+                                        <img src="{{ asset($data->image) }}" alt="">
+                                        <div class="overlay">
+                                            <ul>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="title-holder">
+                                        <h3><a href="{{ route('show.product', $data->id) }}">{{ $data->name }}</a></h3>
+                                        <div class="review-box">
+                                            <ul>
+                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                            </ul>
+                                        </div>
+                                        <h6>${{ $data->price }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Single Shop Item-->
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!--End Product Details Area-->
+@endsection

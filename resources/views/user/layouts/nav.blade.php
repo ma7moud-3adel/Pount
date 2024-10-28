@@ -132,8 +132,8 @@
                 <div class="clearfix">
                     <!--Logo-->
                     <div class="logo float-left">
-                        <a href="index.html" class="img-responsive"><img src="assets/img/logo.png" alt=""
-                                title=""></a>
+                        <a href="{{ route('home') }}" class="img-responsive"><img src="assets/img/logo.png"
+                                alt="" title=""></a>
                     </div>
                     <!--Right Col-->
                     <div class="right-col float-right">
@@ -152,7 +152,7 @@
             <div class="menu-backdrop"></div>
             <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
             <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img src="assets/img/resources/mobilemenu-logo.png"
+                <div class="nav-logo"><a href="{{ route('home') }}"><img src="assets/img/resources/mobilemenu-logo.png"
                             alt="" title=""></a></div>
                 <div class="menu-outer">
                     <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

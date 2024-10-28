@@ -12,18 +12,12 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $data = Comment::with(['project', 'user'])->get();
-        return view('admin.comment.index', compact('data'));
-    }
 
     public function create()
     {
         $comment = Comment::all();
         return view('product')->with('comment', $comment);
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -47,13 +41,5 @@ class CommentController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Your Comment is been sent');
-    }
-
-    public function destroy($id)
-    {
-        $deletedCat = Comment::findOrFail($id);
-        $deletedCat->delete();
-
-        return to_route('comment')->with('danger', 'Comment is Deleted Successfully');
     }
 }

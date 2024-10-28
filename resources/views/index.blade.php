@@ -59,13 +59,14 @@
                                         style="background-image: url(assets/img/pattern/thm-pattern-1.png);"></div>
                                     <div class="inner-text">
                                         <h6>من اهم منتجاتنا</h6>
-                                        <h3><a href="{{ redirect()->back() }}"> {{ $product->name }}</a></h3>
+                                        <h3><a href="{{ route('show.product', $product->id) }}"> {{ $product->name }}</a>
+                                        </h3>
                                         <div class="text">
                                             <p>{!! $product->description !!}</p>
                                         </div>
                                     </div>
                                     <div class="button-box">
-                                        <a href="{{ redirect()->back() }}">تفاصيل </a>
+                                        <a href="{{ route('show.product', $product->id) }}">تفاصيل </a>
                                     </div>
                                 </div>
                             </div>
