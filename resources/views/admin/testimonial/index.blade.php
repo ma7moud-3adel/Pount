@@ -54,7 +54,6 @@
                                         <td>{!!$datas->description !!}</td>
                                         <td><img width="40" src="{{ asset($datas->image) }}"></td>
                                         <td>
-                                            {{-- {{ $datas->rate }} --}}
                                             @php
                                                 $rate = $datas->rate;
                                                 $starCount = $rate / 20; // Assuming the rate is out of 100

@@ -54,20 +54,30 @@
                                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.
                                         </div>
                                     </div>
-                                    <div class="form-group mb-md-0">
+                                    <div class="form-group">
                                         <!-- Phone number input-->
                                         <input class="form-control" name="phone" id="phone" type="tel"
                                             placeholder="Your Phone *" data-sb-validations="required" />
                                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is
                                             required.</div>
                                     </div>
+                                    <div class="form-group mb-md-0">
+                                        <!-- Address input-->
+                                        <input class="form-control" name="address" id="address" type="tel"
+                                            placeholder="Your Address *" data-sb-validations="required" />
+                                        <div class="invalid-feedback" data-sb-feedback="address:required">A address is
+                                            required.</div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group mb-5">
                                         <!-- Service input-->
-                                        <input class="form-control" name="service" id="service" type="text"
-                                            placeholder="Plz Enter Type Of Service that we can help *"
-                                            data-sb-validations="required" />
+                                        <select class="form-control wide" name="service">
+                                            <option data-display="الخدمة التي تحتاجها" disabled>الخدمة التي تحتاجها</option>
+                                            <option value="استفسار عن السعر">استفسار عن السعر</option>
+                                            <option value="استشارة">استشارة</option>
+                                            <option value="طلب منتج">طلب منتج</option>
+                                        </select>
                                         <div class="invalid-feedback" data-sb-feedback="service:required">A service is
                                             required.
                                         </div>

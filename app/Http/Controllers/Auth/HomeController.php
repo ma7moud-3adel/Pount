@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Slider;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $slider = Slider::all();
         $products = Product::take(2)->get();
         $projects = Project::all();
-        return view('index', compact('slider', 'products', 'projects'));
+        $testimonials = Testimonial::all();
+        return view('index', compact('slider', 'products', 'projects', 'testimonials'));
     }
 }

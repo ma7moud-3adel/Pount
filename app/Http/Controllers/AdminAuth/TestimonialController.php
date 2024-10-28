@@ -41,9 +41,10 @@ class TestimonialController extends Controller
             'rate' => 'numeric|required',
         ]);
 
-        if ($request->file('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('image', $imageName, 'public');
+        if ($request->hasFile('image')) {
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'), $imageName);
+            $imagePath = 'image/' . $imageName;
         }
 
         $name = request()->name;

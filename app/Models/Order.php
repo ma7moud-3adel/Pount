@@ -12,6 +12,7 @@ class Order extends Model
         'name',
         'email',
         'phone',
+        'address',
         'service',
         'message',
     ];

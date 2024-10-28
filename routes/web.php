@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminAuth\TestimonialController;
 use App\Http\Controllers\Auth\CommentController as AuthCommentController;
 use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\Auth\MessageController;
+use App\Http\Controllers\Auth\OrderController as AuthOrderController;
 use App\Http\Controllers\Auth\ProjectController as AuthProjectController;
 use App\Http\Controllers\Auth\SliderController as AuthSliderController;
 use App\Http\Controllers\Auth\UserProductController as AuthUserProductController;
@@ -114,7 +115,9 @@ Route::middleware('auth')->group(function () {
     // user 
     Route::get('about', [AuthSliderController::class, 'show'])->name('about');
     Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
-    Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
+    Route::get('allprojects', [AuthProjectController::class, 'index'])->name('allproject');
+    Route::get('make_an_orders/create', [AuthOrderController::class, 'create'])->name('home.order.create');
+    Route::post('make_an_orders/', [AuthOrderController::class, 'store'])->name('home.order.store');
     // Route::get('product/{id}', [AuthUserProductController::class, 'show'])->name('home.product');
     // Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
     // Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');

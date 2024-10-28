@@ -359,7 +359,7 @@
                     <h2>اعمال تم تنفيذها</h2>
                 </div>
                 <div class="project-style1__button">
-                    <a class="btn-one" href="{{ route('project') }}">
+                    <a class="btn-one" href="{{ route('allproject') }}">
                         <span class="txt">جميع المشاريع</span>
                     </a>
                 </div>
@@ -499,31 +499,38 @@
                             <h2>استشارة مجانية</h2>
                             <p>من فضلك قم بملء النموذج وتقديم تفاصيل طلبك وسوف نقوم بالرد عليك.</p>
                         </div>
-                        <form id="contact-form" name="contact_form" class="default-form1" action="#"
-                            method="post">
+                        <form id="contact-form"class="default-form1" method="POST"
+                            action="{{ route('home.order.store') }}">
+                            @csrf
                             <div class="input-box">
-                                <input type="text" name="form_name" value="" placeholder="الاسم"
-                                    required="">
+                                <input type="text" name="name" placeholder="الاسم" required>
                             </div>
                             <div class="input-box">
-                                <input type="email" name="form_email" value="" placeholder="البريد الالكتروني"
-                                    required="">
+                                <input type="email" name="email" placeholder="البريد الالكتروني" required>
+                            </div>
+                            <div class="input-box">
+                                <input type="hidden" name="phone" value="Unknown Number" required>
+                            </div>
+                            <div class="input-box">
+                                <input type="hidden" name="address" value="Unknown" required>
                             </div>
                             <div class="input-box">
                                 <div class="select-box">
-                                    <select class="wide">
-                                        <option data-display="الخدمة التي تحتاجها">الخدمة التي تحتاجها</option>
-                                        <option value="1">استفسار عن السعر</option>
-                                        <option value="2">استشارة</option>
-                                        <option value="3">طلب منتج</option>
+                                    <select class="wide" name="service">
+                                        <option data-display="الخدمة التي تحتاجها" disabled>الخدمة التي تحتاجها</option>
+                                        <option value="استفسار عن السعر">استفسار عن السعر</option>
+                                        <option value="استشارة">استشارة</option>
+                                        <option value="طلب منتج">طلب منتج</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="input-box">
-                                <textarea name="form_message" placeholder="...تفاصيل" required=""></textarea>
+                                <textarea name="message" placeholder="...تفاصيل" required></textarea>
                             </div>
+                            {{-- <button class="btn btn-success">Submit</button> --}}
+
                             <div class="button-box">
-                                <button class="btn-one" type="submit" data-loading-text="Please wait...">
+                                <button class="btn-one" type="submit" data-loading-text="Done...">
                                     <span class="txt">ارسال</span>
                                 </button>
                             </div>
@@ -608,244 +615,47 @@
                         <div class="theme_carousel testimonials-carousel_1 owl-dot-style1 owl-theme owl-carousel"
                             data-options='{"loop": true, "margin": 30, "autoheight":true, "lazyload":true, "nav": false, "dots": true, "autoplay": false, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "1" }, "768" :{ "items" : "1" } , "992":{ "items" : "1" }, "1200":{ "items" : "2" }}}'>
                             <!--Start Single Testimonials Style1-->
-                            <div class="single-testimonials-style1">
-                                <div class="img-holder">
-                                    <div class="top-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
+
+                            @foreach ($testimonials as $item)
+                                <div class="single-testimonials-style1">
+                                    <div class="img-holder">
+                                        <div class="top-pattern-bg"
+                                            style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
+                                        </div>
+                                        <div class="bottom-pattern-bg"
+                                            style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
+                                        </div>
+                                        <div class="img-box">
+                                            <img src="{{ asset($item->image) }}" alt="" />
+                                        </div>
+                                        <div class="review-box">
+                                            @php
+                                                $rate = $item->rate;
+                                                $starCount = $rate / 20; // Assuming the rate is out of 100
+                                            @endphp
+                                            @for ($i = 0; $i < $starCount; $i++)
+                                                <i class="fa fa-star" style = "color:gold"></i>
+                                            @endfor
+                                        </div>
                                     </div>
-                                    <div class="bottom-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="assets/img/testimonial/testimonial-v1-1.jpg" alt="" />
-                                    </div>
-                                    <div class="review-box">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="text-holder">
-                                    <div class="top">
-                                        <div class="name">
-                                            <div class="icon">
-                                                <span class="flaticon-quote-3"></span>
+                                    <div class="text-holder">
+                                        <div class="top">
+                                            <div class="name">
+                                                <div class="icon">
+                                                    <span class="flaticon-quote-3"></span>
+                                                </div>
+                                                <h3>{{ $item->name }}</h3>
+                                                <span>{{ $item->address }}</span>
                                             </div>
-                                            <h3>محمود سعيد</h3>
-                                            <span>الجيزة</span>
+                                        </div>
+                                        <div class="text">
+                                            <p>{!! $item->description !!}</p>
                                         </div>
                                     </div>
-                                    <div class="text">
-                                        <p>شكرًا لكم على كل دعمكم. كل حبكم وكونكم أنتم. لقد كانت نعمة في حياتي بسبب كل حبكم
-                                            وقوتكم.</p>
-                                    </div>
                                 </div>
-                            </div>
-                            <!--End Single Testimonials Style1-->
-                            <!--Start Single Testimonials Style1-->
-                            <div class="single-testimonials-style1">
-                                <div class="img-holder">
-                                    <div class="top-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
-                                    </div>
-                                    <div class="bottom-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="assets/img/testimonial/testimonial-v1-2.jpg" alt="" />
-                                    </div>
-                                    <div class="review-box">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="text-holder">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <span class="flaticon-quote-3"></span>
-                                        </div>
-                                        <div class="name">
-                                            <h3>Penelope Hazel</h3>
-                                            <span>Los Angeles</span>
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <p>I have pleasure of dealing with your experts for past one plus years.
-                                            rufers team has been very knowledgeable, efficient & Professional.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Testimonials Style1-->
+                            @endforeach
 
-                            <!--Start Single Testimonials Style1-->
-                            <div class="single-testimonials-style1">
-                                <div class="img-holder">
-                                    <div class="top-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
-                                    </div>
-                                    <div class="bottom-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="assets/img/testimonial/testimonial-v1-1.jpg" alt="" />
-                                    </div>
-                                    <div class="review-box">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="text-holder">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <span class="flaticon-quote-3"></span>
-                                        </div>
-                                        <div class="name">
-                                            <h3>Silvester Scott</h3>
-                                            <span>Liverpool</span>
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <p>Thank you for all of your support. All of you love & forse being you. I
-                                            cried tears been a blessing in my life for all of your you love & forse.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
                             <!--End Single Testimonials Style1-->
-                            <!--Start Single Testimonials Style1-->
-                            <div class="single-testimonials-style1">
-                                <div class="img-holder">
-                                    <div class="top-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
-                                    </div>
-                                    <div class="bottom-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="assets/img/testimonial/testimonial-v1-2.jpg" alt="" />
-                                    </div>
-                                    <div class="review-box">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="text-holder">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <span class="flaticon-quote-3"></span>
-                                        </div>
-                                        <div class="name">
-                                            <h3>Penelope Hazel</h3>
-                                            <span>Los Angeles</span>
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <p>I have pleasure of dealing with your experts for past one plus years.
-                                            rufers team has been very knowledgeable, efficient & Professional.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Testimonials Style1-->
-
-                            <!--Start Single Testimonials Style1-->
-                            <div class="single-testimonials-style1">
-                                <div class="img-holder">
-                                    <div class="top-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
-                                    </div>
-                                    <div class="bottom-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="assets/img/testimonial/testimonial-v1-1.jpg" alt="" />
-                                    </div>
-                                    <div class="review-box">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="text-holder">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <span class="flaticon-quote-3"></span>
-                                        </div>
-                                        <div class="name">
-                                            <h3>Silvester Scott</h3>
-                                            <span>Liverpool</span>
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <p>Thank you for all of your support. All of you love & forse being you. I
-                                            cried tears been a blessing in my life for all of your you love & forse.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Testimonials Style1-->
-                            <!--Start Single Testimonials Style1-->
-                            <div class="single-testimonials-style1">
-                                <div class="img-holder">
-                                    <div class="top-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-4.png);">
-                                    </div>
-                                    <div class="bottom-pattern-bg"
-                                        style="background-image: url(assets/img/pattern/thm-pattern-5.png);">
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="assets/img/testimonial/testimonial-v1-2.jpg" alt="" />
-                                    </div>
-                                    <div class="review-box">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="text-holder">
-                                    <div class="top">
-                                        <div class="icon">
-                                            <span class="flaticon-quote-3"></span>
-                                        </div>
-                                        <div class="name">
-                                            <h3>Penelope Hazel</h3>
-                                            <span>Los Angeles</span>
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <p>I have pleasure of dealing with your experts for past one plus years.
-                                            rufers team has been very knowledgeable, efficient & Professional.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Testimonials Style1-->
-
                         </div>
                     </div>
                 </div>

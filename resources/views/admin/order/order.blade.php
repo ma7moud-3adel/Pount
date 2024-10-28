@@ -32,6 +32,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">E-mail</th>
                                     <th scope="col">Phone</th>
+                                    <th scope="col">Address</th>
                                     <th scope="col">Content</th>
                                     <th scope="col">Message</th>
                                     <th scope="col">Actions</th>
@@ -48,6 +49,7 @@
                                         <td>{{ $datas->name }}</td>
                                         <td>{{ $datas->email }}</td>
                                         <td>{{ $datas->phone }}</td>
+                                        <td>{{ $datas->address }}</td>
                                         <td>{{ $datas->service }}</td>
                                         <td>{{ $datas->message }}</td>
                                         <td>

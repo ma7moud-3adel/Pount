@@ -1,37 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\AdminAuth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
 use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $data = Order::all();
-        return view('admin.order.order', compact('data'));
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $data = Order::findOrFail($id);
-        return view('order', ['data' => $data]);
-    }
-
     public function create()
     {
-        $data = Order::all();
-        return view('admin.order.create')->with('data', $data);
+        $order = Order::all();
+        return view('index')->with('data', $order);
     }
 
     /**
@@ -66,19 +46,11 @@ class OrderController extends Controller
 
         if ($order instanceof Order) {
             toastr()->success('Order has been Sent successfully!');
-            return redirect()->route('order');
+            return redirect()->route('home.order.create');
         }
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return to_route('order');
-    }
-
-    public function destroy($id)
-    {
-        $deletedCat = Order::findOrFail($id);
-        $deletedCat->delete();
-
-        return to_route('order')->with('primary', 'Order is Done Successfully');
+        return redirect()->route('home.order.create');
     }
 }
