@@ -376,7 +376,8 @@
                                 </div>
                                 <div class="overlay-content text-center">
                                     <p>Commercial</p>
-                                    <h3><a href="{{ route('show.project',$project->id) }}">{{ $project->title }}</a></h3>
+                                    <h3><a href="{{ route('show.project', $project->id) }}">{{ $project->title }}</a>
+                                    </h3>
                                     <div class="border-box"></div>
                                     <ul>
                                         <li>
@@ -385,7 +386,7 @@
                                                 <i class="flaticon-zoom"></i>
                                             </a>
                                         </li>
-                                        <li><a href="{{ route('show.project',$project->id) }}"><span
+                                        <li><a href="{{ route('show.project', $project->id) }}"><span
                                                     class="flaticon-plus-1"></span></a>
                                         </li>
                                     </ul>
@@ -635,6 +636,9 @@
                                             @endphp
                                             @for ($i = 0; $i < $starCount; $i++)
                                                 <i class="fa fa-star" style = "color:gold"></i>
+                                            @endfor
+                                            @for ($i = 4; $i > $starCount; $i--)
+                                                <i class="fa fa-star" style = "color:#6b6b6b"></i>
                                             @endfor
                                         </div>
                                     </div>

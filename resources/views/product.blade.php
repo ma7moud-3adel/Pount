@@ -245,7 +245,7 @@
                                                                     alt="">
                                                             </div>
                                                             <div class="text-box">
-                                                                <div class="review-box">
+                                                                {{-- <div class="review-box">
                                                                     <ul>
                                                                         <li><i class="fa fa-star"></i></li>
                                                                         <li><i class="fa fa-star"></i></li>
@@ -253,10 +253,13 @@
                                                                         <li><i class="fa fa-star"></i></li>
                                                                         <li><i class="fa fa-star"></i></li>
                                                                     </ul>
-                                                                </div>
-                                                                <h2>{{ $comment->user_name ?? 'Anonymous' }}
-                                                                    <span>{{ $comment->created_at }}</span>
-                                                                </h2>
+                                                                </div> --}}
+                                                                <h3>{{ $comment->user_name ?? 'Anonymous' }}
+                                                                    <span
+                                                                        style="font-size: 12px;display:block;margin-top:-1px;font-weight:300;font-style: italic;">
+                                                                        in {{ $comment->created_at->diffForHumans() }}
+                                                                    </span>
+                                                                </h3>
                                                                 <p>{{ $comment->content }}</p>
                                                             </div>
                                                         </div>
