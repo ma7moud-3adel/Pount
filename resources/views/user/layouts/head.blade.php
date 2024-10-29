@@ -31,6 +31,8 @@
     <link rel="stylesheet" href ="{{ asset('assets') }}/css/jquery.bootstrap-touchspin.css">
     <link rel="stylesheet" href ="{{ asset('assets') }}/css/nice-select.css">
 
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/bxslider.css">
+
     <!-- Module css -->
     <link rel="stylesheet" href ="{{ asset('assets') }}/css/module-css/header-section.css">
     <link rel="stylesheet" href ="{{ asset('assets') }}/css/module-css/banner-section.css">

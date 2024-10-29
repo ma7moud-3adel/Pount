@@ -119,6 +119,7 @@ Route::middleware('auth')->group(function () {
     Route::get('make_an_orders/create', [AuthOrderController::class, 'create'])->name('home.order.create');
     Route::post('make_an_orders/', [AuthOrderController::class, 'store'])->name('home.order.store');
     Route::get('show_product/{id}', [AuthUserProductController::class, 'show'])->name('show.product');
+    Route::get('show_project/{id}', [AuthProjectController::class, 'show'])->name('show.project');
     // Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
     Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
     Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');

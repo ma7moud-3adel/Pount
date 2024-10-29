@@ -376,7 +376,7 @@
                                 </div>
                                 <div class="overlay-content text-center">
                                     <p>Commercial</p>
-                                    <h3><a href="{{ redirect()->back() }}">{{ $project->title }}</a></h3>
+                                    <h3><a href="{{ route('show.project',$project->id) }}">{{ $project->title }}</a></h3>
                                     <div class="border-box"></div>
                                     <ul>
                                         <li>
@@ -385,7 +385,8 @@
                                                 <i class="flaticon-zoom"></i>
                                             </a>
                                         </li>
-                                        <li><a href="{{ redirect()->back() }}"><span class="flaticon-plus-1"></span></a>
+                                        <li><a href="{{ route('show.project',$project->id) }}"><span
+                                                    class="flaticon-plus-1"></span></a>
                                         </li>
                                     </ul>
                                 </div>

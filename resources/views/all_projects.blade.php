@@ -55,7 +55,8 @@
                                         </div>
                                     </div>
                                     <div class="title-holder">
-                                        <h3><a href="{{ redirect()->back() }}">{{ $project->title }}</a></h3>
+                                        <h3><a href="{{ route('show.project', $project->id) }}">{{ $project->title }}</a>
+                                        </h3>
                                         <div class="review-box">
                                             <ul>
                                                 <li><i class="flaticon-star-of-favorites-outline"></i></li>

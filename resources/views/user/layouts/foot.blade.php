@@ -13,7 +13,7 @@
                         <div class="footer-top__content">
                             <div class="left-box">
                                 <div class="footer-logo">
-                                    <a href="{{ route('home') }}"><img src="assets/img/logo.png" alt=""></a>
+                                    <a href="{{ route('home') }}"><img src="{{ asset('assets') }}/img/logo.png" alt=""></a>
                                 </div>
                                 <div class="title">
                                     <h3>اتصل بنا</h3>
@@ -115,7 +115,7 @@
                                 <li>
                                     <div class="inner">
                                         <div class="img-box">
-                                            <img src="assets/img/footer/footer-widget-post-1.jpg" alt="Awesome Image">
+                                            <img src="{{ asset('assets') }}/img/footer/footer-widget-post-1.jpg" alt="Awesome Image">
                                             <div class="overlay-content">
                                                 <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
                                             </div>
@@ -129,7 +129,7 @@
                                 <li>
                                     <div class="inner">
                                         <div class="img-box">
-                                            <img src="assets/img/footer/footer-widget-post-2.jpg" alt="Awesome Image">
+                                            <img src="{{ asset('assets') }}/img/footer/footer-widget-post-2.jpg" alt="Awesome Image">
                                             <div class="overlay-content">
                                                 <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
                                             </div>
@@ -197,6 +197,8 @@
 <script src="{{ asset('assets/js/wow.js') }}"></script>
 <script src="{{ asset('assets/js/color-switcher.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-sidebar-content.js') }}"></script>
+
+<script src="{{ asset('assets/js/jquery.bxslider.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/jquery.bootstrap-touchspin.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>

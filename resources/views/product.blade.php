@@ -3,20 +3,20 @@
 @section('content')
     <!--Start breadcrumb area paroller-->
     <section class="breadcrumb-area">
-        <div class="breadcrumb-area-bg" style="background-image: url(assets/images/breadcrumb/breadcrumb-1.jpg);">
+        <div class="breadcrumb-area-bg" style="background-image: url({{ asset($product->image) }});">
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="inner-content">
                         <div class="title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                            <h2>صفحة المنتج</h2>
+                            <h2>{{ $product->name }}</h2>
                         </div>
                         <div class="breadcrumb-menu" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
                             <ul>
                                 <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
                                 <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                                <li class="active">صفحة المنتج</li>
+                                <li class="active">{{ $product->name }}</li>
                             </ul>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="contact-form">
                                             <form id="contact-form" name="contact_form" class="default-form2"
-                                                action="assets/inc/sendmail.php" method="post">
+                                                action="{{ asset('assets') }}/inc/sendmail.php" method="post">
                                                 <div class="row">
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="input-box">
@@ -241,7 +241,8 @@
                                                     <div class="single-review-box-outer">
                                                         <div class="single-review-box">
                                                             <div class="img-box">
-                                                                <img src="assets/images/shop/review-1.jpg" alt="">
+                                                                <img src="{{ asset('assets') }}/img/shop/review-1.jpg"
+                                                                    alt="">
                                                             </div>
                                                             <div class="text-box">
                                                                 <div class="review-box">
@@ -317,13 +318,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </form>
                                     </div>
                                     <!--End Review Form-->
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

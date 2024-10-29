@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $data = project::findOrFail($id);
-        return view('project', ['data' => $data]);
+        $project = Project::findOrFail($id);
+        return view('project', ['project' => $project]);
     }
 }

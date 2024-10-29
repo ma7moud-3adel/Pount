@@ -28,7 +28,7 @@
         <!-- switcher menu -->
         <div class="switcher">
             <div class="switch_btn">
-                <button><img src="assets/img/icon/color-palette.png" alt="Color Palette"> </button>
+                <button><img src="{{ asset('assets') }}/img/icon/color-palette.png" alt="Color Palette"> </button>
             </div>
             <div class="switch_menu">
                 <!-- color changer -->
@@ -58,12 +58,12 @@
         </div>
         <!-- end switcher menu -->
 
-            <!-- Main header-->
-                
-            @include('user.layouts.nav')
+        <!-- Main header-->
+
+        @include('user.layouts.nav')
 
 
-            
+
 
         @yield('content')
 

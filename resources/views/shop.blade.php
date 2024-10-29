@@ -33,7 +33,7 @@
                 <div class="row d-flex justify-content-center">
                     <!--Start Single Shop Item-->
                     @foreach ($products as $product)
-                        <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="col col-md-4 col-sm-6">
                             <div class="single-shop-item">
                                 <div class="single-shop-item_inner">
                                     <div class="img-holder">
@@ -41,12 +41,12 @@
                                         <div class="overlay">
                                             <ul>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="{{ route('show.product', $product->id) }}">
                                                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a href="{{ redirect()->back() }}">
                                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
@@ -54,7 +54,8 @@
                                         </div>
                                     </div>
                                     <div class="title-holder">
-                                        <h3><a href="">{{ $product->name }}</a></h3>
+                                        <h3><a href="{{ route('show.product', $product->id) }}">{{ $product->name }}</a>
+                                        </h3>
                                         <div class="review-box">
                                             <ul>
                                                 <li><i class="flaticon-star-of-favorites-outline"></i></li>

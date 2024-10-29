@@ -121,7 +121,8 @@
 
             <div class="header-contact-info3">
                 <div class="logo-bg"></div>
-                <a href="{{ route('home') }}"><img src="assets/img/logo.png" alt="Awesome Logo" title=""></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('assets') }}/img/logo.png" alt="Awesome Logo"
+                        title=""></a>
             </div>
 
         </div>
@@ -132,8 +133,8 @@
                 <div class="clearfix">
                     <!--Logo-->
                     <div class="logo float-left">
-                        <a href="{{ route('home') }}" class="img-responsive"><img src="assets/img/logo.png"
-                                alt="" title=""></a>
+                        <a href="{{ route('home') }}" class="img-responsive"><img
+                                src="{{ asset('assets') }}/img/logo.png" alt="" title=""></a>
                     </div>
                     <!--Right Col-->
                     <div class="right-col float-right">
@@ -152,8 +153,9 @@
             <div class="menu-backdrop"></div>
             <div class="close-btn"><span class="icon fa fa-times-circle"></span></div>
             <nav class="menu-box">
-                <div class="nav-logo"><a href="{{ route('home') }}"><img src="assets/img/resources/mobilemenu-logo.png"
-                            alt="" title=""></a></div>
+                <div class="nav-logo"><a href="{{ route('home') }}"><img
+                            src="{{ asset('assets') }}/img/resources/mobilemenu-logo.png" alt=""
+                            title=""></a></div>
                 <div class="menu-outer">
                     <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                 </div>
