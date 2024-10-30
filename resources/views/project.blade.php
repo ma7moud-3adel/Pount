@@ -100,11 +100,11 @@
                 <div class="row">
                     @php
                         use App\Models\Project;
-                        $data = Project::all();
+                        $data = Project::take(4)->get();
                     @endphp
                     @foreach ($data as $data)
                         <!--Start Single Shop Item-->
-                        <div class="col">
+                        <div class="col col-md-6 col-sm-12">
                             <div class="single-shop-item">
                                 <div class="single-shop-item_inner">
                                     <div class="img-holder">

@@ -365,36 +365,226 @@
             </div>
         </div>
         <div class="auto-container">
-            <div class="row text-right-rtl d-flex">
-                <!--Start Single project Item-->
-                @foreach ($projects as $project)
-                    <div class="col-4">
-                        <div class="single-project-item">
-                            <div class="img-holder">
-                                <div class="inner">
-                                    <img src="{{ asset($project->image) }}" alt="Awesome Image">
-                                </div>
-                                <div class="overlay-content text-center">
-                                    <p>Commercial</p>
-                                    <h3><a href="{{ route('show.project', $project->id) }}">{{ $project->title }}</a>
-                                    </h3>
-                                    <div class="border-box"></div>
-                                    <ul>
-                                        <li>
-                                            <a class="lightbox-image" data-fancybox="gallery"
-                                                href="{{ asset($project->image) }}">
-                                                <i class="flaticon-zoom"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="{{ route('show.project', $project->id) }}"><span
-                                                    class="flaticon-plus-1"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
+            <!--Start Single project Item-->
+            {{-- @foreach ($projects as $project)
+                <div class="col col-md-6 col-sm-12">
+                    <div class="single-project-item">
+                        <div class="img-holder">
+                            <div class="inner">
+                                <img src="{{ asset($project->image) }}" alt="Awesome Image">
+                            </div>
+                            <div class="overlay-content text-center">
+                                <p>Commercial</p>
+                                <h3><a href="{{ route('show.project', $project->id) }}">{{ $project->title }}</a>
+                                </h3>
+                                <div class="border-box"></div>
+                                <ul>
+                                    <li>
+                                        <a class="lightbox-image" data-fancybox="gallery"
+                                            href="{{ asset($project->image) }}">
+                                            <i class="flaticon-zoom"></i>
+                                        </a>
+                                    </li>
+                                    <li><a href="{{ route('show.project', $project->id) }}"><span
+                                                class="flaticon-plus-1"></span></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            @endforeach --}}
+            <!--End Single project Item-->
+            <div class="row text-right-rtl d-flex">
+                <!--Start Single project Item-->
+                <div class="col col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col">
+                            {{-- @foreach ($project1 as $project) --}}
+                            <div class="single-project-item">
+                                <div class="img-holder">
+                                    <div class="inner">
+                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
+                                    </div>
+                                    <div class="overlay-content text-center">
+                                        <p>Commercial</p>
+                                        <h3><a
+                                                href="{{ route('show.project', $project1->id) }}">{{ $project1->title }}</a>
+                                        </h3>
+                                        <div class="border-box"></div>
+                                        <ul>
+                                            <li>
+                                                <a class="lightbox-image" data-fancybox="gallery"
+                                                    href="{{ asset($project1->image) }}">
+                                                    <i class="flaticon-zoom"></i>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ route('show.project', $project1->id) }}"><span
+                                                        class="flaticon-plus-1"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- @endforeach --}}
+                        </div>
+                        <div class="col">
+                            {{-- @foreach ($project2 as $project) --}}
+                            <div class="single-project-item">
+                                <div class="img-holder">
+                                    <div class="inner">
+                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
+                                    </div>
+                                    <div class="overlay-content text-center">
+                                        <p>Commercial</p>
+                                        <h3><a
+                                                href="{{ route('show.project', $project2->id) }}">{{ $project2->title }}</a>
+                                        </h3>
+                                        <div class="border-box"></div>
+                                        <ul>
+                                            <li>
+                                                <a class="lightbox-image" data-fancybox="gallery"
+                                                    href="{{ asset($project2->image) }}">
+                                                    <i class="flaticon-zoom"></i>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ route('show.project', $project2->id) }}"><span
+                                                        class="flaticon-plus-1"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- @endforeach --}}
+                        </div>
+                    </div>
+                </div>
+                <!--End Single project Item-->
+                <!--Start Single project Item-->
+                <div class="col col-md-6 col-sm-12">
+                    {{-- @foreach ($project3 as $project) --}}
+                    <div class="single-project-item">
+                        <div class="img-holder">
+                            <div class="inner">
+                                <img src="{{ asset($project3->image) }}" alt="Awesome Image">
+                            </div>
+                            <div class="overlay-content text-center">
+                                <p>Commercial</p>
+                                <h3><a href="{{ route('show.project', $project3->id) }}">{{ $project3->title }}</a>
+                                </h3>
+                                <div class="border-box"></div>
+                                <ul>
+                                    <li>
+                                        <a class="lightbox-image" data-fancybox="gallery"
+                                            href="{{ asset($project3->image) }}">
+                                            <i class="flaticon-zoom"></i>
+                                        </a>
+                                    </li>
+                                    <li><a href="{{ route('show.project', $project3->id) }}"><span
+                                                class="flaticon-plus-1"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- @endforeach --}}
+                </div>
+                <!--End Single project Item-->
+            </div>
+            <div class="row text-right-rtl d-flex">
+                <!--Start Single project Item-->
+                <div class="col col-md-6 col-sm-12">
+                    {{-- @foreach ($project3 as $project) --}}
+                    <div class="single-project-item">
+                        <div class="img-holder">
+                            <div class="inner">
+                                <img src="{{ asset($project3->image) }}" alt="Awesome Image">
+                            </div>
+                            <div class="overlay-content text-center">
+                                <p>Commercial</p>
+                                <h3><a href="{{ route('show.project', $project3->id) }}">{{ $project3->title }}</a>
+                                </h3>
+                                <div class="border-box"></div>
+                                <ul>
+                                    <li>
+                                        <a class="lightbox-image" data-fancybox="gallery"
+                                            href="{{ asset($project3->image) }}">
+                                            <i class="flaticon-zoom"></i>
+                                        </a>
+                                    </li>
+                                    <li><a href="{{ route('show.project', $project3->id) }}"><span
+                                                class="flaticon-plus-1"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- @endforeach --}}
+                </div>
+                <!--End Single project Item-->
+                <!--Start Single project Item-->
+                <div class="col col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col">
+                            {{-- @foreach ($project1 as $project) --}}
+                            <div class="single-project-item">
+                                <div class="img-holder">
+                                    <div class="inner">
+                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
+                                    </div>
+                                    <div class="overlay-content text-center">
+                                        <p>Commercial</p>
+                                        <h3><a
+                                                href="{{ route('show.project', $project1->id) }}">{{ $project1->title }}</a>
+                                        </h3>
+                                        <div class="border-box"></div>
+                                        <ul>
+                                            <li>
+                                                <a class="lightbox-image" data-fancybox="gallery"
+                                                    href="{{ asset($project1->image) }}">
+                                                    <i class="flaticon-zoom"></i>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ route('show.project', $project1->id) }}"><span
+                                                        class="flaticon-plus-1"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- @endforeach --}}
+                        </div>
+                        <div class="col">
+                            {{-- @foreach ($project2 as $project) --}}
+                            <div class="single-project-item">
+                                <div class="img-holder">
+                                    <div class="inner">
+                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
+                                    </div>
+                                    <div class="overlay-content text-center">
+                                        <p>Commercial</p>
+                                        <h3><a
+                                                href="{{ route('show.project', $project2->id) }}">{{ $project2->title }}</a>
+                                        </h3>
+                                        <div class="border-box"></div>
+                                        <ul>
+                                            <li>
+                                                <a class="lightbox-image" data-fancybox="gallery"
+                                                    href="{{ asset($project2->image) }}">
+                                                    <i class="flaticon-zoom"></i>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ route('show.project', $project2->id) }}"><span
+                                                        class="flaticon-plus-1"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- @endforeach --}}
+                        </div>
+                    </div>
+                </div>
                 <!--End Single project Item-->
             </div>
         </div>

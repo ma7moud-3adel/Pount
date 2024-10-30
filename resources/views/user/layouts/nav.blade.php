@@ -93,9 +93,14 @@
                                 <nav class="main-menu style3 navbar-expand-md navbar-light">
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
-                                            <li class="dropdown current"><a href="{{ route('home') }}">الصفحة
-                                                    الرئيسية</a> </li>
-                                            <li class="dropdown"><a href="#">الشركة</a>
+                                            <li
+                                                class="dropdown {{ Request::route()->getName() == 'home' ? 'current' : '' }}">
+                                                <a href="{{ route('home') }}">الصفحة
+                                                    الرئيسية</a>
+                                            </li>
+                                            <li
+                                                class="dropdown {{ Request::route()->getName() == 'about' ? 'current' : '' }}">
+                                                <a href="#">الشركة</a>
                                                 <ul>
                                                     <li><a href="{{ route('about') }}">من نحن</a></li>
                                                     <li><a href="{{ route('allproject') }}">مشاريعنا</a></li>
@@ -106,7 +111,10 @@
                                             <li class="dropdown"><a href="{{ route('home') }}#servises">خدماتنا</a>
                                             </li>
                                             <li class="dropdown"><a href="{{ route('home') }}#blogs">اخبار</a></li>
-                                            <li class="dropdown"><a href="{{ route('shop') }}">المتجر</a></li>
+                                            <li
+                                                class="dropdown {{ Request::route()->getName() == 'shop' || Request::route()->getName() == 'show.product' ? 'current' : '' }}">
+                                                <a href="{{ route('shop') }}">المتجر</a>
+                                            </li>
                                             <li><a href="{{ route('home') }}#contact">تواصل</a></li>
                                         </ul>
                                     </div>
