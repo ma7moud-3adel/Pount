@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use App\Models\Product;
 
 class UserProductController extends Controller
@@ -24,7 +23,7 @@ class UserProductController extends Controller
     {
         // $product = Product::findOrFail($id);
         // dd($product);
-        $product = Product::with('comments')->findOrFail($id);
+        $product = Product::with('comments', 'orders')->findOrFail($id);
         return view('product', compact('product'));
     }
 }

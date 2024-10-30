@@ -44,7 +44,8 @@ class OrderController extends Controller
             'email' => 'nullable',
             'phone' => 'required',
             'address' => 'required',
-            'service' => 'required',
+            'product_id' => 'required',
+            'count' => 'required',
             'message' => 'required',
         ]);
 
@@ -52,7 +53,8 @@ class OrderController extends Controller
         $email = request()->email;
         $phone = request()->phone;
         $address = request()->address;
-        $service = request()->service;
+        $product_id = request()->product_id;
+        $count = request()->count;
         $message = request()->message;
 
         $order = Order::create([
@@ -60,7 +62,8 @@ class OrderController extends Controller
             'email' => $email,
             'phone' => $phone,
             'address' => $address,
-            'service' => $service,
+            'product_id' => $product_id,
+            'count' => $count,
             'message' => $message,
         ]);
 

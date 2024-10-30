@@ -13,7 +13,12 @@ class Order extends Model
         'email',
         'phone',
         'address',
-        'service',
+        'product_id',
+        'count',
         'message',
     ];
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

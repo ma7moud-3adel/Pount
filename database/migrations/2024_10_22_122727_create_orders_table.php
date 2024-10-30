@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
-            $table->string('service');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade')->references('id')->on('products');
+            $table->Integer('count')->default(1);
             $table->text('message');
             $table->timestamps();
         });

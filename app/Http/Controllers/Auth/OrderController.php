@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function create()
     {
         $order = Order::all();
-        return view('index')->with('data', $order);
+        return view('product')->with('data', $order);
     }
 
     /**
@@ -24,7 +24,8 @@ class OrderController extends Controller
             'email' => 'nullable',
             'phone' => 'required',
             'address' => 'required',
-            'service' => 'required',
+            'product_id' => 'required',
+            'count' => 'required',
             'message' => 'required',
         ]);
 
@@ -32,7 +33,8 @@ class OrderController extends Controller
         $email = request()->email;
         $phone = request()->phone;
         $address = request()->address;
-        $service = request()->service;
+        $product_id = request()->product_id;
+        $count = request()->count;
         $message = request()->message;
 
         $order = Order::create([
@@ -40,17 +42,18 @@ class OrderController extends Controller
             'email' => $email,
             'phone' => $phone,
             'address' => $address,
-            'service' => $service,
+            'product_id' => $product_id,
+            'count' => $count,
             'message' => $message,
         ]);
 
         if ($order instanceof Order) {
             toastr()->success('Order has been Sent successfully!');
-            return redirect()->route('home');
+            return redirect()->back();
         }
 
         toastr()->error('An error has occurred please try again later!.');
 
-        return redirect()->route('home');
+        return redirect()->back()->with('success','Order has been Sent successfully!');
     }
 }

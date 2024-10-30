@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <form id="contactForm" method="POST" action="{{ route('order.store') }}">
                             @csrf
-                            <div class="row align-items-stretch mb-5">
+                            <div class="row align-items-stretch mb-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <!-- Name input-->
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group mb-md-0">
                                         <!-- Address input-->
-                                        <input class="form-control" name="address" id="address" type="tel"
+                                        <input class="form-control" name="address" id="address" type="text"
                                             placeholder="Your Address *" data-sb-validations="required" />
                                         <div class="invalid-feedback" data-sb-feedback="address:required">A address is
                                             required.</div>
@@ -72,23 +72,42 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-5">
                                         <!-- Service input-->
-                                        <select class="form-control wide" name="service">
-                                            <option data-display="الخدمة التي تحتاجها" disabled>الخدمة التي تحتاجها</option>
-                                            <option value="استفسار عن السعر">استفسار عن السعر</option>
-                                            <option value="استشارة">استشارة</option>
-                                            <option value="طلب منتج">طلب منتج</option>
+                                        @php
+                                            use App\Models\Product;
+                                            $products = Product::all();
+                                        @endphp
+                                        <select class="form-control wide" name="product_id">
+                                            @foreach ($products as $product)
+                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback" data-sb-feedback="service:required">A service is
                                             required.
                                         </div>
                                     </div>
-                                    <div class="form-group form-group-textarea mb-md-0">
-                                        <!-- Message input-->
-                                        <textarea class="form-control" name="message" id="message" placeholder="Your Message *"
-                                            data-sb-validations="required"></textarea>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is
+                                    <br>
+                                    <div class="form-group mb-5">
+                                        <!-- Count input-->
+                                        <select class="form-control" name="count">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <div class="invalid-feedback" data-sb-feedback="count:required">A count is
                                             required.
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col form-group form-group-textarea mb-md-0">
+                                    <!-- Message input-->
+                                    <textarea class="form-control" name="message" id="message" placeholder="Your Message *"
+                                        data-sb-validations="required"></textarea>
+                                    <div class="invalid-feedback" data-sb-feedback="message:required">A message is
+                                        required.
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +133,7 @@
                             </div>
                             <!-- Submit Button-->
                             <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton"
-                                    type="submit">Send Message</button></div>
+                                    type="submit">Submit</button></div>
                         </form>
                     </div>
                     <!-- /.card-body -->

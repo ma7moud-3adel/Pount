@@ -501,7 +501,7 @@
                             <p>من فضلك قم بملء النموذج وتقديم تفاصيل طلبك وسوف نقوم بالرد عليك.</p>
                         </div>
                         <form id="contact-form"class="default-form1" method="POST"
-                            action="{{ route('home.order.store') }}">
+                            action="{{ route('message.store') }}">
                             @csrf
                             <div class="input-box">
                                 <input type="text" name="name" placeholder="الاسم" required>
@@ -860,7 +860,7 @@
                         </div>
                         <div class="contact-form">
                             <form id="contact-form"class="default-form1" method="POST"
-                                action="{{ route('home.order.store') }}">
+                                action="{{ route('message.store') }}">
                                 @csrf
                                 <div class="row">
                                     <div class="input-box col">

@@ -27,13 +27,13 @@
                         <table class="table table-striped table-bordered table-hover text-center">
                             <thead class="thead-light">
                                 <tr>
-                                    {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">E-mail</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Address</th>
-                                    <th scope="col">Content</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Count</th>
                                     <th scope="col">Message</th>
                                     <th scope="col">Actions</th>
 
@@ -50,7 +50,8 @@
                                         <td>{{ $datas->email }}</td>
                                         <td>{{ $datas->phone }}</td>
                                         <td>{{ $datas->address }}</td>
-                                        <td>{{ $datas->service }}</td>
+                                        <td>{{ $datas->product->name }}</td>
+                                        <td>{{ $datas->count }}</td>
                                         <td>{{ $datas->message }}</td>
                                         <td>
                                             <a class="btn btn-info" href="mailto:{{ $datas->email }}"

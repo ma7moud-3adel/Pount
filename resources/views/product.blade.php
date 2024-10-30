@@ -128,56 +128,62 @@
                                             <h2>طلب منتج</h2>
                                         </div>
                                         <div class="contact-form">
-                                            <form id="contact-form" name="contact_form" class="default-form2"
-                                                action="{{ asset('assets') }}/inc/sendmail.php" method="post">
+                                            <form id="contact-form" class="default-form2" method="POST"
+                                                action="{{ route('product.order.store') }}">
+                                                @csrf
                                                 <div class="row">
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="input-box">
-                                                            <input type="text" name="form_name" value=""
-                                                                placeholder="الاسم" required="">
+                                                            <input type="text" name="name" placeholder="الاسم"
+                                                                required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="input-box">
-                                                            <input type="email" name="form_email" value=""
-                                                                placeholder="اسم المنتج" required="">
+                                                            <input type="email" name="email"
+                                                                placeholder="البريد الالكتروني" required="">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="input-box">
-                                                            <input type="text" name="form_phone" value=""
+                                                            <input type="text" name="phone"
                                                                 placeholder="رقم الهاتف">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="input-box">
-                                                            <input type="text" name="form_subject" value=""
-                                                                placeholder="العنوان">
+                                                            <input type="text" name="address" placeholder="العنوان">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div style="display: none;" class="col-xl-12 text-center">
+                                                    <div class="col-xl-6 col-lg-6">
                                                         <div class="input-box">
-                                                            <div class="select-box">
-                                                                <select class="wide">
-                                                                    <option selected value="3">طلب منتج
-                                                                    </option>
-                                                                </select>
-                                                            </div>
+                                                            <input type="hidden" name="product_id"
+                                                                value="{{ $product->id }}">
+                                                            <input type="text" disabled value="{{ $product->name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6">
+                                                        <div class="input-box">
+                                                            <select class="wide" id="selectCount" name="count">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-xl-12 text-center">
                                                         <div class="input-box two">
-                                                            <textarea name="form_message" placeholder="ملاحظات" required=""></textarea>
+                                                            <textarea name="message" placeholder="ملاحظات" required=""></textarea>
                                                         </div>
                                                         <div class="button-box">
-                                                            <input id="form_botcheck" name="form_botcheck"
-                                                                class="form-control" type="hidden" value="">
                                                             <button class="btn-one" type="submit"
                                                                 data-loading-text="انتظر من فضلك...">
                                                                 <span class="txt">ارسال</span>
@@ -185,7 +191,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </form>
                                         </div>
                                     </div>
