@@ -97,14 +97,14 @@
                 <div class="shop-page-title">
                     <h2>Related Projects</h2>
                 </div>
-                <div class="row">
+                <div class="row d-flex justify-content-center">
                     @php
                         use App\Models\Project;
                         $data = Project::take(4)->get();
                     @endphp
                     @foreach ($data as $data)
                         <!--Start Single Shop Item-->
-                        <div class="col col-md-6 col-sm-12">
+                        <div class="col col-md-3 col-sm-12">
                             <div class="single-shop-item">
                                 <div class="single-shop-item_inner">
                                     <div class="img-holder">

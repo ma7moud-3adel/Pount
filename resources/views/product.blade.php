@@ -348,7 +348,7 @@
                     @endphp
                     @foreach ($data as $data)
                         <!--Start Single Shop Item-->
-                        <div class="col col-md-6 col-sm-12">
+                        <div class="col col-md-3 col-sm-12">
                             <div class="single-shop-item">
                                 <div class="single-shop-item_inner">
                                     <div class="img-holder">
