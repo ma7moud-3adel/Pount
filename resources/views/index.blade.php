@@ -404,8 +404,7 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img class="projectImage" src="{{ asset($project1->image) }}"
-                                            alt="Awesome Image">
+                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -434,8 +433,7 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img class="projectImage" src="{{ asset($project2->image) }}"
-                                            alt="Awesome Image">
+                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -532,8 +530,7 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img class="projectImage" src="{{ asset($project5->image) }}"
-                                            alt="Awesome Image">
+                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -562,8 +559,7 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img class="projectImage" src="{{ asset($project6->image) }}"
-                                            alt="Awesome Image">
+                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
