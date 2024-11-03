@@ -4,31 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
     use HasFactory;
-    public function products()
+    public function products(): HasMany
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasMany(Product::class);
     }
     use HasTranslations;
 
     protected $fillable = [
         'name',
-        'slug',
         'description',
         'image',
-        'is_showin',
-        'is_popular',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
     ];
     public $translatable = [
         'name',
-        'slug',
         'description',
     ];
 }

@@ -16,12 +16,15 @@ class SittingSeeder extends Seeder
     {
 
         DB::table('sittings')->insert([
-            'name' => 'Pount',
-            'email' => 'https://pountpaints.com/',
+            'name' => 'PountPaints',
+            'email' => 'info@pountpaints.com',
             'phone_number' => '01001018277',
-            'address' => '1865',
+            'address_1' => 'المعرض: مول ٢٢ محور مصطفي كامل التجمع الاول',
+            'address_2' => 'المصنع : 67 المنطقة الصناعية مدينة بدر',
             'company_message' => 'hi',
-            'about' => 'about',
+            'about' => 'متخصصون فى صناعة مادة الواجهات مثلجرافياتو اكريلك – ماربل – جرانوليت – المادة الاسمنتية – معجون البلاستيك والسيلر والعديد من المواد التى تخضع للأبحاث والتطوير وفقا للمواصفات المحلية والدولية .',
+            'code_pixel' => '‍',
+            'google_tag' => '‍',
         ]);
     }
 }

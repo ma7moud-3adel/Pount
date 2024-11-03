@@ -52,7 +52,7 @@
                         <div class="single-service-style1">
                             <div class="inner-box">
                                 <div class="img-holder">
-                                    <img src="{{ $product->image }}" alt="">
+                                    <img class="categoriesImg" src="{{ $product->image }}" alt="">
                                 </div>
                                 <div class="title-holder">
                                     <div class="pattern-bg"
@@ -404,7 +404,8 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project1->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -433,7 +434,8 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project2->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -466,7 +468,7 @@
                     <div class="single-project-item">
                         <div class="img-holder">
                             <div class="inner">
-                                <img src="{{ asset($project3->image) }}" alt="Awesome Image">
+                                <img class="projectImage" src="{{ asset($project3->image) }}" alt="Awesome Image">
                             </div>
                             <div class="overlay-content text-center">
                                 <p>Commercial</p>
@@ -498,21 +500,21 @@
                     <div class="single-project-item">
                         <div class="img-holder">
                             <div class="inner">
-                                <img src="{{ asset($project3->image) }}" alt="Awesome Image">
+                                <img class="projectImage" src="{{ asset($project4->image) }}" alt="Awesome Image">
                             </div>
                             <div class="overlay-content text-center">
                                 <p>Commercial</p>
-                                <h3><a href="{{ route('show.project', $project3->id) }}">{{ $project3->title }}</a>
+                                <h3><a href="{{ route('show.project', $project4->id) }}">{{ $project4->title }}</a>
                                 </h3>
                                 <div class="border-box"></div>
                                 <ul>
                                     <li>
                                         <a class="lightbox-image" data-fancybox="gallery"
-                                            href="{{ asset($project3->image) }}">
+                                            href="{{ asset($project4->image) }}">
                                             <i class="flaticon-zoom"></i>
                                         </a>
                                     </li>
-                                    <li><a href="{{ route('show.project', $project3->id) }}"><span
+                                    <li><a href="{{ route('show.project', $project4->id) }}"><span
                                                 class="flaticon-plus-1"></span></a>
                                     </li>
                                 </ul>
@@ -530,22 +532,23 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project5->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
                                         <h3><a
-                                                href="{{ route('show.project', $project1->id) }}">{{ $project1->title }}</a>
+                                                href="{{ route('show.project', $project5->id) }}">{{ $project5->title }}</a>
                                         </h3>
                                         <div class="border-box"></div>
                                         <ul>
                                             <li>
                                                 <a class="lightbox-image" data-fancybox="gallery"
-                                                    href="{{ asset($project1->image) }}">
+                                                    href="{{ asset($project5->image) }}">
                                                     <i class="flaticon-zoom"></i>
                                                 </a>
                                             </li>
-                                            <li><a href="{{ route('show.project', $project1->id) }}"><span
+                                            <li><a href="{{ route('show.project', $project5->id) }}"><span
                                                         class="flaticon-plus-1"></span></a>
                                             </li>
                                         </ul>
@@ -559,22 +562,23 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project6->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
                                         <h3><a
-                                                href="{{ route('show.project', $project2->id) }}">{{ $project2->title }}</a>
+                                                href="{{ route('show.project', $project6->id) }}">{{ $project6->title }}</a>
                                         </h3>
                                         <div class="border-box"></div>
                                         <ul>
                                             <li>
                                                 <a class="lightbox-image" data-fancybox="gallery"
-                                                    href="{{ asset($project2->image) }}">
+                                                    href="{{ asset($project6->image) }}">
                                                     <i class="flaticon-zoom"></i>
                                                 </a>
                                             </li>
-                                            <li><a href="{{ route('show.project', $project2->id) }}"><span
+                                            <li><a href="{{ route('show.project', $project6->id) }}"><span
                                                         class="flaticon-plus-1"></span></a>
                                             </li>
                                         </ul>
@@ -895,7 +899,7 @@
     <!--End Contact Info Style1 Area-->
 
     <!--Start Blog Style1 Area-->
-    <section id="blogs" class="blog-style1-area">
+    {{-- <section id="blogs" class="blog-style1-area">
         <div class="container">
             <div class="blog-top-title">
                 <div class="sec-title">
@@ -1035,7 +1039,7 @@
                 <!--End Single blog Style1-->
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--End Blog Style1 Area-->
 
     <!--Start Main Contact Form Area-->

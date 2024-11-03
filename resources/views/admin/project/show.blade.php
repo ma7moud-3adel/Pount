@@ -56,13 +56,13 @@
                                         <a class="btn btn-primary" href="{{ route('project.admin.edit', $data->id) }}"
                                             role="button">Edit</a>
 
-                                        <form action="{{ route('project.admin.destroy', $data->id) }}" method="POST"
+                                        {{-- <form action="{{ route('project.admin.destroy', $data->id) }}" method="POST"
                                             style="display: inline;">
                                             @csrf()
                                             @method('DELETE')
                                             <button class="btn btn-danger" type="submit"
                                                 onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Delete</button>
-                                        </form>
+                                        </form> --}}
 
                                     </td>
                                 </tr>

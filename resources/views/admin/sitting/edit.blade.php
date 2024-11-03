@@ -90,12 +90,27 @@
                                         <!-- Phone number input-->
                                         <div class="row">
                                             <div class="col-4">
-                                                <input class="form-control" value="Address" disabled />
+                                                <input class="form-control" value="Address 01" disabled />
                                             </div>
                                             <div class="col-8">
-                                                <input class="form-control" name="address" id="address" type="text"
+                                                <input class="form-control" name="address_1" id="address" type="text"
                                                     placeholder="Address *" data-sb-validations="required"
-                                                    value="{{ $data->address }}" />
+                                                    value="{{ $data->address_1 }}" />
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is
+                                            required.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- Phone number input-->
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <input class="form-control" value="Address 02" disabled />
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control" name="address_2" id="address" type="text"
+                                                    placeholder="Address *" data-sb-validations="required"
+                                                    value="{{ $data->address_2 }}" />
                                             </div>
                                         </div>
                                         <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is
@@ -125,6 +140,36 @@
                                             <div class="col-8">
                                                 <textarea class="form-control" name="about" id="message" placeholder="About Company *"
                                                     data-sb-validations="required" rows="3">{{ $data->about }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is
+                                            required.
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-textarea">
+                                        <!-- Message input-->
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <input class="form-control" value="Code Pixel" disabled />
+                                            </div>
+                                            <div class="col-8">
+                                                <textarea class="form-control" name="code_pixel" id="message" placeholder="About Company *"
+                                                    data-sb-validations="required" rows="3">{{ $data->code_pixel }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is
+                                            required.
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-textarea">
+                                        <!-- Message input-->
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <input class="form-control" value="Google Tag" disabled />
+                                            </div>
+                                            <div class="col-8">
+                                                <textarea class="form-control" name="google_tag" id="message" placeholder="About Company *"
+                                                    data-sb-validations="required" rows="3">{{ $data->google_tag }}</textarea>
                                             </div>
                                         </div>
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is

@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone_number');
-            $table->string('address');
+            $table->string('address_1');
+            $table->string('address_2');
             $table->string('company_message');
             $table->string('about');
+            $table->string('code_pixel');
+            $table->string('google_tag');
             $table->timestamps();
         });
     }

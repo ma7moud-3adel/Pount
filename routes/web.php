@@ -111,7 +111,7 @@ Route::get('/', function () {
 });
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
     // user 
     Route::get('about', [AuthSliderController::class, 'show'])->name('about');
     Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
@@ -129,7 +129,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
     // Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
     // Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
-});
+// });
 
 // ({ ==>
 Route::view('/admin/login', 'admin.login')->name('admin.login');

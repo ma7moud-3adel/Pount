@@ -46,8 +46,12 @@
                                         <td scope="col">{{ $datas->phone_number }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="col">Address</th>
-                                        <td scope="col">{{ $datas->address }}</td>
+                                        <th scope="col">Address 01</th>
+                                        <td scope="col">{{ $datas->address_1 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Address 02</th>
+                                        <td scope="col">{{ $datas->address_2 }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="col">Message</th>

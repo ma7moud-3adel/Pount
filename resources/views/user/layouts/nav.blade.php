@@ -26,12 +26,12 @@
                                         <ul>
                                             <li>
                                                 <div class="text">
-                                                    <h6><a>المصنع : 67 المنطقة الصناعية مدينة بدر</a></h6>
+                                                    <h6><a>{{ $data->address_1 }}</a></h6>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="text">
-                                                    <h6><a>المعرض: {{ $data->address }}</a></h6>
+                                                    <h6><a>{{ $data->address_2 }}</a></h6>
                                                 </div>
                                             </li>
                                         </ul>

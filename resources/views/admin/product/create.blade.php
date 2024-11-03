@@ -37,7 +37,7 @@
                             @csrf
                             <div class="mb-3">
                                 <div class="row mb-4">
-                                    <div class = "col"><label class="form-label">name</label> <br>
+                                    <div class = "col"><label class="form-label">Name</label> <br>
                                         <input class="form-control" name="name" type="text"
                                             value="{{ old('name') }}">
                                     </div>
@@ -46,11 +46,7 @@
                                             value="{{ old('price') }}">
                                     </div>
                                     <div class = "col">
-                                        {{-- <label class="form-label">Size</label> <br>
-                                        <input class="form-control" name="size" type="text"
-                                            value="{{ old('size') }}"> --}}
-
-                                        <label for="selectSize">Size</label>
+                                        <label for="selectSize" class="form-label">Size</label>
                                         <select class="form-control" id="selectSize" name="size">
                                             <option value="1">1</option>
                                             <option value="2">2</option>

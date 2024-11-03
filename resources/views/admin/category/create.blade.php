@@ -41,42 +41,15 @@
                                         <input class="form-control" name="name" type="text"
                                             value="{{ old('name') }}">
                                     </div>
-                                    <div class = "col"><label class="form-label">slug</label> <br>
-                                        <input class="form-control" name="slug" type="text"
-                                            value="{{ old('slug') }}">
+                                    <div class="col"><label class="form-label" for="file">Image</label> <br>
+                                        <input type="file" name="image" id="file" required>
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
-                                        <input class="form-control c" name="description" type="text"
-                                            value="{{ old('description') }}">
+                                        <textarea class="form-control c" name="description" id="editor" value="{{ old('description') }}" rows="3"></textarea>
                                     </div>
-                                    <div class = "col check"><label class="form-label">Status</label> <br>
-                                        <input class="form-control" name="is_showin" type="checkbox">
-                                    </div>
-                                    <div class = "col check"><label class="form-label">Popular</label> <br>
-                                        <input class="form-control" name="is_popular" type="checkbox">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-4">
-                                    <div class = "col"><label class="form-label">Meta Title</label> <br>
-                                        <input class="form-control" name="meta_title" type="text"
-                                            value="{{ old('meta_title') }}">
-                                    </div>
-                                    <div class = "col"><label class="form-label">Meta Description</label> <br>
-                                        <input class="form-control" name="meta_description" type="text"
-                                            value="{{ old('meta_description') }}">
-                                    </div>
-                                    <div class = "col"><label class="form-label">Meta Keywords</label> <br>
-                                        <input class="form-control" name="meta_keywords" type="text"
-                                            value="{{ old('meta_keywords') }}">
-                                    </div>
-                                </div>
-
-                                <div><label class="form-label" for="file">Image</label> <br>
-                                    <input type="file" name="image" id="file" required>
                                 </div>
 
                             </div>

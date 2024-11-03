@@ -13,7 +13,8 @@
                         <div class="footer-top__content">
                             <div class="left-box">
                                 <div class="footer-logo">
-                                    <a href="{{ route('home') }}"><img src="{{ asset('assets') }}/img/logo.png" alt=""></a>
+                                    <a href="{{ route('home') }}"><img src="{{ asset('assets') }}/img/logo.png"
+                                            alt=""></a>
                                 </div>
                                 <div class="title">
                                     <h3>اتصل بنا</h3>
@@ -89,7 +90,11 @@
                                     </li>
                                     <li>
                                         <h6>عنوان المعرض</h6>
-                                        <p>{{ $data->address }}</p>
+                                        <p>{{ $data->address_1 }}</p>
+                                    </li>
+                                    <li>
+                                        <h6>عنوان المصنع</h6>
+                                        <p>{{ $data->address_2 }}</p>
                                     </li>
                                 </ul>
                                 <div class="footer-social-link">
@@ -115,7 +120,8 @@
                                 <li>
                                     <div class="inner">
                                         <div class="img-box">
-                                            <img src="{{ asset('assets') }}/img/footer/footer-widget-post-1.jpg" alt="Awesome Image">
+                                            <img src="{{ asset('assets') }}/img/footer/footer-widget-post-1.jpg"
+                                                alt="Awesome Image">
                                             <div class="overlay-content">
                                                 <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
                                             </div>
@@ -129,7 +135,8 @@
                                 <li>
                                     <div class="inner">
                                         <div class="img-box">
-                                            <img src="{{ asset('assets') }}/img/footer/footer-widget-post-2.jpg" alt="Awesome Image">
+                                            <img src="{{ asset('assets') }}/img/footer/footer-widget-post-2.jpg"
+                                                alt="Awesome Image">
                                             <div class="overlay-content">
                                                 <a href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
                                             </div>

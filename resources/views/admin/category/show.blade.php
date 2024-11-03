@@ -38,14 +38,8 @@
                                     {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Slug</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Popular</th>
-                                    {{-- <th scope="col">meta Title</th>
-                                    <th scope="col">meta Description</th>
-                                    <th scope="col">meta Keywords</th> --}}
                                     <th scope="col">Actions</th>
 
                                 </tr>
@@ -54,28 +48,15 @@
                                 <tr>
                                     <th scope="row">{{ $data->id }}</th>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->slug }}</td>
                                     <td>{{ $data->description }}</td>
-                                    {{-- <td>{{ $datas->image }}</td> --}}
-                                    <td><img src="{{ asset('assets/image' . session('image')) }}"></td>
-                                    {{-- <td><img src="{{ asset($datas->image) }}"></td> --}}
-                                    <td>
+                                    <td><img src="{{ asset($datas->image) }}"></td>
+                                    {{-- <td>
                                         @if ($data->is_showin)
                                             <span class="badge badge-success">Showing</span>
                                         @else
                                             <span class="badge badge-danger">Hidden</span>
                                         @endif
-                                    </td>
-                                    <td>
-                                        @if ($data->is_popular)
-                                            <span class="badge badge-warning">Yes</span>
-                                        @else
-                                            <span class="badge badge-danger">No</span>
-                                        @endif
-                                    </td>
-                                    {{-- <td>{{ $datas->meta_title }}</td>
-                                        <td>{{ $datas->meta_description }}</td>
-                                        <td>{{ $datas->meta_keywords }}</td> --}}
+                                    </td> --}}
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('category.edit', $data->id) }}"
                                             role="button">Edit</a>
