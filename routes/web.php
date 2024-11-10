@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\AdminAuth\SittingController;
 use App\Http\Controllers\AdminAuth\SliderController;
 use App\Http\Controllers\AdminAuth\TestimonialController;
+use App\Http\Controllers\Auth\CategoryController as AuthCategoryController;
 use App\Http\Controllers\Auth\CommentController as AuthCommentController;
 use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\Auth\MessageController;
@@ -112,23 +113,24 @@ Route::get('/', function () {
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
 // Route::middleware('auth')->group(function () {
-    // user 
-    Route::get('about', [AuthSliderController::class, 'show'])->name('about');
-    Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
-    Route::get('allprojects', [AuthProjectController::class, 'index'])->name('allproject');
+// user 
+Route::get('about', [AuthSliderController::class, 'show'])->name('about');
+Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
+Route::get('allprojects', [AuthProjectController::class, 'index'])->name('allproject');
 
-    Route::get('make_an_orders/create', [AuthOrderController::class, 'create'])->name('product.order.create');
-    Route::post('make_an_orders/', [AuthOrderController::class, 'store'])->name('product.order.store');
+Route::get('make_an_orders/create', [AuthOrderController::class, 'create'])->name('product.order.create');
+Route::post('make_an_orders/', [AuthOrderController::class, 'store'])->name('product.order.store');
 
-    Route::get('show_product/{id}', [AuthUserProductController::class, 'show'])->name('show.product');
-    Route::get('show_project/{id}', [AuthProjectController::class, 'show'])->name('show.project');
+Route::get('show_category/{id}', [AuthCategoryController::class, 'show'])->name('show.category');
+Route::get('show_product/{id}', [AuthUserProductController::class, 'show'])->name('show.product');
+Route::get('show_project/{id}', [AuthProjectController::class, 'show'])->name('show.project');
 
-    Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
 
-    Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
-    Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
-    // Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
-    // Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
+Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
+Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
+// Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
+// Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
 // });
 
 // ({ ==>

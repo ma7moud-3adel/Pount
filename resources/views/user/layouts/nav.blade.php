@@ -92,7 +92,8 @@
                                 <!-- Main Menu -->
                                 <nav class="main-menu style3 navbar-expand-md navbar-light">
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                                        <ul class="navigation clearfix">
+                                        <ul
+                                            class="navigation clearfix d-flex align-items-center justify-content-center flex-row-reverse">
                                             <li
                                                 class="dropdown {{ Request::route()->getName() == 'home' ? 'current' : '' }}">
                                                 <a href="{{ route('home') }}">الصفحة
@@ -116,6 +117,22 @@
                                                 <a href="{{ route('shop') }}">المتجر</a>
                                             </li>
                                             <li><a href="{{ route('home') }}#contact">تواصل</a></li>
+                                            @auth
+                                                <form method="POST" action="{{ route('logout') }}"
+                                                    style="display: inline-block; margin: 0 10px;">
+                                                    @csrf
+                                                    <a class="btn btn-danger btn-xs text-sm" href="{{ route('logout') }}"
+                                                        role="button"
+                                                        onclick="event.preventDefault();this.closest('form').submit();">Out</a>
+                                                </form>
+                                            @else
+                                                <form method="POST" action="{{ route('logout') }}" style="display: none;">
+                                                    @csrf
+                                                    <a class="btn btn-danger btn-xs text-sm" href="{{ route('logout') }}"
+                                                        role="button"
+                                                        onclick="event.preventDefault();this.closest('form').submit();">Out</a>
+                                                </form>
+                                            @endauth
                                         </ul>
                                     </div>
                                 </nav>

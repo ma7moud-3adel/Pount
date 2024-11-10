@@ -38,7 +38,7 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <div class="row mb-4">
-                                    <div class = "col"><label class="form-label">name</label> <br>
+                                    <div class = "col"><label class="form-label">Name</label> <br>
                                         <input class="form-control" name="name" type="text"
                                             value="{{ $data->name }}">
                                     </div>
@@ -47,11 +47,7 @@
                                             value="{{ $data->price }}">
                                     </div>
                                     <div class = "col">
-                                        {{-- <label class="form-label">Size</label> <br>
-                                        <input class="form-control" name="size" type="text"
-                                            value="{{ old('size') }}"> --}}
-
-                                        <label for="selectSize">Size</label>
+                                        <label for="selectSize" class="form-label">Size</label>
                                         <select class="form-control" id="selectSize" name="size">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -60,28 +56,39 @@
                                             <option value="5">5</option>
                                         </select>
                                     </div>
+                                    <div class = "col">
+                                        <label for="selectCategory" class="form-label">Category</label>
+                                        <select class="form-control" id="selectCategory" name="category_id">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
-                                        {{-- <textarea class="form-control c" name="description" id="editor" value="{{ $data->description }}" rows="3"></textarea> --}}
-                                        <input class="form-control c" name="description" type="text"
-                                            value="{{ $data->description }}">
+                                        <textarea class="form-control c" name="description" id="editor" value="{{ $data->description }}" rows="3"></textarea>
+                                        {{-- <input class="form-control c" name="description" type="text"
+                                            value="{{ $data->description }}"> --}}
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image_01</label>
+                                    <div class="col border rounded-lg p-2"><label class="form-label"
+                                            for="file">Image_01</label>
                                         <br>
                                         <input type="file" name="image" id="file" required>
                                         <img src="{{ asset($data->image) }}" alt="" width="75">
                                     </div>
-                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image_02</label>
+                                    <div class="col border rounded-lg p-2"><label class="form-label"
+                                            for="file">Image_02</label>
                                         <br>
                                         <input type="file" name="image_0" id="file" required>
                                         <img src="{{ asset($data->image_0) }}" alt="" width="75">
                                     </div>
-                                    <div class="col border rounded-lg p-2"><label class="form-label" for="file">Image_03</label>
+                                    <div class="col border rounded-lg p-2"><label class="form-label"
+                                            for="file">Image_03</label>
                                         <br>
                                         <input type="file" name="image_1" id="file" required>
                                         <img src="{{ asset($data->image_1) }}" alt="" width="75">

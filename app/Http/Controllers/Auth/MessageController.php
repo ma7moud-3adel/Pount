@@ -46,14 +46,16 @@ class MessageController extends Controller
             'service' => $service,
             'message' => $message,
         ]);
+        return response()->json(['success' => true, 'message' => 'Message sent successfully!']);
 
-        if ($message instanceof Message) {
-            toastr()->success('Message has been Sent successfully!');
-            return redirect()->route('home');
-        }
 
-        toastr()->error('An error has occurred please try again later!.');
+        //     if ($message instanceof Message) {
+        //         toastr()->success('Message has been Sent successfully!');
+        //         return redirect()->route('home');
+        //     }
 
-        return redirect()->route('home');
+        //     toastr()->error('An error has occurred please try again later!.');
+
+        //     return redirect()->route('home');
     }
 }

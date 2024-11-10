@@ -48,8 +48,8 @@
                                 <tr>
                                     <th scope="row">{{ $data->id }}</th>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->description }}</td>
-                                    <td><img src="{{ asset($datas->image) }}"></td>
+                                    <td>{!! $data->description !!}</td>
+                                    <td><img width="35" src="{{ asset($data->image) }}"></td>
                                     {{-- <td>
                                         @if ($data->is_showin)
                                             <span class="badge badge-success">Showing</span>
@@ -75,72 +75,12 @@
                         </table>
                         <div class="card border-info mt-3 text-center">
                             <div class="card-header">Details</div>
-                            <div class="card-body text-info">
-                                <div style="height: 50px">
-                                    <img src="{{ asset('assets/image' . session('image')) }}" class="card-img-top"
-                                        alt="...">
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label class="form-label">name</label> <br>
-                                                                <input class="form-control" name="name" type="text"
-                                                                    value="{{ $data->name }}"disabled>
-                                                            </div>
-                                                            <div class = "col"><label class="form-label">slug</label> <br>
-                                                                <input class="form-control" name="slug" type="text"
-                                                                    value="{{ $data->slug }}"disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label
-                                                                    class="form-label">description</label> <br>
-                                                                <input class="form-control c" name="description"
-                                                                    type="text"
-                                                                    value="{{ $data->description }}"disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                            <div class="row p-3 g-3">
+                                @foreach ($data->products as $product)
+                                    <div class="col">
+                                        <img src="{{ asset($product->image) }}" width="50">
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label class="form-label">Meta Title</label>
-                                                                <br>
-                                                                <input class="form-control" name="meta_title" type="text"
-                                                                    value="{{ $data->meta_title }}"disabled>
-                                                            </div>
-                                                            <div class = "col"><label class="form-label">Meta
-                                                                    Keywords</label> <br>
-                                                                <input class="form-control" name="meta_keywords"
-                                                                    type="text"
-                                                                    value="{{ $data->meta_keywords }}"disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label class="form-label">Meta
-                                                                    Description</label> <br>
-                                                                <input class="form-control" name="meta_description"
-                                                                    type="text" value="{{ $data->meta_description }}"
-                                                                    disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="card-footer text-muted">
                                 {{ $data->created_at }}

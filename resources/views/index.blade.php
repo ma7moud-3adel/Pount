@@ -47,26 +47,26 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <!--Start Single Service Style1-->
-                @foreach ($products as $product)
+                @foreach ($categories as $category)
                     <div class="col-xl-4 col-lg-12 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="single-service-style1">
                             <div class="inner-box">
                                 <div class="img-holder">
-                                    <img class="categoriesImg" src="{{ $product->image }}" alt="">
+                                    <img class="categoriesImg" src="{{ $category->image }}" alt="">
                                 </div>
                                 <div class="title-holder">
                                     <div class="pattern-bg"
                                         style="background-image: url(assets/img/pattern/thm-pattern-1.png);"></div>
                                     <div class="inner-text">
                                         <h6>من اهم منتجاتنا</h6>
-                                        <h3><a href="{{ route('show.product', $product->id) }}"> {{ $product->name }}</a>
+                                        <h3><a href="{{ route('show.category', $category->id) }}"> {{ $category->name }}</a>
                                         </h3>
                                         <div class="text">
-                                            <p>{!! $product->description !!}</p>
+                                            <p>{!! $category->description !!}</p>
                                         </div>
                                     </div>
                                     <div class="button-box">
-                                        <a href="{{ route('show.product', $product->id) }}">تفاصيل </a>
+                                        <a href="{{ route('show.category', $category->id) }}">تفاصيل </a>
                                     </div>
                                 </div>
                             </div>
@@ -404,7 +404,8 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project1->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -433,7 +434,8 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project2->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -530,7 +532,8 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project1->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project5->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -559,7 +562,8 @@
                             <div class="single-project-item">
                                 <div class="img-holder">
                                     <div class="inner">
-                                        <img src="{{ asset($project2->image) }}" alt="Awesome Image">
+                                        <img class="projectImage" src="{{ asset($project6->image) }}"
+                                            alt="Awesome Image">
                                     </div>
                                     <div class="overlay-content text-center">
                                         <p>Commercial</p>
@@ -1054,23 +1058,27 @@
                                 @csrf
                                 <div class="row">
                                     <div class="input-box col">
-                                        <input type="text" name="name" placeholder="الاسم" required>
+                                        <input type="text" name="name" id="name_1" placeholder="الاسم"
+                                            required>
                                     </div>
                                     <div class="input-box col">
-                                        <input type="email" name="email" placeholder="البريد الالكتروني" required>
+                                        <input type="email" name="email" id="email_1"
+                                            placeholder="البريد الالكتروني" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-box col">
-                                        <input type="text" name="phone" placeholder="رقم الهاتف" required>
+                                        <input type="text" name="phone" id="phone_1" placeholder="رقم الهاتف"
+                                            required>
                                     </div>
                                     <div class="input-box col">
-                                        <input type="text" name="address" placeholder="العنوان" required>
+                                        <input type="text" name="address" id="address_1" placeholder="العنوان"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="input-box">
                                     <div class="select-box">
-                                        <select class="wide" name="service">
+                                        <select class="wide" name="service" id="service_1">
                                             <option data-display="الخدمة التي تحتاجها" disabled>الخدمة التي تحتاجها
                                             </option>
                                             <option value="استفسار عن السعر">استفسار عن السعر</option>
@@ -1080,10 +1088,10 @@
                                     </div>
                                 </div>
                                 <div class="input-box">
-                                    <textarea name="message" placeholder="...تفاصيل" required></textarea>
+                                    <textarea name="message" id="message_1" placeholder="...تفاصيل" required></textarea>
                                 </div>
                                 <div class="button-box">
-                                    <button class="btn-one" type="submit" data-loading-text="Done...">
+                                    <button id="btn_1" class="btn-one" type="submit" data-loading-text="Done...">
                                         <span class="txt">ارسال</span>
                                     </button>
                                 </div>
@@ -1103,4 +1111,70 @@
         </div>
     </section>
     <!--End Main Contact Form Area-->
+@endsection
+
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#btn_1").on('click', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the values from the form
+                var name = $("#name_1").val();
+                var email = $("#email_1").val();
+                var phone = $("#phone_1").val();
+                var address = $("#address_1").val();
+                var service = $("#service_1").val();
+                var message = $("#message_1").val();
+
+                // Get the CSRF token from the meta tag
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                // Make the AJAX request
+                $.ajax({
+                    url: "{{ route('message.store') }}", // Laravel route
+                    method: 'POST',
+                    data: {
+                        _token: csrfToken, // Include the CSRF token
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        address: address,
+                        service: service,
+                        message: message
+                    },
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if (response.success) {
+                            // Show the custom success alert
+                            // setTimeout(function() {
+                            toastr.success('Message has been sent successfully!');
+                            // }, 2000);
+                            $("#name_1").val('');
+                            $("#email_1").val('');
+                            $("#phone_1").val('');
+                            $("#address_1").val('');
+                            $("#service_1").val('');
+                            $("#message_1").val('');
+                        } else {
+                            // toastr.error('There was an error sending the message.');
+                            alert("There was an error sending the message !!.");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors
+                        console.log(error);
+                        // toastr.error(
+                        //     'An error occurred while sending your message. Please try again.'
+                        //     );
+                        alert(
+                            "An error occurred while sending your message. Please try again."
+                        );
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

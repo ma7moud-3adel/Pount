@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

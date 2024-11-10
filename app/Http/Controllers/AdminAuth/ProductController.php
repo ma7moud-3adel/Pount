@@ -25,7 +25,8 @@ class ProductController extends Controller
     public function create()
     {
         $data = Product::all();
-        return view('admin.product.create')->with('data', $data);
+        $categories = Category::all();
+        return view('admin.product.create', compact('data', 'categories'));
     }
 
     /**
@@ -42,6 +43,7 @@ class ProductController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'image_0' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'image_1' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
+            'category_id' => 'required',
             'price' => 'numeric',
             'size' => 'nullable|numeric',
         ]);
@@ -60,9 +62,10 @@ class ProductController extends Controller
             $request->image_1->move(public_path('image'), $imageName);
             $imagePath_03 = 'image/' . $imageName;
         }
-        
+
         $name = request()->name;
         $description = request()->description;
+        $category_id = request()->category_id;
         $price = request()->price;
         $size = request()->size;
 
@@ -72,6 +75,7 @@ class ProductController extends Controller
             'image' => $imagePath_01,
             'image_0' => $imagePath_02,
             'image_1' => $imagePath_03,
+            'category_id' => $category_id,
             'price' => $price,
             'size' => $size,
         ]);
@@ -101,7 +105,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data = Product::findOrFail($id);
-        return view('admin.product.edit', ['data' => $data]);
+        $categories = Category::all();
+        return view('admin.product.edit', compact('data', 'categories'));
     }
 
     /**
@@ -130,6 +135,7 @@ class ProductController extends Controller
 
         $name = request()->name;
         $description = request()->description;
+        $category_id = request()->category_id;
         $price = request()->price;
         $size = request()->size;
 
@@ -140,6 +146,7 @@ class ProductController extends Controller
             'image' => $imagePath_01,
             'image_0' => $imagePath_02,
             'image_1' => $imagePath_03,
+            'category_id' => $category_id,
             'price' => $price,
             'size' => $size,
         ]);

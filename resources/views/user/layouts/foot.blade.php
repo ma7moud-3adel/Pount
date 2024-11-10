@@ -211,7 +211,7 @@
 <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ asset('assets/js/tilt.jquery.js') }}"></script>
 
-
+@yield('js')
 
 <!-- thm custom script -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>

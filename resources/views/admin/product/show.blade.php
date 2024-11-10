@@ -35,7 +35,6 @@
                         <table class="table table-striped table-bordered table-hover text-center">
                             <thead class="thead-light">
                                 <tr>
-                                    {{-- // (`name`, `slug`, `description`, `image`, `is_showin`, `is_popular`, `meta_title`, `meta_description`, `meta_keywords`) --}}
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
@@ -50,8 +49,6 @@
                                     <th scope="row">{{ $data->id }}</th>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->description }}</td>
-                                    {{-- <td>{{ $datas->image }}</td> --}}
-                                    {{-- <td><img src="{{ asset('assets/image' . session('image')) }}"></td> --}}
                                     <td><img width="35" src="{{ asset($data->image) }}"></td>
                                     <td>{{ $data->count }}</td>
                                     <td>
@@ -70,75 +67,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        {{-- <div class="card border-info mt-3 text-center">
-                            <div class="card-header">Details</div>
-                            <div class="card-body text-info">
-                                <div style="height: 50px">
-                                    <img width="50" src="{{ asset($data->image) }}" class="card-img-top"
-                                        alt="...">
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label class="form-label">name</label> <br>
-                                                                <input class="form-control" name="name" type="text"
-                                                                    value="{{ $data->name }}"disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label
-                                                                    class="form-label">description</label> <br>
-                                                                <input class="form-control c" name="description"
-                                                                    type="text"
-                                                                    value="{{ $data->description }}"disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label class="form-label">Meta Title</label>
-                                                                <br>
-                                                                <input class="form-control" name="meta_title" type="text"
-                                                                    value="{{ $data->meta_title }}"disabled>
-                                                            </div>
-                                                            <div class = "col"><label class="form-label">Meta
-                                                                    Keywords</label> <br>
-                                                                <input class="form-control" name="meta_keywords"
-                                                                    type="text"
-                                                                    value="{{ $data->meta_keywords }}"disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-4">
-                                                            <div class = "col"><label class="form-label">Meta
-                                                                    Description</label> <br>
-                                                                <input class="form-control" name="meta_description"
-                                                                    type="text" value="{{ $data->meta_description }}"
-                                                                    disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer text-muted">
-                                {{ $data->created_at }}
-                            </div>
-                        </div> --}}
                     </div>
                     <!-- /.card-body -->
                 </div>

@@ -43,16 +43,18 @@
                                         <input class="form-control" name="name" type="text"
                                             value="{{ $data->name }}">
                                     </div>
-                                    <div class="col"><label class="form-label" for="file">Image</label> <br>
+                                    <div class="col border rounded-lg"><label class="form-label"
+                                            for="file">Image</label> <br>
                                         <input type="file" name="image" id="file" required>
+                                        <img src="{{ asset($data->image) }}" alt="" width="50">
                                     </div>
                                 </div>
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
-                                        {{-- <textarea class="form-control c" name="description" id="editor" value="{{ $data->description }}" rows="3"></textarea> --}}
-                                        <input class="form-control c" name="description" type="text"
-                                            value="{{ $data->description }}">
+                                        <textarea class="form-control c" name="description" id="editor" value="{{ $data->description }}" rows="3"></textarea>
+                                        {{-- <input class="form-control c" name="description" type="text"
+                                            value="{{ $data->description }}"> --}}
                                     </div>
                                 </div>
 

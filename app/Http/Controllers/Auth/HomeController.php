@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Slider;
@@ -16,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $slider = Slider::all();
-        $products = Product::take(2)->get();
+        $categories = Category::take(2)->get();
         $projects = Project::all();
         $project1 = Project::findOrFail(1);
         $project2 = Project::findOrFail(2);
@@ -29,7 +30,7 @@ class HomeController extends Controller
             'index',
             compact(
                 'slider',
-                'products',
+                'categories',
                 'projects',
                 'project1',
                 'project2',

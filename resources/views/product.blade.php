@@ -288,7 +288,12 @@
                                             @csrf
                                             <div class="row">
                                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
+                                                @auth
+                                                    <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
+                                                @else
+                                                    <input type="text" name="user_name"placeholder="Enter Your Name ..."
+                                                        required>
+                                                @endauth
                                                 <div class="input-box col">
                                                     <div class="field-label">Comments</div>
                                                     <textarea name="content" placeholder="Enter Your comment..." required></textarea>

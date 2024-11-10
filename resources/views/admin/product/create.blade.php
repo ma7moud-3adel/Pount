@@ -55,6 +55,14 @@
                                             <option value="5">5</option>
                                         </select>
                                     </div>
+                                    <div class = "col">
+                                        <label for="selectCategory" class="form-label">Category</label>
+                                        <select class="form-control" id="selectCategory" name="category_id">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="row mb-4">
