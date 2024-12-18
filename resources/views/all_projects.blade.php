@@ -1,5 +1,7 @@
 @extends('user.layouts.app')
-
+@section('title')
+    all projects
+@endsection
 @section('content')
     <!--Start breadcrumb area paroller-->
     <section class="breadcrumb-area">
@@ -10,12 +12,12 @@
                 <div class="col-xl-12">
                     <div class="inner-content">
                         <div class="title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                            <h2>المشاريع</h2>
+                            <h1>المشاريع</h1>
                         </div>
                         <div class="breadcrumb-menu" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
                             <ul>
                                 <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-angle-left" aria-hidden="true"></i></li>
                                 <li class="active">المشاريع</li>
                             </ul>
                         </div>
@@ -46,18 +48,17 @@
                                                         <i class="flaticon-zoom"></i>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <a href="{{ redirect()->back() }}">
                                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="title-holder">
-                                        <h3><a href="{{ route('show.project', $project->id) }}">{{ $project->title }}</a>
-                                        </h3>
-                                        <div class="review-box">
+                                        <h3>{{ $project->title }}</h3>
+                                        {{-- <div class="review-box">
                                             <ul>
                                                 <li><i class="flaticon-star-of-favorites-outline"></i></li>
                                                 <li><i class="flaticon-star-of-favorites-outline"></i></li>
@@ -65,7 +66,7 @@
                                                 <li><i class="flaticon-star-of-favorites-outline"></i></li>
                                                 <li><i class="flaticon-star-of-favorites-outline"></i></li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

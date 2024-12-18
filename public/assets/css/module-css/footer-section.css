@@ -1,4 +1,4 @@
-/*** 
+/***
 =============================================
     Footer area style
 =============================================
@@ -84,7 +84,9 @@
     padding-right: 30px;
 }
 
-.footer-top__content .right-box a.one {}
+.footer-top__content .right-box a.one:hover {
+    color: white;
+}
 
 .footer-top__content .right-box a.two {
     color: #ffffff;
@@ -507,7 +509,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -565,7 +567,7 @@
 
 
 
-/*** 
+/***
 =============================================
     Footer area style2 Css
 =============================================
@@ -578,7 +580,7 @@
     padding-bottom: 99px;
 }
 
-.single-footer-widget-style2 {}
+/* .single-footer-widget-style2 {} */
 
 .single-footer-widget-style2 .our-company-info {
     position: relative;
@@ -836,7 +838,7 @@
 
 
 
-/*** 
+/***
 =============================================
     Footer area style2 Css
 =============================================
@@ -1010,7 +1012,7 @@
 .footer-style3 {
     position: relative;
     display: block;
-    padding-top: 170px;
+    padding-top: 50px;
     padding-bottom: 0px;
     z-index: 1;
 }
@@ -1039,7 +1041,7 @@
     opacity: 0.75;
 }
 
-.single-footer-widget--style3 {}
+/* .single-footer-widget--style3 {} */
 
 .single-footer-widget--style3 .footer-logo {
     position: relative;
@@ -1269,4 +1271,14 @@
 .footer-bottom-style3__content .copyright p a {
     color: var(--thm-black);
     font-weight: 500;
+    margin-left: 2px;
+    margin-right: 2px;
+    transition: 0.4s ease;
+}
+
+
+.footer-bottom-style3__content .copyright p a:hover {
+    color: #104547e7;
+    background-color: #1c1c2725;
+    /* font-weight: 600; */
 }

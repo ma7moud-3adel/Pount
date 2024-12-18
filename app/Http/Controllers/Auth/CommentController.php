@@ -34,12 +34,11 @@ class CommentController extends Controller
         $product_id = request()->product_id;
         $user_name = request()->user_name; // Use = instead of =>
 
-        Comment::create([
+        $data = Comment::create([
             'content' => $content,
             'product_id' => $product_id,
             'user_name' => $user_name, // Use the correct variable
         ]);
-
-        return redirect()->back()->with('success', 'Your Comment is been sent');
+        return response()->json(['success' => true, 'data' => $data]);
     }
 }

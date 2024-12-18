@@ -1,4 +1,4 @@
-/*** 
+/***
 =============================================
     Blog Style1 Area Css
 =============================================
@@ -82,6 +82,8 @@
 .single-blog-style1 .img-holder img {
     width: 100%;
     transform: scale(1.0);
+    height: 240px;
+    object-fit: cover;
 }
 
 .single-blog-style1:hover .img-holder img {
@@ -129,7 +131,7 @@
     align-items: center;
     justify-content: center;
     float: right;
-    width: 55px;
+    width: 80px;
     height: 55px;
     background-color: var(--thm-base);
     text-align: center;
@@ -171,6 +173,9 @@
     line-height: 30px;
     font-weight: 600;
     text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .single-blog-style1 .text-holder .blog-title a {
@@ -191,6 +196,11 @@
 
 .single-blog-style1 .text-holder .text p {
     margin: 0;
+    display: -webkit-box;       /* Use a flex container */
+    -webkit-line-clamp: 2;      /* Limit text to 2 lines */
+    -webkit-box-orient: vertical; /* Specify vertical orientation */
+    overflow: hidden;           /* Hide overflowing text */
+    text-overflow: ellipsis;    /* Add ellipsis for truncated text */
 }
 
 .single-blog-style1 .text-holder .bottom-box {
@@ -272,7 +282,7 @@
 
 
 
-/*** 
+/***
 =============================================
     Blog Style2 Area Css
 =============================================
@@ -436,7 +446,7 @@
 
 
 
-/*** 
+/***
 =============================================
     Blog Page Css
 =============================================
@@ -464,7 +474,7 @@
 
 
 
-/*** 
+/***
 =============================================
     Blog Page Three Css
 =============================================
@@ -532,7 +542,7 @@
 
 
 
-/*** 
+/***
 =============================================
     Blog Details Css
 =============================================
@@ -1042,7 +1052,7 @@
 
 
 
-/*** 
+/***
 =============================================
    comments Box Css
 =============================================
@@ -1187,7 +1197,7 @@
 
 
 
-/*** 
+/***
 =============================================
    Add Comment Box Css
 =============================================

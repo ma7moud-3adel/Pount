@@ -1,5 +1,7 @@
 @extends('user.layouts.app')
-
+@section('title')
+    Single Project
+@endsection
 @section('content')
     <!--Start breadcrumb area paroller-->
     <section class="breadcrumb-area">
@@ -10,12 +12,12 @@
                 <div class="col-xl-12">
                     <div class="inner-content">
                         <div class="title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                            <h2>{{ $project->title }}</h2>
+                            <h1>{{ $project->title }}</h1>
                         </div>
                         <div class="breadcrumb-menu" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
                             <ul>
                                 <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-angle-left" aria-hidden="true"></i></li>
                                 <li class="active">{{ $project->title }}</li>
                             </ul>
                         </div>
@@ -62,7 +64,7 @@
             </div>
 
             <!--Start product tab box-->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="product-tab-box tabs-box">
                         <ul class="tab-btns tab-buttons clearfix text-center">
@@ -90,12 +92,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--End product tab box-->
 
-            <div class="related-product-box">
+            {{-- <div class="related-product-box">
                 <div class="shop-page-title">
-                    <h2>Related Projects</h2>
+                    <h2>l</h2>
                 </div>
                 <div class="row d-flex justify-content-center">
                     @php
@@ -103,46 +105,24 @@
                         $data = Project::take(4)->get();
                     @endphp
                     @foreach ($data as $data)
-                        <!--Start Single Shop Item-->
                         <div class="col col-md-3 col-sm-12">
                             <div class="single-shop-item">
                                 <div class="single-shop-item_inner">
                                     <div class="img-holder">
                                         <img src="{{ asset($data->image) }}" alt="">
                                         <div class="overlay">
-                                            <ul>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                     <div class="title-holder">
                                         <h3><a href="{{ route('show.product', $data->id) }}">{{ $data->title }}</a></h3>
-                                        <div class="review-box">
-                                            <ul>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                            </ul>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--End Single Shop Item-->
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!--End Product Details Area-->

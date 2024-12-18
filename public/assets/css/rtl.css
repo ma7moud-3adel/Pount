@@ -221,6 +221,45 @@ button.ltr {
   right: auto;
 }
 
+
+.sticky-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  .sticky-buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .sticky-buttons a.call-button {
+    background-color: #262e39;
+  }
+
+  .sticky-buttons a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .sticky-buttons img {
+    width: 40px;
+    height: 40px;
+  }
+
+
+
 .rtl .switcher .switch_btn {
   top: 0px;
   right: 0px;
@@ -454,7 +493,7 @@ button.ltr {
 
 
 
-/*** 
+/***
 =============================================
     Inner Page Css
 =============================================
@@ -706,7 +745,7 @@ button.ltr {
 
 
 
-/*** 
+/***
 =============================================
     RTL Page Responsive Css
 =============================================

@@ -47,13 +47,6 @@ class OrderController extends Controller
             'message' => $message,
         ]);
 
-        if ($order instanceof Order) {
-            toastr()->success('Order has been Sent successfully!');
-            return redirect()->back();
-        }
-
-        toastr()->error('An error has occurred please try again later!.');
-
-        return redirect()->back()->with('success','Order has been Sent successfully!');
+        return response()->json(['success' => true]);
     }
 }

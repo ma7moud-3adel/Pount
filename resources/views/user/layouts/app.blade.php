@@ -8,14 +8,14 @@
     <div class="boxed_wrapper ltr">
 
         <!-- Preloader -->
-        <div class="loader-wrap">
+        {{-- <div class="loader-wrap">
             <div class="preloader">
                 <div class="preloader-close">Preloader Close</div>
             </div>
             <div class="layer layer-one"><span class="overlay"></span></div>
             <div class="layer layer-two"><span class="overlay"></span></div>
             <div class="layer layer-three"><span class="overlay"></span></div>
-        </div>
+        </div> --}}
 
         <!-- page-direction -->
         <div class="page_direction">
@@ -26,7 +26,7 @@
 
 
         <!-- switcher menu -->
-        <div class="switcher">
+        {{-- <div class="switcher">
             <div class="switch_btn">
                 <button><img src="{{ asset('assets') }}/img/icon/color-palette.png" alt="Color Palette"> </button>
             </div>
@@ -55,7 +55,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- end switcher menu -->
 
         <!-- Main header-->
@@ -73,9 +73,10 @@
 
 
 
-        <button class="scroll-top scroll-to-target" data-target="html">
-            <span class="flaticon-up-arrow"></span>
-        </button>
+        {{-- <button class="scroll-top scroll-to-target" data-target="html">
+                <button onclick="sendMessage()"> ارسل لنا على واتس اب</button>
+                <span class="txt"><span class="fa fa-whatsapp"></span></span>
+        </button> --}}
 
         <!-- search-popup -->
         <div id="search-popup" class="search-popup">
@@ -83,7 +84,7 @@
             <div class="popup-inner">
                 <div class="overlay-layer"></div>
                 <div class="search-form">
-                    <form method="post" action="index.html">
+                    <form method="post" action="#">
                         <div class="form-group">
                             <fieldset>
                                 <input type="search" class="form-control" name="search-input" value=""
@@ -94,11 +95,11 @@
                     </form>
                     <h3>Recent Search Keywords</h3>
                     <ul class="recent-searches">
-                        <li><a href="index.html">Safety Tips</a></li>
-                        <li><a href="index.html">Filteration</a></li>
-                        <li><a href="index.html">Accessories</a></li>
-                        <li><a href="index.html">Tools</a></li>
-                        <li><a href="index.html">Design</a></li>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Filteration</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Design</a></li>
                     </ul>
                 </div>
             </div>

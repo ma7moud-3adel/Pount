@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Sitting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SittingSeeder extends Seeder
 {
@@ -22,9 +24,17 @@ class SittingSeeder extends Seeder
             'address_1' => 'المعرض: مول ٢٢ محور مصطفي كامل التجمع الاول',
             'address_2' => 'المصنع : 67 المنطقة الصناعية مدينة بدر',
             'company_message' => 'hi',
-            'about' => 'متخصصون فى صناعة مادة الواجهات مثلجرافياتو اكريلك – ماربل – جرانوليت – المادة الاسمنتية – معجون البلاستيك والسيلر والعديد من المواد التى تخضع للأبحاث والتطوير وفقا للمواصفات المحلية والدولية .',
+            'about' =>  'متخصصون في مادة الواجهات الخارجية مثل جرافياتو اكريلك (جرافيت كوت)       اوت ميكس.     جرافياتو اسمنتي.     اديتكس.    بلاتين 1900
+وايت وول معجون اكريلك داخلي.     اوبتيما3000.     ألترون 7000.   سوبر اومبتيما',
             'code_pixel' => '‍',
             'google_tag' => '‍',
         ]);
+
+        Admin::create([
+            'name' => 'Super Admin',
+            'email' => 'admin@admin.com',
+            'password' =>Hash::make("123456")
+        ]);
+
     }
 }

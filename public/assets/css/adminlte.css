@@ -4928,8 +4928,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #ffffff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #e63a27 !important;
+  border-color: #e63a27 !important;
 }
 
 .page-item.disabled .page-link {

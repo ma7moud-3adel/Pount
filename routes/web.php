@@ -1,18 +1,22 @@
 <?php
 
 use App\Http\Controllers\AdminAuth\AdminSessionController;
+use App\Http\Controllers\AdminAuth\BlogController;
 use App\Http\Controllers\AdminAuth\CategoryController;
 use App\Http\Controllers\AdminAuth\CommentController;
 use App\Http\Controllers\AdminAuth\MessageController as AdminAuthMessageController;
 use App\Http\Controllers\AdminAuth\OrderController;
 use App\Http\Controllers\AdminAuth\ProductController;
 use App\Http\Controllers\AdminAuth\ProjectController;
+use App\Http\Controllers\AdminAuth\QuestionsController;
 use App\Http\Controllers\AdminAuth\RegisteredAdminController;
 use App\Http\Controllers\AdminAuth\SittingController;
 use App\Http\Controllers\AdminAuth\SliderController;
 use App\Http\Controllers\AdminAuth\TestimonialController;
+use App\Http\Controllers\Auth\BlogShowController;
 use App\Http\Controllers\Auth\CategoryController as AuthCategoryController;
 use App\Http\Controllers\Auth\CommentController as AuthCommentController;
+use App\Http\Controllers\Auth\FastMessageController;
 use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\Auth\MessageController;
 use App\Http\Controllers\Auth\OrderController as AuthOrderController;
@@ -104,19 +108,24 @@ Route::group([
         Route::get('sittings/{id}/edit', [SittingController::class, 'edit'])->name('sitting.edit');
         Route::put('sittings/{id}', [SittingController::class, 'update'])->name('sitting.update');
         Route::delete('sittings/{id}', [SittingController::class, 'destroy'])->name('sitting.destroy');
+
+        Route::get('question/', [QuestionsController::class, 'index'])->name('question');
+        Route::get('question/create', [QuestionsController::class, 'create'])->name('question.create');
+        Route::post('question/', [QuestionsController::class, 'store'])->name('question.store');
+        Route::get('question/{id}/edit', [QuestionsController::class, 'edit'])->name('question.edit');
+        Route::put('question/{id}', [QuestionsController::class, 'update'])->name('question.update');
+        Route::delete('question/{id}', [QuestionsController::class, 'destroy'])->name('question.destroy');
+
+        Route::resource('blog', BlogController::class);
     });
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Route::middleware('auth')->group(function () {
-// user 
 Route::get('about', [AuthSliderController::class, 'show'])->name('about');
 Route::get('shop', [AuthUserProductController::class, 'index'])->name('shop');
 Route::get('allprojects', [AuthProjectController::class, 'index'])->name('allproject');
+Route::get('blogs', [AuthProjectController::class, 'index'])->name('blogs');
 
 Route::get('make_an_orders/create', [AuthOrderController::class, 'create'])->name('product.order.create');
 Route::post('make_an_orders/', [AuthOrderController::class, 'store'])->name('product.order.store');
@@ -126,12 +135,13 @@ Route::get('show_product/{id}', [AuthUserProductController::class, 'show'])->nam
 Route::get('show_project/{id}', [AuthProjectController::class, 'show'])->name('show.project');
 
 Route::post('messages/', [MessageController::class, 'store'])->name('message.store');
+Route::post('message/', [FastMessageController::class, 'store'])->name('fast_message.store');
 
 Route::get('comments/create', [AuthCommentController::class, 'create'])->name('comment.create');
 Route::post('/comments', [AuthCommentController::class, 'store'])->name('comment.store');
-// Route::get('projects', [AuthProjectController::class, 'index'])->name('project');
-// Route::get('projects/{id}', [AuthProjectController::class, 'show'])->name('project.show');
-// });
+
+
+Route::resource('blogat', BlogShowController::class);
 
 // ({ ==>
 Route::view('/admin/login', 'admin.login')->name('admin.login');
@@ -148,17 +158,13 @@ Route::post('admin/logout', [AdminSessionController::class, 'destroy'])
 
 /*
 |
-| 
-| 
-| 
-| 
-| 
+|
+|
+|
+|
+|
 |
 */
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

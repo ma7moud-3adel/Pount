@@ -41,10 +41,10 @@
                                         <input class="form-control" name="name" type="text"
                                             value="{{ old('name') }}">
                                     </div>
-                                    <div class = "col"><label class="form-label">Price</label> <br>
+                                    {{-- <div class = "col"><label class="form-label">Price</label> <br>
                                         <input class="form-control" name="price" type="number"
                                             value="{{ old('price') }}">
-                                    </div>
+                                    </div> --}}
                                     <div class = "col">
                                         <label for="selectSize" class="form-label">Size</label>
                                         <select class="form-control" id="selectSize" name="size">
@@ -67,7 +67,7 @@
 
                                 <div class="row mb-4">
                                     <div class = "col"><label class="form-label">description</label> <br>
-                                        <textarea class="form-control c" name="description" id="editor" value="{{ old('description') }}" rows="3"></textarea>
+                                        <textarea  class="form-control c" name="description" id="editor" value="{{ old('description') }}" rows="3"></textarea>
                                     </div>
                                 </div>
 

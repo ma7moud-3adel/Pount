@@ -1,4 +1,4 @@
-/*** 
+/***
 =====================================================
 	Main Slider style
 =====================================================
@@ -81,6 +81,7 @@
     position: relative;
     display: block;
     overflow: hidden;
+    height: 87vh;
 }
 
 .main-slider.style1 .content {
@@ -287,13 +288,13 @@
     transition: all 300ms ease;
 }
 
-.main-slider .owl-theme .owl-prev span:before {}
+/* .main-slider .owl-theme .owl-prev span:before {} */
 
 .main-slider .owl-theme .owl-nav .owl-next {
     transform: rotate(180deg);
 }
 
-.main-slider .owl-theme .owl-next span:before {}
+/* .main-slider .owl-theme .owl-next span:before {} */
 
 .main-slider .owl-theme .owl-nav .owl-prev:hover,
 .main-slider .owl-theme .owl-nav .owl-next:hover {
@@ -361,11 +362,11 @@
     transform: scaleX(1.0);
 }
 
-.main-slider .banner-carousel.owl-carousel button.owl-dot.active {}
+/* .main-slider .banner-carousel.owl-carousel button.owl-dot.active {} */
 
 
 
-/*** 
+/***
 =====================================================
 	Main Slider style2 style
 =====================================================
@@ -482,7 +483,7 @@
 
 
 
-/*** 
+/***
 =====================================================
 	Main Slider style3 style
 =====================================================

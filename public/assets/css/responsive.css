@@ -1143,13 +1143,13 @@
         align-items: center;
         min-height: 110px;
         padding-top: 0;
-        padding-left: 30px;
+        padding-right: 30px;
     }
 
 
     /*** About Style1 Area Css ***/
     .about-style1__image1 {
-        padding-top: 110px;
+        /* padding-top: 110px; */
         max-width: 400px;
     }
 

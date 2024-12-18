@@ -8,7 +8,7 @@
 05. PrettyPhoto
 06. BrandCarousel
 07. Testimonial carousel
-08. ScrollToTop 
+08. ScrollToTop
 09. Cart Touch Spin
 10. PriceFilter
 11. Cart touch spin
@@ -141,7 +141,7 @@ function fullHeight() {
 //Hide Loading Box (Preloader)
 function handlePreloader() {
     if ($('.loader-wrap').length) {
-        $('.loader-wrap').delay(1000).fadeOut(500);
+        $('.loader-wrap').delay(500).fadeOut(250);
     }
     TweenMax.to($(".loader-wrap .overlay"), 1.2, {
         force3D: true,
@@ -767,10 +767,10 @@ if ($('.lightbox-image').length) {
 
 if ($('.paroller').length) {
     $('.paroller').paroller({
-        factor: -0.1, // multiplier for scrolling speed and offset, +- values for direction control  
-        factorLg: -0.1, // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control  
-        type: 'foreground', // background, foreground  
-        direction: 'vertical' // vertical, horizontal  
+        factor: -0.1, // multiplier for scrolling speed and offset, +- values for direction control
+        factorLg: -0.1, // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control
+        type: 'foreground', // background, foreground
+        direction: 'vertical' // vertical, horizontal
     });
 }
 
@@ -778,10 +778,10 @@ if ($('.paroller').length) {
 
 if ($('.paroller-2').length) {
     $('.paroller-2').paroller({
-        factor: 0.05, // multiplier for scrolling speed and offset, +- values for direction control  
-        factorLg: 0.05, // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control  
-        type: 'foreground', // background, foreground  
-        direction: 'horizontal' // vertical, horizontal  
+        factor: 0.05, // multiplier for scrolling speed and offset, +- values for direction control
+        factorLg: 0.05, // multiplier for scrolling speed and offset if window width is less than 1200px, +- values for direction control
+        type: 'foreground', // background, foreground
+        direction: 'horizontal' // vertical, horizontal
     });
 }
 

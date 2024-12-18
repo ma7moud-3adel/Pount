@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.home') }}" class="brand-link text-center">
+    <a href="{{ route('home') }}" class="brand-link text-center" target="_blank">
         <span class="brand-text font-italic text-uppercase" style="letter-spacing: 15px;">
             <h3>Pount</h3>
         </span>
@@ -170,6 +170,24 @@
                         <i class="nav-icon fas fa-star"></i>
                         <p>
                             {{ trans('main.Testimonial') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="{{ route('question') }}"
+                        class="nav-link {{ Request::route()->getName() == 'question' || Request::route()->getName() == 'question.create' || Request::route()->getName() == 'question.edit' ? 'active' : '' }} ">
+                        <i class="nav-icon fas fa-question"></i>
+                        <p>
+                            {{ trans('main.Questions') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a href="{{ route('blog.index') }}"
+                        class="nav-link {{ Request::route()->getName() == 'blog.index' || Request::route()->getName() == 'blog.create' ? 'active' : '' }} ">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            {{ trans('main.Blog') }}
                         </p>
                     </a>
                 </li>

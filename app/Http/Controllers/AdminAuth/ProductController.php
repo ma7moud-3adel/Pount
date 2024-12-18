@@ -39,7 +39,7 @@ class ProductController extends Controller
         $imagePath_03 = null;
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'image_0' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'image_1' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',

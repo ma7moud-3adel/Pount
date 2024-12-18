@@ -1,5 +1,5 @@
 /*==============================================
-    Main Header Css        
+    Main Header Css
 ===============================================*/
 
 
@@ -144,7 +144,7 @@
     right: 75px;
     z-index: -1;
     /* logo backroundcolor */
-    border-top: 130px solid var(--thm-base);  
+    border-top: 130px solid var(--thm-base);
     border-right: 70px solid transparent;
 }
 
@@ -256,7 +256,7 @@
     margin-left: 0;
 }
 
-.header-contact-info ul li:before {
+.header-contact-info ul li:first-child:before {
     content: "";
     position: absolute;
     top: 4px;
@@ -294,6 +294,18 @@
     font-size: 16px;
     font-weight: 400;
     font-family: var(--thm-font);
+
+}
+
+@media screen and (max-width: 1280px) {
+    .header-contact-info ul li .text h6 {
+        font-size: 13px;
+  }
+}
+@media screen and (max-width: 1180px) {
+    .header-contact-info ul li .text h6 {
+        font-size: 11px;
+  }
 }
 
 .header-contact-info ul li .text h6 a {
@@ -303,9 +315,9 @@
     transition: all 0.4s linear;
 }
 
-.header-contact-info ul li .text h6 a:hover {
+/* .header-contact-info ul li .text h6 a:hover {
     color: var(--thm-base);
-}
+} */
 
 
 .header-social-link {
@@ -453,6 +465,7 @@
     text-transform: capitalize;
     transition: all 500ms ease;
     font-family: var(--thm-font-2);
+
     opacity: 1;
     z-index: 1;
 }
@@ -1127,7 +1140,7 @@
     font-weight: 500;
     border-radius: 50%;
     text-align: center;
-    font-family: var(--thm-font-2);
+    font-family: c;
 }
 
 .space-box1 {
@@ -1168,7 +1181,8 @@
     font-size: 16px;
     font-weight: 400;
     border: none;
-    font-family: var(--thm-font-2);
+    font-family: var(--thm-font);
+
 }
 
 .serach-button-style2 input[type="search"]:focus {
@@ -1273,7 +1287,7 @@
 
 
 
-/*** 
+/***
 =====================================================
 	Main Header style Two Css
 =====================================================
@@ -1610,7 +1624,7 @@
 
 
 
-/*** 
+/***
 =====================================================
 	Main Header style Two Css
 =====================================================
@@ -1921,4 +1935,13 @@
 
 .header-contact-info3 .text h3 a:hover {
     color: var(--thm-black);
+}
+
+
+.res-ul{
+    text-align: center;
+}
+
+.res-ul li{
+    margin: 10px auto;
 }

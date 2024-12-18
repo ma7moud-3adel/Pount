@@ -36,7 +36,8 @@ class TestimonialController extends Controller
         $request->validate([
             'name' => 'required',
             'address' => 'nullable',
-            'description' => 'required',
+            // 'description' => 'required',
+            'description' => 'required|string|min:3',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'rate' => 'numeric|required',
         ]);
@@ -75,6 +76,6 @@ class TestimonialController extends Controller
         $deletedCat = Testimonial::findOrFail($id);
         $deletedCat->delete();
 
-        return to_route('testimonial')->with('danger', 'Testimonial is Deleted Successfully');
+        return to_route('testimonial')->with('info', 'Testimonial is Deleted Successfully');
     }
 }

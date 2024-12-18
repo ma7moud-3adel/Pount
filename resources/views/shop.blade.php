@@ -1,5 +1,7 @@
 @extends('user.layouts.app')
-
+@section('title')
+    Shop
+@endsection
 @section('content')
     <!--Start breadcrumb area paroller-->
     <section class="breadcrumb-area">
@@ -10,12 +12,12 @@
                 <div class="col-xl-12">
                     <div class="inner-content">
                         <div class="title" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                            <h2>المنتجات</h2>
+                            <h1>المنتجات</h1>
                         </div>
                         <div class="breadcrumb-menu" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
                             <ul>
                                 <li><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-angle-left" aria-hidden="true"></i></li>
                                 <li class="active">المنتجات</li>
                             </ul>
                         </div>
@@ -33,22 +35,16 @@
                 <div class="row d-flex justify-content-center">
                     <!--Start Single Shop Item-->
                     @foreach ($products as $product)
-                        <div class="col col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-12">
                             <div class="single-shop-item">
                                 <div class="single-shop-item_inner">
                                     <div class="img-holder">
-                                        <img src="{{ $product->image }}" alt="">
+                                        <img src="{{ asset($product->image) }}" alt="">
                                         <div class="overlay">
                                             <ul>
                                                 <li>
                                                     <a href="{{ route('show.product', $product->id) }}">
-                                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ redirect()->back() }}">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                                    </a>
+                                                        <i class="fa fa-link"></i> </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -56,27 +52,27 @@
                                     <div class="title-holder">
                                         <h3><a href="{{ route('show.product', $product->id) }}">{{ $product->name }}</a>
                                         </h3>
-                                        <div class="review-box">
-                                            <ul>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                                <li><i class="flaticon-star-of-favorites-outline"></i></li>
-                                            </ul>
-                                        </div>
-                                        <h6>{{ $product->price }}</h6>
+                                        {{-- <div class="review-box">
+                                        <ul>
+                                            <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                            <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                            <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                            <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                            <li><i class="flaticon-star-of-favorites-outline"></i></li>
+                                        </ul>
+                                    </div> --}}
+                                        {{-- <h6 style="direction: rtl">{{ $product->price }} جنيه</h6> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    <!--End Single Shop Item-->
-                </div>
-                <div class="d-flex justify-content-center">
-                    {{ $products->links() }}
                 </div>
             </div>
+        </div>
+        <!--End Single Shop Item-->
+        <div class="d-flex justify-content-center">
+            {{ $products->links() }}
         </div>
     </section>
     <!--End Shop Page One-->

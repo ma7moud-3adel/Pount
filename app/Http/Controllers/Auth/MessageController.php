@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\storeMessageRequest;
 use App\Models\Message;
-use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -20,42 +20,11 @@ class MessageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(storeMessageRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'nullable',
-            'phone' => 'required',
-            'address' => 'required',
-            'service' => 'required',
-            'message' => 'required',
-        ]);
+        $validatedData = $request->validated();
 
-        $name = request()->name;
-        $email = request()->email;
-        $phone = request()->phone;
-        $address = request()->address;
-        $service = request()->service;
-        $message = request()->message;
-
-        $message = Message::create([
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'address' => $address,
-            'service' => $service,
-            'message' => $message,
-        ]);
-        return response()->json(['success' => true, 'message' => 'Message sent successfully!']);
-
-
-        //     if ($message instanceof Message) {
-        //         toastr()->success('Message has been Sent successfully!');
-        //         return redirect()->route('home');
-        //     }
-
-        //     toastr()->error('An error has occurred please try again later!.');
-
-        //     return redirect()->route('home');
+        Message::create($validatedData);
+        return response()->json(['success' => true]);
     }
 }

@@ -13,6 +13,8 @@ return [
     'Order' => 'Orders',
     'Testimonial' => 'Testimonials',
     'Comment' => 'Comments',
-    'Sitting' => 'Sittings'
+    'Sitting' => 'Sittings',
+    'Questions' => 'Questions',
+    'Blog' => 'Blogs'
 
 ];

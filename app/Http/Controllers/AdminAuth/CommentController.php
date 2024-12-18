@@ -22,6 +22,6 @@ class CommentController extends Controller
         $deletedCat = Comment::findOrFail($id);
         $deletedCat->delete();
 
-        return to_route('comment')->with('danger', 'Comment is Deleted Successfully');
+        return to_route('comment')->with('info', 'Comment is Deleted Successfully');
     }
 }

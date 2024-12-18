@@ -34,7 +34,8 @@ class ProjectController extends Controller
         $imagePath = null;
         $request->validate([
             'title' => 'required',
-            'description' => 'nullable|string',
+            // 'description' => 'nullable|string',
+            'description' => 'required|string|min:3',
             'image' => 'required|mimes:jpg,png,jpeg,gif,pdf|max:2048',
             'comments' => 'nullable|string',
         ]);

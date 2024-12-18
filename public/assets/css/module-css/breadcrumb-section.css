@@ -1,4 +1,4 @@
-/*** 
+/***
 =============================================
     Breadcrumb area style
 =============================================
@@ -21,6 +21,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
+    object-fit: cover;
 }
 
 .breadcrumb-area-bg:before {
@@ -56,7 +57,7 @@
     text-align: center;
 }
 
-.breadcrumb-area .title h2 {
+.breadcrumb-area .title h1 {
     color: #ffffff;
     font-size: 60px;
     line-height: 1.3em;
@@ -67,12 +68,13 @@
 
 .breadcrumb-menu {
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: 0;
     line-height: 0;
     height: 72px;
     display: flex;
     align-items: center;
+    text-align: left;
 }
 
 .breadcrumb-menu ul {
@@ -116,4 +118,21 @@
 
 .breadcrumb-area .title.blog-single h2 {
     font-size: 48px;
+}
+
+
+
+/* .....Pagination */
+
+.pagination-links .page-item.active .page-link{
+    background-color: #e63a27 !important;
+    color: white !important;
+
+}
+
+.pagination-links .page-item .page-link{
+    border: #e63a27 !important;
+    color: #e63a27 !important;
+    margin: 0 3px;
+    border-radius: 5px;
 }

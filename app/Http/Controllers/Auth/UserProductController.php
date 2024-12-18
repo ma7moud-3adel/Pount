@@ -12,7 +12,7 @@ class UserProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(20);
         return view('shop', compact('products'));
     }
 
